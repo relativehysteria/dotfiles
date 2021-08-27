@@ -1,0 +1,22 @@
+# colors
+ alias \
+ 	ls="ls -N --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto"
+
+# verbosity levels
+alias \
+	cp="cp -v" \
+	mv="mv -v" \
+	rm="rm -v" \
+	tar="tar -v"
+
+# misc stuff
+alias \
+	pstree="pstree -aclptU" \
+	ydl="youtube-dl --output '%(title)s.%(ext)s'" \
+	gdb='gdb -nh -x "$XDG_CONFIG_HOME"/gdb/init' \
+	ncm="ncmpcpp" \
+	nb="newsboat" \
+	objdump="objdump -M intel" \
+	steamcmd="/opt/steamcmd/steamcmd.sh"
