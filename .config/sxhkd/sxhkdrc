@@ -6,16 +6,10 @@ super + Return
 	$TERMINAL
 super + backslash
 	dmenu_run
-super + shift + backslash
-	$SCRIPTDIR/unicode_dmenu $SCRIPTDIR/src/unicode_dmenu/files
 
 # Shortcuts
 Print
 	printScreen
-super + b
-	sudo $SCRIPTDIR/firewall
-super + o
-	mpv $(invyt $(xclip -selection c -o))
 super + r
 	sudo rc-service tor restart
 
