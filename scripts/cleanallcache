@@ -1,0 +1,2 @@
+#!/bin/sh
+rm -rf "$HOME/"{Steam,.steam,.mozilla,.dbus,.pulse-cookie,.pki}

@@ -1,0 +1,19 @@
+#!/bin/sh
+appid="$1"
+workshopid="$2"
+modname="$3"
+
+steamcmd="/opt/steamcmd/steamcmd.sh"
+installdir="$HOME/Steam/steamapps/workshop/content/$appid"
+
+usage() {
+	echo "Usage: $0 <appid> <workshopid> [modname]"
+	exit
+}
+
+[ "$appid" = "" ]      && echo "Missing <appid>"      && usage
+[ "$workshopid" = "" ] && echo "Missing <workshopid>" && usage
+[ "$modname" = "" ]    && modname="$appid"
+
+$steamcmd +login anonymous +workshop_download_item "$appid" "$workshopid" +quit
+mv "$installdir/$workshopid" "./$modname"
