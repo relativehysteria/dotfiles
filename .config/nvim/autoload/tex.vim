@@ -4,5 +4,5 @@ endif
 let b:latex_loaded_already=1
 
 function! tex#Compile()
-	execute "!pdflatex % ; pdflatex % ; biber %:r ; pdflatex %"
+	execute "!pdflatex % ; pdflatex % ; biber %:r ; makeindex %:r ; pdflatex % ; pdflatex %"
 endfunction
