@@ -1,0 +1,4 @@
+*/* @BINARY-REDISTRIBUTABLE
+net-im/discord-bin all-rights-reserved
+games-util/steam-launcher ValveSteamLicense
+games-server/steamcmd Steam
