@@ -34,7 +34,7 @@ set shiftwidth=4
 set tabstop=4
 set autoindent
 set formatoptions-=cro
-set noexpandtab
+set expandtab
 
 " Searching
 set ignorecase
