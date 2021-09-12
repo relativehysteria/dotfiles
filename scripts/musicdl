@@ -1,0 +1,22 @@
+#!/bin/sh
+
+musicroot="$HOME/music"
+
+url="$1"
+author="$2"
+album="$3"
+
+usage() {
+    echo "Usage: $0 <url> [author [album]]"
+    exit
+}
+
+[ "$url" = "" ] && usage
+
+# Youtube doesn't like tor connections :>
+case "$url" in
+    "https://www.youtube.com"*) proxy='';;
+    *)                          proxy='--proxy socks5://localhost:9050"'
+esac
+
+youtube-dl $proxy -x -o "$musicroot/$author/$album/%(playlist_index)s %(title)s.%(ext)s" "$url"
