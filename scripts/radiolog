@@ -10,7 +10,7 @@ while true; do
     fi
 
     # Only do stuff on song change
-    [ "$current" = "$(mpc current)" ] && continue
+    [ "$current" = "$(mpc current)" ] && sleep $delay && continue
 
     current="$(mpc current)"
     grep "$current" "$logfile" &> /dev/null
