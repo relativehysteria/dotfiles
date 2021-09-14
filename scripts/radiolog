@@ -13,6 +13,10 @@ while true; do
     [ "$current" = "$(mpc current)" ] && sleep $delay && continue
 
     current="$(mpc current)"
+
+    # Don't write/echo empty lines
+    [ "$current" = "" ] && sleep $delay && continue
+
     grep "$current" "$logfile" &> /dev/null
     if [ $? = 1 ]; then
         echo "$current" >> "$logfile"
