@@ -1,0 +1,26 @@
+#!/bin/sh
+delay=40
+logfile="$XDG_CACHE_HOME/radio.log"
+
+while true; do
+    # Logfile has to exist and be writable
+    if ! [ -f "$logfile" ]; then
+        touch "$logfile"
+        ! [ $? = 0 ] && exit
+    fi
+
+    # Only do stuff on song change
+    [ "$current" = "$(mpc current)" ] && continue
+
+    current="$(mpc current)"
+    grep "$current" "$logfile" &> /dev/null
+    if [ $? = 1 ]; then
+        echo "$current" >> "$logfile"
+        echo "NEW> $current"
+    else
+        echo "OLD> $current"
+    fi
+
+    current="$(mpc current)"
+    sleep $delay
+done
