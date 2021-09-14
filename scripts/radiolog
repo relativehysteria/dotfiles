@@ -20,9 +20,9 @@ while true; do
     grep "$current" "$logfile" &> /dev/null
     if [ $? = 1 ]; then
         echo "$current" >> "$logfile"
-        echo "NEW> $current"
+        echo -e "\033[92mNEW>\e[0m $current"
     else
-        echo "OLD> $current"
+        echo -e "\033[31mOLD>\e[0m $current"
     fi
 
     current="$(mpc current)"
