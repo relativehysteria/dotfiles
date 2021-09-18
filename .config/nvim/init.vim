@@ -35,6 +35,7 @@ set tabstop=4
 set autoindent
 set formatoptions-=cro
 set expandtab
+set lcs+=space:·
 
 " Searching
 set ignorecase
@@ -51,6 +52,7 @@ set sidescrolloff=15
 nnoremap <F1> :setlocal spell!<CR>
 nnoremap <F2> :call tex#Compile()<CR>
 nnoremap <F3> :TagbarToggle<CR>
+nnoremap <F4> :set list!<CR>
 
 " Capitalization
 nnoremap <Tab> g~iw
