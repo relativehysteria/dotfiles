@@ -27,12 +27,12 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCd25I7Y3-NEKNOoImYhQ-3g "yt
 https://www.youtube.com/feeds/videos.xml?channel_id=UCHZ986wm_sJT6wntdDTIIcw "yt" "~FitMC"
 
 # Comics
-https://www.oglaf.com/feeds/rss/ 	"comics" "~Oglaf"
+https://www.oglaf.com/feeds/rss/ "comics" "~Oglaf"
 
 # Twitter
-https://nitter.pussthecat.org/vxunderground/rss		"tech" "~Vx-Underground"
+https://nitter.pussthecat.org/vxunderground/rss "tech" "~Vx-Underground"
 
 https://groups.google.com/forum/feed/pagedout-notifications/msgs/rss.xml?num=15 "tech" "~Paged Out"
-https://krebsonsecurity.com/feed/			"tech" "~Krebs on Security"
+https://krebsonsecurity.com/feed/ "tech" "~Krebs on Security"
 
-https://lobste.rs/t/osdev,crypto,hardware,satire,rust,c,assembly,networking,law,security,privacy,reversing,performance,vim.rss 	"tech" "~Lobste.rs"
+https://lobste.rs/t/osdev,crypto,hardware,satire,rust,c,assembly,networking,law,security,privacy,reversing,performance,vim.rss "tech" "~Lobste.rs"

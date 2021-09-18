@@ -7,8 +7,8 @@ steamcmd="/opt/steamcmd/steamcmd.sh"
 installdir="$HOME/Steam/steamapps/workshop/content/$appid"
 
 usage() {
-	echo "Usage: $0 <appid> <workshopid> [modname]"
-	exit
+    echo "Usage: $0 <appid> <workshopid> [modname]"
+    exit
 }
 
 [ "$appid" = "" ]      && echo "Missing <appid>"      && usage

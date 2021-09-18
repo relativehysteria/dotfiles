@@ -49,7 +49,7 @@ user_pref("dom.telephony.enabled", false);
 user_pref("dom.network.enabled", false);
 user_pref("dom.webaudio.enabled", false);
 user_pref("dom.enable_performance", false);
-user_pref("dom.enable_user_timing",	false);
+user_pref("dom.enable_user_timing", false);
 user_pref("dom.vibrator.enabled", false);
 user_pref("dom.enable_resource_timing", false);
 user_pref("dom.archivereader.enabled", false);
