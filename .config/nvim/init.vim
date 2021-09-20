@@ -88,5 +88,5 @@ autocmd BufNewFile *.h      call globals#InsertHeaderGuardian()
 autocmd FileType *          call globals#SyntaxAfter()
 
 " Remove trailing whitespace and newlines on save
-autocmd BufWritePre * %s/\s\+$//e
-autocmd BufWritePre * %s/\n\+\%$//e
+autocmd BufWritePre * if &filetype != "markdown" | %s/\s\+$//e
+autocmd BufWritePre * if &filetype != "markdown" | %s/\n\+\%$//e
