@@ -2,4 +2,4 @@
 rm -rf "$HOME/"{Steam,.steam,.mozilla,.dbus,.pulse-cookie,.pki,.gnome,.kde,.python_history,Downloads,.wget-hsts}
 
 # *.log isn't cleared because that could be counter productive
-rm ./{*.aux,*.ctn,*.idx,*.ilg,*.ind}
+rm -f ./{*.aux,*.ctn,*.idx,*.ilg,*.ind}
