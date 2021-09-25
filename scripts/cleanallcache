@@ -1,2 +1,2 @@
 #!/bin/sh
-rm -rf "$HOME/"{Steam,.steam,.mozilla,.dbus,.pulse-cookie,.pki,.gnome,.kde,.python_history,Downloads}
+rm -rf "$HOME/"{Steam,.steam,.mozilla,.dbus,.pulse-cookie,.pki,.gnome,.kde,.python_history,Downloads,.wget-hsts}
