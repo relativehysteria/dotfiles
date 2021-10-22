@@ -37,7 +37,7 @@ super + {_,shift +} {1-9,0}
 #    bspc {desktop -f,node -d} {prev,next}
 
 super + {_,shift +} z
-    pactl set-source-volume alsa_input.usb-MUSIC-BOOST_Trust_GXT_232_Microphone-00.mono-fallback {100, 700}%
+    pactl set-source-volume alsa_input.usb-MUSIC-BOOST_Trust_GXT_232_Microphone-00.mono-fallback {85, 300}%
 
 super + {_,shift +} q
     bspc node {-c,-k}
