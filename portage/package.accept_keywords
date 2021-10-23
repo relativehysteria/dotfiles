@@ -48,3 +48,7 @@
 
 # obs
 >=media-video/obs-studio-26.1.2 ~amd64
+
+# Lutris and wine
+=games-util/lutris-9999 **
+>=dev-ruby/libusb-0.6.4 ~amd64

@@ -32,6 +32,8 @@ dev-util/perf
 dev-util/strace
 dev-vcs/git
 games-server/steamcmd
+games-util/lutris
+games-util/steam-launcher
 media-fonts/fira-code
 media-gfx/feh
 media-gfx/gimp
@@ -84,6 +86,7 @@ sys-power/cpupower
 sys-process/htop
 virtual/ffmpeg
 virtual/rust
+virtual/wine
 www-client/firefox-bin
 www-client/torbrowser-launcher
 x11-apps/setxkbmap
