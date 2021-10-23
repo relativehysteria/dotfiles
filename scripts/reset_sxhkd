@@ -1,0 +1,6 @@
+#!/bin/sh
+sudo firecfg --clean
+killall sxhkd
+cd ~
+setsid sxhkd &
+sudo firecfg
