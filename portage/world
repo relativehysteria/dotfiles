@@ -8,6 +8,7 @@ app-arch/zip
 app-crypt/gentoo-keys
 app-editors/neovim
 app-editors/vim
+app-i18n/translate-shell
 app-portage/gentoolkit
 app-portage/pfl
 app-shells/gentoo-zsh-completions
@@ -34,6 +35,7 @@ dev-vcs/git
 games-server/steamcmd
 games-util/lutris
 games-util/steam-launcher
+mail-client/neomutt
 media-fonts/fira-code
 media-gfx/feh
 media-gfx/gimp
@@ -52,6 +54,7 @@ media-sound/sox
 media-video/ffmpeg
 media-video/mpv
 media-video/obs-studio
+net-analyzer/tcpdump
 net-ftp/filezilla
 net-libs/libpcap
 net-misc/curl
