@@ -5,3 +5,4 @@ net-misc/telnet-bsd
 net-fs/samba
 net-analyzer/nmap
 net-vpn/openvpn
+net-analyzer/netcat
