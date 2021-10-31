@@ -53,7 +53,9 @@ media-sound/sox
 media-video/ffmpeg
 media-video/mpv
 media-video/obs-studio
+net-analyzer/nmap
 net-analyzer/tcpdump
+net-fs/samba
 net-ftp/filezilla
 net-libs/libpcap
 net-misc/curl
@@ -64,6 +66,7 @@ net-misc/whois
 net-misc/youtube-dl
 net-news/newsboat
 net-proxy/torsocks
+net-vpn/openvpn
 net-vpn/tor
 sec-policy/apparmor-profiles
 sys-apps/apparmor

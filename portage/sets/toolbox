@@ -1,0 +1,7 @@
+dev-db/mariadb
+dev-db/mysql
+net-ftp/ftp
+net-misc/telnet-bsd
+net-fs/samba
+net-analyzer/nmap
+net-vpn/openvpn

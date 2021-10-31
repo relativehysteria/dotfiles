@@ -15,6 +15,7 @@ app-text/texlive-core       xetex
 app-text/ghostscript-gpl    cups
 app-text/xmlto              text
 dev-db/mysql                -server -perl
+dev-db/mariadb              -server
 dev-java/openjdk-bin        gentoo-vm
 dev-lang/php                -readline
 dev-lang/python             ncurses sqlite
@@ -48,6 +49,7 @@ media-sound/mpd             -network -vorbis flac
 media-sound/ncmpcpp         taglib outputs visualizer
 media-sound/pulseaudio      alsa-plugin caps -realtime
 media-video/ffmpeg          vpx openh264 x264 mp3 openssl dav1d sdl
+net-fs/samba                client
 net-libs/nodejs             -npm -snapshot
 net-print/cups              -X
 net-vpn/tor                 tor-hardening
@@ -172,6 +174,7 @@ dev-libs/libgpg-error abi_x86_32
 >=media-libs/glu-9.0.2 abi_x86_32
 >=virtual/libiconv-0-r2 abi_x86_32
 >=virtual/jpeg-100 abi_x86_32
+>=media-libs/speexdsp-1.2.0 abi_x86_32
 >=media-libs/libjpeg-turbo-2.1.1-r2 abi_x86_32
 >=gnome-base/gnome-desktop-40.4 introspection
 >=net-libs/webkit-gtk-2.32.4 introspection
