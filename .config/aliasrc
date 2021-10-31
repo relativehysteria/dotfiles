@@ -19,4 +19,5 @@ alias \
     ncm="ncmpcpp" \
     nb="newsboat" \
     objdump="objdump -M intel" \
-    steamcmd="/opt/steamcmd/steamcmd.sh"
+    steamcmd="/opt/steamcmd/steamcmd.sh" \
+    nmap="nmap --system-dns"
