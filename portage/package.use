@@ -30,6 +30,7 @@ dev-libs/libpcre            -readline
 dev-libs/lzo                static-libs
 dev-python/PyQt5            gui widgets
 mail-client/thunderbird     eme-free hwaccel lto
+mail-client/neomutt         sasl
 media-gfx/feh               curl
 media-gfx/imagemagick       png jpeg
 media-libs/freetype         png harfbuzz
