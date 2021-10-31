@@ -35,7 +35,6 @@ dev-vcs/git
 games-server/steamcmd
 games-util/lutris
 games-util/steam-launcher
-mail-client/neomutt
 media-fonts/fira-code
 media-gfx/feh
 media-gfx/gimp
@@ -91,7 +90,6 @@ virtual/ffmpeg
 virtual/rust
 virtual/wine
 www-client/firefox-bin
-www-client/lynx
 www-client/torbrowser-launcher
 x11-apps/setxkbmap
 x11-apps/xrandr
