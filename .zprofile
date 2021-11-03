@@ -11,6 +11,7 @@ export DOWNLOAD_DIR="$HOME/.local/share/downloads"
 export SANDBOX="$XDG_DATA_HOME/sandbox"
 export FILEZILLA_DIR="$SANDBOX/filezilla"
 export GHIDRA_DIR="$SANDBOX/ghidra"
+export SECLISTS="$HOME/documents/code/packages/SecLists"
 
 # Default programs
 export EDITOR="nvim"
