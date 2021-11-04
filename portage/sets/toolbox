@@ -6,3 +6,6 @@ net-fs/samba
 net-analyzer/nmap
 net-vpn/openvpn
 net-analyzer/netcat
+app-crypt/johntheripper-jumbo
+app-crypt/hashid
+dev-db/sqlmap

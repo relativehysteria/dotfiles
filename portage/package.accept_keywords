@@ -52,3 +52,7 @@
 # Lutris and wine
 =games-util/lutris-9999 **
 >=dev-ruby/libusb-0.6.4 ~amd64
+
+# redteaming and stuff
+>=app-crypt/johntheripper-jumbo-1 ~amd64
+>=app-crypt/hashid-1 ~amd64
