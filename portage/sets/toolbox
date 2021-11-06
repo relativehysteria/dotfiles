@@ -9,3 +9,4 @@ app-crypt/johntheripper-jumbo
 app-crypt/hashid
 dev-db/sqlmap
 net-analyzer/responder
+app-crypt/hashcat
