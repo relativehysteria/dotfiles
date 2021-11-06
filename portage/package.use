@@ -1,74 +1,75 @@
 #
-app-admin/sysklogd          logrotate
-app-arch/p7zip              rar
-app-crypt/gcr               gtk
-app-crypt/gpgme             python
-app-editors/nano            -magic -spell split-usr minimal
-app-editors/vim             -gpm -acl minimal
-app-emulation/qemu          vhost-user-fs usbredir gtk spice QEMU_USER_TARGETS: riscv64 x86_64 QEMU_SOFTMMU_TARGETS: riscv64 x86_64
-app-emulation/virt-manager  gtk
-app-emulation/virt-viewer   spice
-app-shells/bash             -net
-app-text/poppler            cairo
-app-text/texlive            png truetype science humanities L10N: cs
-app-text/texlive-core       xetex
-app-text/ghostscript-gpl    cups
-app-text/xmlto              text
-dev-db/mysql                -server -perl
-dev-db/mariadb              -server
-dev-java/openjdk-bin        gentoo-vm
-dev-lang/php                -readline
-dev-lang/python             ncurses sqlite
-dev-lang/rust               doc nightly parallel-compiler system-llvm system-bootstrap
-dev-lang/rust-bin           doc nightly parallel-compiler system-llvm system-bootstrap clippy
-dev-libs/boost              nls icu
-dev-libs/glib               dbus
-dev-libs/nss                utils
-dev-libs/libgcrypt          static-libs o-flag-munging
-dev-libs/libgpg-error       static-libs
-dev-libs/libpcre2           pcre16 -readline
-dev-libs/libpcre            -readline
-dev-libs/lzo                static-libs
-dev-python/PyQt5            gui widgets
-mail-client/thunderbird     eme-free hwaccel lto
-media-gfx/feh               curl
-media-gfx/imagemagick       png jpeg
-media-libs/freetype         png harfbuzz
-media-libs/gd               png truetype jpeg fontconfig
-media-libs/gegl             cairo
-media-libs/harfbuzz         icu
-media-libs/imlib2           jpeg png tiff
-media-libs/libpng           apng
-media-libs/libsdl2          joystick haptic
-media-libs/libvpx           postproc
-media-libs/mesa             lm_sensors vaapi
-media-libs/rubberband       ladspa
-media-sound/alsa-utils      ncurses
-media-sound/mpc             doc
-media-sound/mpd             -network -vorbis flac
-media-sound/ncmpcpp         taglib outputs visualizer
-media-sound/pulseaudio      alsa-plugin caps -realtime
-media-video/ffmpeg          vpx openh264 x264 mp3 openssl dav1d sdl
-net-fs/samba                client
-net-libs/nodejs             -npm -snapshot
-net-print/cups              -X
-net-vpn/tor                 tor-hardening
-sys-apps/firejail           apparmor suid
-sys-apps/util-linux         ncurses
-sys-auth/pambase            elogind
-sys-boot/grub               device-mapper doc mount -themes
-sys-devel/binutils          multitarget
-sys-devel/clang-runtime     libcxx
-sys-devel/gcc               doc graphite pie
-sys-devel/llvm              gold
-sys-fs/cryptsetup           luks1_default
-sys-kernel/gentoo-sources   symlink experimental
-www-client/firefox-bin      -gmp-autoupdate
-www-client/firefox          eme-free hwaccel hardened pgo lto clang
-x11-base/xorg-server        xvfb
-x11-libs/cairo              xcb
-x11-libs/libdrm             video_cards_radeon
-x11-libs/libxcb             xkb
+app-admin/sysklogd            logrotate
+app-arch/p7zip                rar
+app-crypt/gcr                 gtk
+app-crypt/gpgme               python
+app-editors/nano              -magic -spell split-usr minimal
+app-editors/vim               -gpm -acl minimal
+app-emulation/qemu            vhost-user-fs usbredir gtk spice QEMU_USER_TARGETS: riscv64 x86_64 QEMU_SOFTMMU_TARGETS: riscv64 x86_64
+app-emulation/virt-manager    gtk
+app-emulation/virt-viewer     spice
+app-shells/bash               -net
+app-text/poppler              cairo
+app-text/texlive              png truetype science humanities L10N: cs
+app-text/texlive-core         xetex
+app-text/ghostscript-gpl      cups
+app-text/xmlto                text
+dev-db/mysql                  -server -perl
+dev-db/mariadb                -server
+dev-java/openjdk-bin          gentoo-vm
+dev-lang/php                  -readline
+dev-lang/python               ncurses sqlite
+dev-lang/rust                 doc nightly parallel-compiler system-llvm system-bootstrap
+dev-lang/rust-bin             doc nightly parallel-compiler system-llvm system-bootstrap clippy
+dev-libs/boost                nls icu
+dev-libs/glib                 dbus
+dev-libs/nss                  utils
+dev-libs/libgcrypt            static-libs o-flag-munging
+dev-libs/libgpg-error         static-libs
+dev-libs/libpcre2             pcre16 -readline
+dev-libs/libpcre              -readline
+dev-libs/lzo                  static-libs
+dev-python/PyQt5              gui widgets
+mail-client/thunderbird       eme-free hwaccel lto
+media-gfx/feh                 curl
+media-gfx/imagemagick         png jpeg
+media-libs/freetype           png harfbuzz
+media-libs/gd                 png truetype jpeg fontconfig
+media-libs/gegl               cairo
+media-libs/harfbuzz           icu
+media-libs/imlib2             jpeg png tiff
+media-libs/libpng             apng
+media-libs/libsdl2            joystick haptic
+media-libs/libvpx             postproc
+media-libs/mesa               lm_sensors vaapi
+media-libs/rubberband         ladspa
+media-sound/alsa-utils        ncurses
+media-sound/mpc               doc
+media-sound/mpd               -network -vorbis flac
+media-sound/ncmpcpp           taglib outputs visualizer
+media-sound/pulseaudio        alsa-plugin caps -realtime
+media-video/ffmpeg            vpx openh264 x264 mp3 openssl dav1d sdl
+net-fs/samba                  client
+net-libs/nodejs               -npm -snapshot
+net-print/cups                -X
+net-vpn/tor                   tor-hardening
+sys-apps/firejail             apparmor suid
+sys-apps/util-linux           ncurses
+sys-auth/pambase              elogind
+sys-boot/grub                 device-mapper doc mount -themes
+sys-devel/binutils            multitarget
+sys-devel/clang-runtime       libcxx
+sys-devel/gcc                 doc graphite pie
+sys-devel/llvm                gold
+sys-fs/cryptsetup             luks1_default
+sys-kernel/gentoo-sources     symlink experimental
+www-client/firefox-bin        -gmp-autoupdate
+www-client/firefox            eme-free hwaccel hardened pgo lto clang
+x11-base/xorg-server          xvfb
+x11-drivers/xf86-video-amdgpu udev
+x11-libs/cairo                xcb
+x11-libs/libdrm               video_cards_radeon
+x11-libs/libxcb               xkb
 
 # Steam stuff
 >=x11-libs/libX11-1.6.12 abi_x86_32
