@@ -1,4 +1,3 @@
-dev-db/mariadb
 dev-db/mysql
 net-ftp/ftp
 net-misc/telnet-bsd
@@ -9,3 +8,4 @@ net-analyzer/netcat
 app-crypt/johntheripper-jumbo
 app-crypt/hashid
 dev-db/sqlmap
+net-analyzer/responder
