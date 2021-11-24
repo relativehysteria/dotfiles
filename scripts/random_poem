@@ -1,0 +1,5 @@
+#!/bin/sh
+
+POEMDIR="$HOME/documents/textfiles/poems"
+
+cat $(find "$POEMDIR" | grep .txt | shuf | tail -1)
