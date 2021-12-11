@@ -2,7 +2,7 @@
 
 import json
 from argparse import ArgumentParser
-from os import system
+from subprocess import run
 
 # Parse me some arguments
 parser = ArgumentParser(description="Split a file into smaller files \
@@ -26,5 +26,15 @@ for chapter in chapters:
     start_time = chapter['start_time']
     end_time   = chapter['end_time']
     title      = chapter['title']
-    system(f"ffmpeg -i '{data_file}' -ss '{start_time}' -to '{end_time}' \
-            '{title}")
+    extension  = data_file.split('.')[-1]
+    run([
+        "ffmpeg",
+        "-i",
+        f"{data_file}",
+        "-ss",
+        f"{start_time}",
+        "-to",
+        f"{end_time}",
+        f"{title}.{extension}",
+        "-n"
+    ])
