@@ -22,7 +22,9 @@ with open(json_file) as f:
     chapters = json_data['chapters']
 
 # Do the ffmpeg stuff
+track_num = 0
 for chapter in chapters:
+    track_num  += 1
     start_time = chapter['start_time']
     end_time   = chapter['end_time']
     title      = chapter['title']
@@ -35,6 +37,6 @@ for chapter in chapters:
         f"{start_time}",
         "-to",
         f"{end_time}",
-        f"{title}.{extension}",
+        f"{track_num} {title}.{extension}",
         "-n"
     ])
