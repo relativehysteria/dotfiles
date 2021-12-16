@@ -19,4 +19,4 @@ case "$url" in
     *)                          proxy='--proxy socks5://localhost:9050'
 esac
 
-youtube-dl $proxy -x -o "$musicroot/$author/$album/%(playlist_index)s %(title)s.%(ext)s" "$url"
+yt-dlp $proxy -x -o "$musicroot/$author/$album/%(playlist_index)s %(title)s.%(ext)s" "$url"
