@@ -2,7 +2,9 @@
 
 [ "$1" = "" ] && exit
 
+
 curl -Gs 'https://api.datamuse.com/words' \
     --data-urlencode "rel_rhy=$1" \
-    --data-urlencode "md=d" \
-    | python -m json.tool
+    | python -m json.tool \
+    | grep -i '"word": "' \
+    | awk '{print $2}'
