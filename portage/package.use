@@ -1,4 +1,5 @@
 #
+net-p2p/transmission          gtk
 app-admin/sysklogd            logrotate
 app-arch/p7zip                rar
 app-crypt/gcr                 gtk
@@ -49,11 +50,12 @@ media-sound/mpd               -network -vorbis flac
 media-sound/ncmpcpp           taglib outputs visualizer
 media-sound/pulseaudio        alsa-plugin caps -realtime
 media-video/ffmpeg            vpx openh264 x264 mp3 openssl dav1d sdl
+net-analyzer/metasploit       -java
 net-fs/samba                  client
 net-libs/nodejs               -npm -snapshot
 net-print/cups                -X
 net-vpn/tor                   tor-hardening
-sys-apps/firejail             apparmor suid
+sys-apps/firejail             suid
 sys-apps/util-linux           ncurses
 sys-auth/pambase              elogind
 sys-boot/grub                 device-mapper doc mount -themes
@@ -63,6 +65,10 @@ sys-devel/gcc                 doc graphite pie
 sys-devel/llvm                gold
 sys-fs/cryptsetup             luks1_default
 sys-kernel/gentoo-sources     symlink experimental
+sys-libs/glibc                -crypt
+sys-libs/libxcrypt            system static-libs
+sys-libs/zlib                 minizip
+virtual/libcrypt              static-libs
 www-client/firefox-bin        -gmp-autoupdate
 www-client/firefox            eme-free hwaccel hardened pgo lto clang
 x11-base/xorg-server          xvfb
@@ -104,8 +110,10 @@ x11-libs/libxcb               xkb
 >=dev-libs/elfutils-0.181 abi_x86_32
 >=app-arch/bzip2-1.0.6-r11 abi_x86_32
 >=dev-libs/ocl-icd-2.2.12-r3 abi_x86_32
+>=sys-libs/libxcrypt-4.4.25-r1 abi_x86_32
 >=media-libs/mesa-0 -vaapi
 >=sys-libs/zlib-1.2.11-r2 static-libs
+
 
 # pulse effects
 media-sound/pulseeffects bs2b calf rubberband

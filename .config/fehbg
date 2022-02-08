@@ -1,3 +1,2 @@
 #!/bin/sh
-#feh --no-xinerama --no-fehbg --bg-fill "$HOME/pictures/wallpapers/dualMonitor/space/png/992517.png"
-feh --no-fehbg --bg-fill "$HOME/pictures/wallpapers/singleMonitor/spectre.jpg"
+feh --no-fehbg --bg-fill "$HOME/pictures/wallpapers/singleMonitor/indigo.png"

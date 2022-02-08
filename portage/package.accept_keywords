@@ -1,5 +1,6 @@
 # youtube-dl
 =net-misc/youtube-dl-9999 **
+=net-misc/yt-dlp-9999 **
 >=net-misc/youtube-dl-0 ~amd64
 
 # rust
@@ -56,3 +57,9 @@
 # redteaming and stuff
 >=app-crypt/johntheripper-jumbo-1 ~amd64
 >=app-crypt/hashid-1 ~amd64
+=app-exploits/exploitdb-99999999 **
+>=app-crypt/hashcat-1 ~amd64
+=net-analyzer/metasploit-9999 **
+>=dev-ruby/bundler-audit-0 ~amd64
+>=net-analyzer/wfuzz-1 ~amd64
+>=net-analyzer/nikto-1 ~amd64
