@@ -1,0 +1,16 @@
+#!/bin/sh
+
+pic="$1"
+audio="$2"
+outfile="$3"
+
+usage() {
+    echo "Usage: $0 <pic> <audio> [outfile]"
+    exit
+}
+
+[ "$pic" = "" ]     && usage
+[ "$audio" = "" ]   && usage
+[ "$outfile" = "" ] && outfile="$audio-video.mp4"
+
+ffmpeg -loop 1 -i "$pic" -i "$audio" -c:v libx264 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest "$outfile"
