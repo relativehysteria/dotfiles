@@ -27,7 +27,7 @@ for chapter in chapters:
     track_num  += 1
     start_time = chapter['start_time']
     end_time   = chapter['end_time']
-    title      = chapter['title']
+    title      = chapter['title'].replace('/', '_')
     extension  = data_file.split('.')[-1]
     run([
         "ffmpeg",
