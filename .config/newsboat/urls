@@ -41,6 +41,7 @@ https://groups.google.com/forum/feed/pagedout-notifications/msgs/rss.xml?num=15 
 https://krebsonsecurity.com/feed/ "tech" "~Krebs on Security"
 https://fasterthanli.me/index.xml "tech" "~Faster Than Lime"
 https://nullderef.com/index.xml "tech" "~NullDeref"
+https://www.secjuice.com/rss "tech" "~Secjuice"
 
 # Exploits
 https://seclists.org/rss/fulldisclosure.rss "exploit" "~Full Disclosure"

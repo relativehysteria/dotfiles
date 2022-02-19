@@ -3,6 +3,7 @@ app-crypt/johntheripper-jumbo
 app-exploits/exploitdb
 dev-db/mysql
 dev-db/sqlmap
+net-analyzer/nikto
 net-analyzer/nmap
 net-analyzer/openbsd-netcat
 net-analyzer/responder
@@ -10,4 +11,4 @@ net-fs/samba
 net-ftp/ftp
 net-misc/telnet-bsd
 net-vpn/openvpn
-net-analyzer/nikto
+app-forensics/yara
