@@ -38,7 +38,6 @@ private-bin zathura
 private-cache
 private-dev
 private-etc alternatives,fonts,machine-id,ld.so.cache
-private-tmp
 
 mkdir ${HOME}/.config/zathura
 mkdir ${HOME}/.local/share/zathura
