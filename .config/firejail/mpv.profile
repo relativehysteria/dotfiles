@@ -16,8 +16,7 @@ include allow-python3.inc
 
 include disable-common.inc
 include disable-devel.inc
-include disable-exec.inc
-include disable-passwdmgr.inc
+#include disable-exec.inc
 include disable-programs.inc
 include disable-xdg.inc
 
@@ -38,7 +37,8 @@ protocol unix,inet,inet6,netlink
 shell none
 tracelog
 
-private-bin env,mpv,python*,youtube-dl
+# # MPV doesn't work :(
+# private-bin env,mpv,python*,youtube-dl,yt-dlp
 # Causes slow OSD, see #2838
 #private-cache
 private-dev
