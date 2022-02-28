@@ -20,7 +20,6 @@ include disable-common.inc
 include disable-devel.inc
 include disable-exec.inc
 include disable-interpreters.inc
-include disable-proc.inc
 include disable-programs.inc
 
 mkdir ${HOME}/.local/share/pki
@@ -40,7 +39,6 @@ caps.drop all
 netfilter
 nodvd
 nogroups
-noinput
 nonewprivs
 # noroot breaks GTK_USE_PORTAL=1 usage, see https://github.com/netblue30/firejail/issues/2506.
 noroot
