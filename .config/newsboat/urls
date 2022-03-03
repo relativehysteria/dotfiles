@@ -33,11 +33,14 @@ https://www.oglaf.com/feeds/rss/ "comics" "~Oglaf"
 #
 # Twitter
 https://nitter.pussthecat.org/vxunderground/rss "tech" "~Vx-Underground"
+https://nitter.pussthecat.org/TheDFIRReport/rss "tech" "~DFIR"
+https://nitter.pussthecat.org/CuratedIntel/rss "tech" "~Curated Intelligence"
 https://nitter.pussthecat.org/gamozolabs/rss "tech" "~Brandon"
 https://nitter.pussthecat.org/gynvael/rss "tech" "~Gynvael"
 # Blogs and stuff
 https://edwardsnowden.substack.com/feed "tech" "~Snowden"
 https://groups.google.com/forum/feed/pagedout-notifications/msgs/rss.xml?num=15 "tech" "~Paged Out"
+https://www.bleepingcomputer.com/feed/ "tech" "~Bleeping Computer"
 https://krebsonsecurity.com/feed/ "tech" "~Krebs on Security"
 https://fasterthanli.me/index.xml "tech" "~Faster Than Lime"
 https://nullderef.com/index.xml "tech" "~NullDeref"
