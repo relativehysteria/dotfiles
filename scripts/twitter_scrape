@@ -5,16 +5,34 @@
 #   What if the initial curl thing whatever stuff fails?
 #   What if literally anything at all fails?
 
-# Settings and stuff
-account="vxunderground"
-
 extensions='jpg,jpeg,png'
-
 tor_ports="9050,9051,9052,9053,9054,9055,9056,9057,9058,9059"
-
 domains="nitter.eu,nitter.pussthecat.org,nitter.net,nitter.fdn.fr"
 domains="$domains,nitter.unixfox.eu,nitter.namazso.eu,nitter.actionsack.com"
 domains="$domains,nitter.hu,birdsite.xanny.family"
+
+# Help message
+print_help() {
+    echo    "$0 <-a> [-e -p]"
+    echo    "    <-a account>      Scrape images from this account's media feed"
+    echo -n "    [-e extensions]   Scrape images with this extension"
+    echo    " ('$extensions' by default)"
+    echo -n "    [-p tor_ports]    Proxy the scraper through these TOR ports"
+    echo    " ('$tor_ports' by default)"
+    exit
+}
+
+# Parse arguments
+while getopts "a:e:p:" opt; do
+    case "$opt" in
+        g) account="$OPTARG"    ;;
+        e) extensions="$OPTARG" ;;
+        p) tor_ports="$OPTARG"  ;;
+    esac
+done
+
+# Check that an account was provided
+[ "$account" = "" ] && print_help
 
 # Convert the extensions into a sed-able OR format
 extensions="$(echo $extensions | sed 's/,/\\|/g')"
