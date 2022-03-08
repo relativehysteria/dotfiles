@@ -1,15 +1,9 @@
 #!/bin/sh
 
-# TODO:
-#   What if the account/domain/port doesn't exist?
-#   What if the initial curl thing whatever stuff fails?
-#   What if literally anything at all fails?
-
 extensions='jpg,jpeg,png'
 tor_ports="9050,9051,9052,9053,9054,9055,9056,9057,9058,9059"
 domains="nitter.eu,nitter.pussthecat.org,nitter.net,nitter.fdn.fr"
-domains="$domains,nitter.unixfox.eu,nitter.namazso.eu,nitter.actionsack.com"
-domains="$domains,nitter.hu,birdsite.xanny.family"
+domains="$domains,nitter.unixfox.eu,nitter.namazso.eu,nitter.hu"
 
 # Help message
 print_help() {
@@ -25,7 +19,7 @@ print_help() {
 # Parse arguments
 while getopts "a:e:p:" opt; do
     case "$opt" in
-        g) account="$OPTARG"    ;;
+        a) account="$OPTARG"    ;;
         e) extensions="$OPTARG" ;;
         p) tor_ports="$OPTARG"  ;;
     esac
@@ -47,56 +41,87 @@ random_tor_port() {
 
 # Echo a random domain
 random_domain() {
-    domain=$(echo "$domains" | tr ',' "\n" | shuf | head -1)
+    local domain=$(echo "$domains" | tr ',' "\n" | shuf | head -1)
     echo "https://$domain"
 }
 
-# Echo the hrefs to the pictures
-get_pictures() {
-    page="$1" # Current page of the feed
-    domain="$(random_domain)"
-    echo $(curl --silent "$domain/$account/media/$page" \
-        | sed -n "s/.*\(pic.media.*\($extensions\)\).*/\1/p")
+# A wrapper around wget that retries (3 times) to wget an image using different
+# domains and proxies
+wget_image() {
+    local retries=3
+    while true; do
+        # Get a random port and domain
+        local tor_port="$(random_tor_port)"
+        local domain="$(random_domain)"
+
+        # Try to wget the image
+        torsocks --port "$tor_port" /usr/bin/wget -c "$domain/$1"
+
+        # If we fail, check if we can try again, otherwise break from the loop
+        if [ $? = 0 ]; then
+            break
+        else
+            [ $retries = 0 ] && break || retries=$((retries-1))
+        fi
+    done
 }
 
-# Get the next page of the feed
+# Echo the hrefs to the pictures.
+# `$1` argument is the HTML contents of the page
+get_pictures() {
+    echo $(echo "$1" | sed -n "s/.*\(pic.media.*\($extensions\)\).*/\1/p")
+}
+
+# Get the next page of the feed.
+# `$1` argument is the HTML contents of the page
 get_next_page() {
-    page="$1" # Current page of the feed
-    domain="$(random_domain)"
-    echo $(curl --silent "$domain/$account/media/$page" \
-        | sed -n 's/.*<a href="\(?cursor=.*\)">Load more.*/\1/p')
+    echo $(echo "$1" | sed -n 's/.*<a href="\(?cursor=.*\)">Load more.*/\1/p')
 }
 
 
 # MAIN #########################################################################
 
-# Get the current page to scrape and prepare the next
-current_page=""
-following_page=$(get_next_page "$current_page")
 while true; do
+    # `?cursor` of the current page
+    current_page="$following_page"
+
+    # HTML of the current page
+    #current_contents=$(curl_contents "$account/media/$current_page")
+    retries=3
+    while true; do
+        # Get a random port and domain
+        tor_port="$(random_tor_port)"
+        domain="$(random_domain)"
+        echo "$domain:$tor_port"
+
+        # Try to curl the contents.
+        # Retry `$retries` times -- this is diminishing
+        # as `$retries` gets decremented.
+        contents=$(torsocks --port "$tor_port" curl \
+            --silent --retry $retries "$domain/$account/media/$current_page")
+
+        length=$(expr length "$contents")
+        echo "Received $length bytes"
+
+        # If we fail, check if we can try again, otherwise break from the loop.
+        # 1024 is an arbitrary value and checks whether we received enough data.
+        # If we got <1024, we probably got a plain nginx HTML heading...
+        if [ $length -gt 1024 ]; then
+            break
+        else
+            [ $retries = 0 ] && break || retries=$((retries-1))
+        fi
+        echo "Retrying.. $retries"
+    done
+
+    # `?cursor` of the next page
+    following_page=$(get_next_page "$contents")
+
     # Get all the images on the current page
-    for img in $(get_pictures "$current_page"); do
-        (
-            # Try to wget the image
-            while true; do
-                # Get a random port and domain
-                tor_port="$(random_tor_port)"
-                domain="$(random_domain)"
-
-                torsocks --port $(random_tor_port) /usr/bin/wget "$domain/$img"
-                sleep 5
-
-                # If we got the image, break the loop
-                # Otherwise try and get it again
-                [ $? = 0 ] && break
-            done
-        ) &
+    for img in $(get_pictures "$contents"); do
+        $(wget_image "$img") &
     done
 
     # If there are no more pages to scrape, stop,
     [ "$following_page" = "" ] && break
-
-    # Otherwise scrape another page
-    current_page="$following_page"
-    following_page=$(get_next_page "$current_page")
 done
