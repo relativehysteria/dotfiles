@@ -2,7 +2,7 @@
 
 extensions='jpg,jpeg,png'
 tor_ports="9050,9051,9052,9053,9054,9055,9056,9057,9058,9059"
-domains="nitter.eu,nitter.pussthecat.org,nitter.net,nitter.fdn.fr"
+domains="nitter.eu,nitter.net,nitter.fdn.fr"
 domains="$domains,nitter.unixfox.eu,nitter.namazso.eu,nitter.hu"
 
 # Help message
