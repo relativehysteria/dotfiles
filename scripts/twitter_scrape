@@ -1,0 +1,84 @@
+#!/bin/sh
+
+# TODO:
+#   What if the account/domain/port doesn't exist?
+#   What if the initial curl thing whatever stuff fails?
+#   What if literally anything at all fails?
+
+# Settings and stuff
+account="vxunderground"
+
+extensions='jpg,jpeg,png'
+
+tor_ports="9050,9051,9052,9053,9054,9055,9056,9057,9058,9059"
+
+domains="nitter.eu,nitter.pussthecat.org,nitter.net,nitter.fdn.fr"
+domains="$domains,nitter.unixfox.eu,nitter.namazso.eu,nitter.actionsack.com"
+domains="$domains,nitter.hu,birdsite.xanny.family"
+
+# Convert the extensions into a sed-able OR format
+extensions="$(echo $extensions | sed 's/,/\\|/g')"
+
+
+# FUNCTIONS ####################################################################
+
+# Echo a random port that is bound to the tor network in /etc/tor/torrc
+random_tor_port() {
+    echo "$tor_ports" | tr ',' "\n" | shuf | head -1
+}
+
+# Echo a random domain
+random_domain() {
+    domain=$(echo "$domains" | tr ',' "\n" | shuf | head -1)
+    echo "https://$domain"
+}
+
+# Echo the hrefs to the pictures
+get_pictures() {
+    page="$1" # Current page of the feed
+    domain="$(random_domain)"
+    echo $(curl --silent "$domain/$account/media/$page" \
+        | sed -n "s/.*\(pic.media.*\($extensions\)\).*/\1/p")
+}
+
+# Get the next page of the feed
+get_next_page() {
+    page="$1" # Current page of the feed
+    domain="$(random_domain)"
+    echo $(curl --silent "$domain/$account/media/$page" \
+        | sed -n 's/.*<a href="\(?cursor=.*\)">Load more.*/\1/p')
+}
+
+
+# MAIN #########################################################################
+
+# Get the current page to scrape and prepare the next
+current_page=""
+following_page=$(get_next_page "$current_page")
+while true; do
+    # Get all the images on the current page
+    for img in $(get_pictures "$current_page"); do
+        (
+            # Try to wget the image
+            while true; do
+                # Get a random port and domain
+                tor_port="$(random_tor_port)"
+                domain="$(random_domain)"
+
+                torsocks --port $(random_tor_port) /usr/bin/wget "$domain/$img"
+                sleep 5
+
+                # If we got the image, break the loop
+                # Otherwise try and get it again
+                [ $? = 0 ] && break
+            done
+        ) &
+    done
+
+    # If there are no more pages to scrape, stop,
+    [ "$following_page" = "" ] && break
+
+    # Otherwise scrape another page
+    current_page="$following_page"
+    following_page=$(get_next_page "$current_page")
+done
