@@ -29,14 +29,15 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCd-qVRcjoK9zjtDs_LRxSmw "yt
 https://www.oglaf.com/feeds/rss/ "comics" "~Oglaf"
 
 
-# Tech feeds
-#
 # Twitter
+https://nitter.pussthecat.org/Ksecureteamlab/rss "tech" "~Kelvin Security"
 https://nitter.pussthecat.org/vxunderground/rss "tech" "~Vx-Underground"
 https://nitter.pussthecat.org/TheDFIRReport/rss "tech" "~DFIR"
 https://nitter.pussthecat.org/CuratedIntel/rss "tech" "~Curated Intelligence"
+https://nitter.pussthecat.org/cpartisans/rss "tech" "~Cyber-Partisans"
 https://nitter.pussthecat.org/gamozolabs/rss "tech" "~Brandon"
 https://nitter.pussthecat.org/gynvael/rss "tech" "~Gynvael"
+
 # Blogs and stuff
 https://edwardsnowden.substack.com/feed "tech" "~Snowden"
 https://groups.google.com/forum/feed/pagedout-notifications/msgs/rss.xml?num=15 "tech" "~Paged Out"
