@@ -1,5 +1,5 @@
 #!/bin/sh
-rm -rf "$HOME/"{Steam,.steam,.mozilla,.dbus,.pulse-cookie,.pki,.gnome,.kde,.python_history,Downloads,.wget-hsts,.BurpSuite,.java,.gem,.ghidra,.mysql_history,.google-cookie}
+rm -rf "$HOME/"{Steam,.steam,.mozilla,.dbus,.pulse-cookie,.pki,.gnome,.kde,.python_history,Downloads,.wget-hsts,.BurpSuite,.java,.gem,.ghidra,.mysql_history,.google-cookie,.hetty}
 
 # *.log isn't cleared because that could be counter productive
 rm -f ./{*.aux,*.ctn,*.idx,*.ilg,*.ind}
