@@ -49,14 +49,6 @@ https://fasterthanli.me/index.xml "tech" "~Faster Than Lime"
 https://nullderef.com/index.xml "tech" "~NullDeref"
 https://www.secjuice.com/rss "tech" "~Secjuice"
 
-# Exploits
-https://seclists.org/rss/fulldisclosure.rss "exploit" "~Full Disclosure"
-https://seclists.org/rss/oss-sec.rss "exploit" "~OSS Security"
-https://sploitus.com/rss "exploit" "~Sploitus"
-https://0day.today/rss "exploit" "~0day Today"
-https://cxsecurity.com/wlb/rss/all/ "exploit" "~Bugtraq"
-https://cxsecurity.com/cverss/fullmap/ "exploit" "~CVEs"
-
 # Lobsters
 # Tags are put into individual feeds because it keeps them cleaner -- I am aware
 # that these can be put into a single link. Also, there used to be many more
