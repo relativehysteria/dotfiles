@@ -5,6 +5,9 @@ let g:interspectre_background = 0
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
 
+" Tagbar on the left
+let g:tagbar_left = 1
+
 " Misc stuff
 set noswapfile
 set number
