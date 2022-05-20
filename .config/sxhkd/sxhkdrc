@@ -71,3 +71,7 @@ super + ctrl + alt + {h,j,k,l}
 # language
 super + {_, shift +} p
     setxkbmap {us,cz qwerty}
+
+# color picker
+super + {_, shift +} c
+    xcolor -f {HEX,rgb} -s clipboard
