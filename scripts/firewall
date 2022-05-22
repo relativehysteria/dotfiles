@@ -2,12 +2,11 @@
 
 ! [ "$EUID" = "0" ] && echo "This script requires root privileges" && exit
 
-# Use Tor as the DNS server
-echo "nameserver 127.0.0.1" > /etc/resolv.conf
+# Use the cloudflare dns resolver
+grep "^nameserver 1.1.1.1" /etc/resolv.conf &>/dev/null
+[ $? = 1 ] && echo "nameserver 1.1.1.1" > /etc/resolv.conf
 grep "^nohook resolv.conf" /etc/dhcpcd.conf &>/dev/null
 [ $? = 1 ] && echo "nohook resolv.conf" >> /etc/dhcpcd.conf
-grep "^DNSPort 53" /etc/tor/torrc &>/dev/null
-[ $? = 1 ] && echo "DNSPort 53" >> /etc/tor/torrc
 
 # Clean up the chains
 iptables -F
