@@ -17,30 +17,23 @@ iptables -P INPUT DROP
 iptables -P FORWARD DROP
 iptables -P OUTPUT ACCEPT
 
-# Create the necessary chains
-iptables -N TCP
-iptables -N UDP
-
-# Allow established connections, loopback and LAN
+# Allow established connections and loopback
 iptables -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 iptables -A INPUT -i lo -j ACCEPT
 
 # Drop invalid packets
 iptables -A INPUT -m conntrack --ctstate INVALID -j DROP
 
-# Allow ICMP packets and LAN connections
+# Allow ICMP packets
 iptables -A INPUT -p icmp -j ACCEPT
-iptables -A INPUT -s 192.168.0.0/24 -j ACCEPT
 
-# Attach the chains
-iptables -A INPUT -p udp -m conntrack --ctstate NEW -j UDP
-iptables -A INPUT -p tcp --syn -m conntrack --ctstate NEW -j TCP
+# Allow LAN connections
+tempfile="$(mktemp)"
+ip addr show | grep "inet " | awk '{print $2}' > "$tempfile"
+for addr in $(cat "$tempfile"); do
+    iptables -A INPUT -s $addr -j ACCEPT
+done
+rm "$tempfile"
 
 # Stuff that falls through gets rejected
-iptables -A INPUT -p udp -j REJECT --reject-with icmp-port-unreachable
-iptables -A INPUT -p tcp -j REJECT --reject-with tcp-reset
 iptables -A INPUT -j REJECT --reject-with icmp-proto-unreachable
-
-# HTTP/S
-iptables -A TCP -p tcp --dport 80 -j ACCEPT
-iptables -A TCP -p tcp --dport 443 -j ACCEPT
