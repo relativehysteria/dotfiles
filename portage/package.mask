@@ -1,3 +1,1 @@
-net-news/newsboat
 <virtual/libcrypt-2
->=gnome-base/librsvg-2.48.0
