@@ -1,5 +1,4 @@
 */* @BINARY-REDISTRIBUTABLE
 games-server/steamcmd Steam
 games-util/steam-launcher ValveSteamLicense
-net-im/discord-bin all-rights-reserved
 net-misc/zerotier BSL-1.1

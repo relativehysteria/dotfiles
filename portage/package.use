@@ -1,6 +1,4 @@
 #
->=dev-java/swt-4.10-r2 cairo
-
 app-admin/sysstat             lm-sensors
 app-admin/sysklogd            logrotate
 app-arch/p7zip                rar
@@ -24,7 +22,7 @@ dev-java/openjdk-bin          gentoo-vm
 dev-lang/php                  -readline
 dev-lang/python               ncurses sqlite
 dev-lang/rust                 doc nightly parallel-compiler system-llvm system-bootstrap
-dev-lang/rust-bin             doc nightly parallel-compiler system-llvm system-bootstrap clippy
+dev-lang/rust-bin             doc nightly parallel-compiler system-llvm system-bootstrap
 dev-libs/boost                nls icu
 dev-libs/glib                 dbus
 dev-libs/nss                  utils

@@ -3,9 +3,7 @@
 =net-misc/zerotier-1.6.4 ~amd64
 
 # youtube-dl
-=net-misc/youtube-dl-9999 **
 =net-misc/yt-dlp-9999 **
->=net-misc/youtube-dl-0 ~amd64
 
 # rust
 =dev-lang/rust-bin-9999 **
@@ -17,11 +15,6 @@
 
 # perf
 >=dev-util/perf-1 ~amd64
-
-# rizin / r2
->=dev-util/rizin-0 ~amd64
->=dev-libs/capstone-0 ~amd64
->=dev-libs/tree-sitter-0 ~amd64
 
 # clang
 >=sys-devel/clang-1 ~amd64
@@ -36,17 +29,11 @@
 >=sys-libs/libomp-1 ~amd64
 >=sys-libs/libunwind-1 ~amd64
 
-# tor
->=www-client/torbrowser-launcher-0 ~amd64
-
 # apparmor
 >=sys-apps/apparmor-0 ~amd64
 >=sys-apps/apparmor-utils-0 ~amd64
 >=sys-libs/libapparmor-0 ~amd64
 >=sec-policy/apparmor-profiles-0 ~amd64
-
-# discord
->=net-im/discord-bin-0 ~amd64
 
 # steam
 >=games-util/steam-launcher-0 ~amd64
