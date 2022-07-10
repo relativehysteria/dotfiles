@@ -1,19 +1,32 @@
 #!/bin/sh
-appid="$1"
-workshopid="$2"
-modname="$3"
-
 steamcmd="/opt/steamcmd/steamcmd.sh"
 installdir="$HOME/Steam/steamapps/workshop/content/$appid"
 
+workshop_item_url="$1"
+
 usage() {
-    echo "Usage: $0 <appid> <workshopid> [modname]"
+    echo "Usage: $0 <url>"
     exit
 }
 
-[ "$appid" = "" ]      && echo "Missing <appid>"      && usage
-[ "$workshopid" = "" ] && echo "Missing <workshopid>" && usage
-[ "$modname" = "" ]    && modname="$appid"
+[ "$workshop_item_url" ] || usage
 
-$steamcmd +login anonymous +workshop_download_item "$appid" "$workshopid" +quit
-mv "$installdir/$workshopid" "./$modname"
+# Get the contents of the workshop page
+workshop_contents=$(curl "$workshop_item_url")
+
+# Get the game ID
+game_id=$(echo "$workshop_contents" | grep '<a data-panel="{&quot;noFocusRing&quot;:true}" href="https://steamcommunity.com/app/')
+game_id=$(echo "$game_id" | grep -vi 'workshop')
+game_id=$(echo "$game_id" | sed -e 's/.*.app.\([0-9]*\).*/\1/g')
+
+# Get the workshop item id
+item_id=$(echo "$workshop_item_url" | sed -e 's/.*?id=\([0-9]*\).*/\1/g')
+
+# Get the workshop item title
+item_title=$(echo "$workshop_contents" | grep -i 'workshopitemtitle')
+item_title=$(echo "$item_title" | sed -e 's/.*ItemTitle">\(.*\)<.div.*/\1/g')
+
+echo "$game_id" "$item_id" "$item_title"
+
+$steamcmd +login anonymous +workshop_download_item "$game_id" "$item_id" +quit
+mv "$installdir/$game_id/$item_id" "./$item_title"
