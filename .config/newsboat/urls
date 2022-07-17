@@ -24,6 +24,8 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UC2BPoBBBf_ecTMqljYqMnGQ "yt
 
 # Comics
 https://www.oglaf.com/feeds/rss/ "comics" "~Oglaf"
+https://loadingartist.com/index.xml "comics" "~Loading"
+https://xkcd.com/rss.xml "comics" "~Xkcd"
 
 # Twitch streams
 https://twitchrss.appspot.com/vod/forsen  "twitch" "~Forsen"
@@ -40,6 +42,7 @@ https://edwardsnowden.substack.com/feed "tech" "~Snowden"
 https://groups.google.com/forum/feed/pagedout-notifications/msgs/rss.xml?num=15 "tech" "~Paged Out"
 https://krebsonsecurity.com/feed/ "tech" "~Krebs on Security"
 https://fasterthanli.me/index.xml "tech" "~Faster Than Lime"
+https://gamozolabs.github.io/feed.xml "tech" "~Gamozo"
 https://nullderef.com/index.xml "tech" "~NullDeref"
 https://www.secjuice.com/rss "tech" "~Secjuice"
 
