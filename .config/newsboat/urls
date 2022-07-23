@@ -28,8 +28,6 @@ https://www.oglaf.com/feeds/rss/ "comics" "~Oglaf"
 https://xkcd.com/rss.xml "comics" "~Xkcd"
 
 # Twitch streams
-https://twitchrss.appspot.com/vod/forsen  "twitch" "~Forsen"
-https://twitchrss.appspot.com/vod/pajlada "twitch" "~Pajlada"
 https://twitchrss.appspot.com/vod/gamozo  "twitch" "~Gamozolabs"
 
 # Twitter
