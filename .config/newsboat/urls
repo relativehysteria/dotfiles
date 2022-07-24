@@ -29,6 +29,7 @@ https://xkcd.com/rss.xml "comics" "~Xkcd"
 
 # Twitch streams
 https://twitchrss.appspot.com/vod/gamozo  "twitch" "~Gamozolabs"
+https://twitchrss.appspot.com/vod/henlips1 "twitch" "~Henry"
 
 # Twitter
 https://nitter.pussthecat.org/vxunderground/rss "tech" "~Vx-Underground"
