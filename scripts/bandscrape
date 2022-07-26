@@ -1,0 +1,56 @@
+#!/bin/sh
+
+main_url="$1"
+
+# Help message
+print_help() {
+    echo    "$0 <url>"
+    echo    "    Scrapes albums and EPs from \"*.bandcamp.com/music*\""
+    echo
+    echo    "    Example usage:"
+    echo -n "        bandscrape \"https://lyndsiealguire.bandcamp.com/music\""
+    echo    " > result.txt"
+}
+
+# Check that a url was provided
+[ "$main_url" = "" ] && print_help && exit
+
+# Get the root url of the bandcamp
+root_url="$(echo $main_url | sed -e 's/\(http.*bandcamp.com\).*/\1/g')"
+
+# Get the contents of the music section
+music_section_contents=$(curl "$root_url/music")
+
+# Get urls to albums/ep's
+album_urls=$(echo "$music_section_contents" | grep '/album/')
+album_urls=$(echo "$album_urls" | sed -e 's/^\s*<a href="\///g' -e 's/">$//g')
+
+for album in $album_urls; do
+    # Get the contents of the album page
+    album_contents=$(curl "$root_url/$album")
+
+    # Get the track metadata
+    meta=$(echo "$album_contents" | grep -i '.*<title>.*</title>.*')
+    meta=$(echo "$meta" | sed -e 's/.*<title>\(.*\)<\/title>.*/\1/g')
+
+    # Parse the title and artist out of the metadata
+    title=$(echo "$meta" | cut -d '|' -f1 | sed -e 's/^ //g' -e 's/ $//g')
+    artist=$(echo "$meta" | cut -d '|' -f2 | sed -e 's/^ //g' -e 's/ $//g')
+
+    # Sanitize the input or something..
+    title=$(python -c "import html; print(html.unescape('$title'))")
+    artist=$(python -c "import html; print(html.unescape('$artist'))")
+    title=$(echo "$title" | sed -e 's/"/\\"/g' -e 's/\//_/g')
+    artist=$(echo "$artist" | sed -e 's/"/\\"/g' -e 's/\//_/g')
+
+    # Get the release date
+    date=$(echo "$album_contents" | grep -ix "\s*released.*")
+    date=$(echo "$date" | sed -e "s/^.*released //g")
+
+    # Write the data into our tracking file
+    echo "artist=\"$artist\""
+    echo "album=\"$title\"  # $date"
+    echo "url='$root_url/$album'"
+    echo 'musicdl "$url" "$artist" "$album"'
+    echo
+done
