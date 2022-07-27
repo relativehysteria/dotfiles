@@ -47,7 +47,7 @@ for album in $album_urls; do
     date=$(echo "$album_contents" | grep -ix "\s*released.*")
     date=$(echo "$date" | sed -e "s/^.*released //g")
 
-    # Write the data into our tracking file
+    # Echo the data
     echo "artist=\"$artist\""
     echo "album=\"$title\"  # $date"
     echo "url='$root_url/$album'"
