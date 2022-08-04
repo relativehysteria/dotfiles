@@ -1,0 +1,43 @@
+#!/bin/sh
+
+main_url="$1"
+
+# Help message
+print_help() {
+    echo    "$0 <url>"
+    echo    "    Scrapes album metadata from a bandcamp album page."
+    echo
+    echo    "    Example usage:"
+    echo -n "        albscrape \"https://graveface.bandcamp.com/album/the-casket-girls-true-love-kills-the-fairy-tale\" > result.txt"
+}
+
+# Check that a url was provided
+[ "$main_url" = "" ] && print_help && exit
+
+# Get the contents of the album page
+album_contents=$(curl "$main_url")
+
+# Get the track metadata
+meta=$(echo "$album_contents" | grep -i '.*<title>.*</title>.*')
+meta=$(echo "$meta" | sed -e 's/.*<title>\(.*\)<\/title>.*/\1/g')
+
+# Parse the title and artist out of the metadata
+title=$(echo "$meta" | cut -d '|' -f1 | sed -e 's/^ //g' -e 's/ $//g')
+artist=$(echo "$meta" | cut -d '|' -f2 | sed -e 's/^ //g' -e 's/ $//g')
+
+# Sanitize the input or something..
+title=$(python -c "import html; print(html.unescape('$title'))")
+artist=$(python -c "import html; print(html.unescape('$artist'))")
+title=$(echo "$title" | sed -e 's/"/\\"/g' -e 's/\//_/g')
+artist=$(echo "$artist" | sed -e 's/"/\\"/g' -e 's/\//_/g')
+
+# Get the release date
+date=$(echo "$album_contents" | grep -ix "\s*released.*")
+date=$(echo "$date" | sed -e "s/^.*released //g")
+
+# Echo the data
+echo "artist=\"$artist\""
+echo "album=\"$title\"  # $date"
+echo "url='$main_url'"
+echo 'musicdl "$url" "$artist" "$album"'
+echo
