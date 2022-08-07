@@ -15,7 +15,7 @@ playlist_disable_highlight_delay = 3
 
 message_delay_time = 2
 
-lyrics_fetchers=genius, metrolyrics, azlyrics
+lyrics_fetchers=metrolyrics, azlyrics, genius
 
 song_list_format = {$6%a - }{%t}|{$8%f$9}$R{$3(%l)$9}
 song_status_format = $b{$5%a {$3>> $6{$7%b }{$4(%y) }}$3>> {$4(%n) }$6%t}|{$6%f}

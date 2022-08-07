@@ -6,8 +6,6 @@ def_key "k"
     scroll_up
 def_key "l"
     next_column
-def_key "L"
-    show_lyrics
 
 def_key ";"
     delete_playlist_items
