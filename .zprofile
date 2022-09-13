@@ -29,6 +29,8 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export GEM_HOME="$XDG_DATA_HOME/gem"
 export GEM_SPEC_CACHE="$XDG_CACHE_HOME/gem"
+export VAGRANT_HOME="$XDG_DATA_HOME/vagrant"
+export VAGRANT_ALIAS_FILE="$XDG_DATA_HOME/vagrant/aliases"
 
 # Pass
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password_database"
