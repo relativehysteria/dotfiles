@@ -1,4 +1,4 @@
-# Show date on startup
+# Show the current date
 date '+%Y-%m-%d %A %H:%M'
 
 # Disable the 'kill' and 'r' builtins
@@ -7,13 +7,17 @@ disable r
 disable suspend
 
 # Prompt
+autoload -Uz vcs_info
 autoload -U colors && colors
+setopt prompt_subst
+
+precmd() {
+    vcs_info
+}
+
 PS1="%B%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[cyan]%}%M"
 PS1="$PS1 %{$fg[red]%}[%{$fg[magenta]%}%~%{$fg[red]%}]"
-autoload -Uz vcs_info \
-	&& precmd() { vcs_info } \
-	&& setopt prompt_subst \
-	&& PS1="$PS1%b%{$fg[green]%}\$vcs_info_msg_0_"
+PS1="$PS1%b%{$fg[green]%}\$vcs_info_msg_0_"
 PS1="$PS1%{$reset_color%}%B%{$fg[magenta]%}$ %b"
 RPS1="%B%{$fg[red]%}%?"
 
@@ -63,4 +67,4 @@ zle-line-init() {
     zle -K viins
     echo -ne "\e[5 q"
 }
-zle -N zle-line-init
+zle
