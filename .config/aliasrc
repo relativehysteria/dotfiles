@@ -21,5 +21,7 @@ alias \
     objdump="objdump -M intel" \
     nmap="nmap --system-dns" \
     k="kubectl" \
+    kx="kubectx" \
+    kn="kubens" \
     kcg="kubectl config get-contexts" \
     ss="ss -lntpa"
