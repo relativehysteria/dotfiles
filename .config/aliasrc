@@ -19,6 +19,9 @@ alias \
     ncm="ncmpcpp" \
     nb="newsboat" \
     objdump="objdump -M intel" \
-    steamcmd="/opt/steamcmd/steamcmd.sh" \
     nmap="nmap --system-dns" \
+    k="kubectl" \
+    kx="kubectx" \
+    kn="kubens" \
+    kcg="kubectl config get-contexts" \
     ss="ss -lntpa"
