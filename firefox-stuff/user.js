@@ -55,6 +55,7 @@ user_pref("dom.enable_resource_timing", false);
 user_pref("dom.archivereader.enabled", false);
 user_pref("dom.flyweb.enabled", false);
 user_pref("browser.uitour.enabled", false);
+user_pref("browser.tabs.firewfox-view", flase)
 
 // Disable firefox accounts
 user_pref("identity.fxaccounts.enabled", false);
@@ -115,6 +116,8 @@ user_pref("extensions.lastAppBuildId", "20100101");
 
 // Addons, plugins, extensions, themes etc.
 user_pref("extensions.getAddons.cache.enabled", false);
+user_pref("extensions.getAddons.showPane", false);
+user_pref("extensions.htmlaboutaddons.recommendations.enabled", false);
 user_pref("lightweightThemes.update.enabled", false);
 user_pref("plugin.state.flash", 0);
 user_pref("plugin.state.java", 0);
@@ -139,9 +142,19 @@ user_pref("devtools.chrome.enabled", false);
 user_pref("devtools.debugger.force-local", true);
 
 // Reports, telemetry and experiments
-user_pref("toolkit.telemetry.enabled", false);
 user_pref("toolkit.telemetry.unified", false);
+user_pref("toolkit.telemetry.enabled", false);
+user_pref("toolkit.telemetry.server", "data:,");
 user_pref("toolkit.telemetry.archive.enabled", false);
+user_pref("toolkit.telemetry.bhrPing.enabled", false);
+user_pref("toolkit.telemetry.updatePing.enabled", false);
+user_pref("toolkit.telemetry.newProfilePing.enabled", false);
+user_pref("toolkit.telemetry.firstShutdownPing.enabled", false);
+user_pref("toolkit.telemetry.shutdownPingSender.enabled", false);
+user_pref("toolkit.telemetry.coverage.opt-out", true);
+user_pref("toolkit.coverage.endpoint.base", "");
+user_pref("toolkit.coverage.opt-out", true);
+user_pref("browser.ping-centre.telemetry", false);
 user_pref("experiments.supported", false);
 user_pref("experiments.enabled", false);
 user_pref("experiments.manifest.uri", "");
@@ -205,6 +218,7 @@ user_pref("network.dns.disablePrefetch", true);
 user_pref("network.dns.disablePrefetchFromHTTPS", true);
 user_pref("network.predictor.enabled", false);
 user_pref("network.http.speculative-parallel-limit", 0);
+user_pref("browser.places.speculativeConnect.enabled", false);
 
 // Onion resolving
 user_pref("network.dns.blockDotOnion", true);
@@ -230,6 +244,8 @@ user_pref("media.gmp-gmpopenh264.enabled", false);
 user_pref("media.gmp-manager.url", "");
 
 // Captive portal detection
+user_pref("captivedetect.canonicalURL", "");
+user_pref("network.connectivity-service.enabled", false);
 user_pref("network.captive-portal-service.enabled", false);
 
 // CSP and SRI
@@ -354,3 +370,7 @@ user_pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org");
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
 user_pref("full-screen-api.warning.timeout", 0);
 user_pref("media.videocontrols.picture-in-picture.video-toggle.enabled", false);
+user_pref("browser.quitShortcut.disabled", true);
+user_pref("browser.tabs.closeWindowWithLastTab", false);
+user_pref("ui.systemUsesDarkTheme", 1);
+user_pref("ui.prefersReducedMotion", 1);
