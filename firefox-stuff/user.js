@@ -1,6 +1,3 @@
-// Don't show about:config warning
-user_pref("browser.aboutConfig.showWarning", false);
-
 // Middle mouse button stuff
 user_pref("general.autoScroll", true);
 user_pref("middlemouse.paste", false);
@@ -363,6 +360,7 @@ user_pref("security.ssl3.dhe_dss_camellia_128_sha", false);
 user_pref("security.ssl3.dhe_dss_camellia_256_sha", false);
 
 // UI
+user_pref("browser.aboutConfig.showWarning", false);
 user_pref("devtools.theme", "dark");
 user_pref("browser.uidensity", 1);
 user_pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-fixed-list\":[],\"nav-bar\":[\"back-button\",\"forward-button\",\"stop-reload-button\",\"urlbar-container\"],\"toolbar-menubar\":[\"menubar-items\"],\"TabsToolbar\":[\"tabbrowser-tabs\",\"new-tab-button\",\"alltabs-button\"],\"PersonalToolbar\":[\"personal-bookmarks\"]},\"seen\":[\"developer-button\"],\"dirtyAreaCache\":[\"nav-bar\"],\"currentVersion\":16,\"newElementCount\":3}");
