@@ -23,5 +23,5 @@ alias \
     k="kubectl" \
     kx="kubectx" \
     kn="kubens" \
-    kcg="kubectl config get-contexts" \
+    sez="TERM=xterm ssh -i $HOME/.ssh/seznam -l ubuntu" \
     ss="ss -lntpa"

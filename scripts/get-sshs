@@ -1,0 +1,12 @@
+#!/bin/sh
+
+context="$1"
+key="$2"
+
+[ "$context" = "" ] && exit
+[ "$key" = "" ] && key="AAAAC3NzaC1lZDI1NTE5AAAAIIXipTbHGp+GU2mCfuosDg0EshUNLhOsL1s03uPiiOPE"
+
+for md in $(kubectl --context "$context" get machinedeployments | grep -v NAME | awk '{print $1}'); do
+    present=$(kubectl --context "$context" get machinedeployment "$md" -o yaml | grep "$key")
+    [ "$present" = "" ] || echo "$md"
+done
