@@ -1,0 +1,7 @@
+#!/bin/sh
+
+encoded_key="$1"
+
+[ "$encoded_key" = "" ] && exit
+
+echo "$encoded_key" | base64 -d | openssl ec -text -noout

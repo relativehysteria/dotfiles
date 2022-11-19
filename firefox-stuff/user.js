@@ -52,7 +52,7 @@ user_pref("dom.enable_resource_timing", false);
 user_pref("dom.archivereader.enabled", false);
 user_pref("dom.flyweb.enabled", false);
 user_pref("browser.uitour.enabled", false);
-user_pref("browser.tabs.firewfox-view", flase)
+user_pref("browser.tabs.firefox-view", false)
 
 // Disable firefox accounts
 user_pref("identity.fxaccounts.enabled", false);
