@@ -110,6 +110,7 @@ user_pref("extensions.lastAppBuildId", "20100101");
 
 // Document specified fonts
 // user_pref("browser.display.use_document_fonts", 0);
+user_pref("browser.display.use_document_fonts", 1);
 
 // Addons, plugins, extensions, themes etc.
 user_pref("extensions.getAddons.cache.enabled", false);
