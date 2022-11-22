@@ -6,6 +6,8 @@ super + Return
     $TERMINAL
 super + backslash
     dmenu_run
+super + c
+    clicker.py
 
 # Shortcuts
 Print
