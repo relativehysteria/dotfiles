@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Handle to the yt channel
+handle="$1"
+
+# If we weren't given any handle, return
+[ "$handle" = "" ] && exit
+
+# Get the channel metadata
+metadata=$(curl "https://yt.jaybee.digital/api/channels?part=channels&handle=$handle")
+echo $metadata | jq '.items[].id?' -r
