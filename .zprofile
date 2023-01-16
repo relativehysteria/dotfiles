@@ -44,7 +44,9 @@ export SAVEHIST="$HISTSIZE"
 export HISTFILE="$XDG_CACHE_HOME/zsh_history"
 export TIMEFMT=$'real\t%E\nuser\t%U\nkernel\t%S'
 
+# Other stuff
 export PATH="$SCRIPTDIR:$HOME/.local/bin:$CARGO_HOME/bin:$PATH"
+export VAGRANT_DEFAULT_PROVIDER=libvirt
 
 # Start the WM
 [ "$(tty)" = "/dev/tty1" ] \
