@@ -1,3 +1,4 @@
+acct-group/kvm
 acct-user/tor
 app-admin/pass
 app-admin/sudo
@@ -9,7 +10,9 @@ app-crypt/gentoo-keys
 app-crypt/hashid
 app-editors/neovim
 app-editors/vim
+app-emulation/libvirt
 app-emulation/qemu
+app-emulation/vagrant
 app-i18n/translate-shell
 app-misc/jq
 app-portage/gentoolkit
@@ -23,7 +26,6 @@ app-text/texlive
 app-text/zathura
 app-text/zathura-meta
 dev-java/openjdk-bin
-dev-lang/rust-bin
 dev-libs/dbus-glib
 dev-libs/glib
 dev-libs/nss
@@ -38,11 +40,13 @@ dev-util/ctags
 dev-util/perf
 dev-util/strace
 dev-vcs/git
+games-server/steamcmd
 games-util/lutris
 games-util/steam-launcher
 media-fonts/fira-code
 media-gfx/feh
 media-gfx/gimp
+media-gfx/graphviz
 media-gfx/imagemagick
 media-libs/imlib2
 media-libs/libsdl2
@@ -69,6 +73,7 @@ net-misc/yt-dlp
 net-misc/zerotier
 net-news/newsboat
 net-proxy/torsocks
+net-vpn/openvpn
 net-vpn/tor
 sys-apps/firejail
 sys-apps/keyutils
@@ -81,6 +86,7 @@ sys-devel/clang
 sys-devel/gcc
 sys-devel/gdb
 sys-devel/lld
+sys-firmware/ipxe
 sys-fs/cryptsetup
 sys-fs/ntfs3g
 sys-kernel/genkernel
@@ -90,13 +96,13 @@ sys-kernel/linux-headers
 sys-power/cpupower
 sys-process/htop
 virtual/ffmpeg
-virtual/rust
 virtual/wine
 www-client/firefox-bin
 x11-apps/setxkbmap
 x11-apps/xrandr
 x11-apps/xset
 x11-base/xorg-server
+x11-libs/gdk-pixbuf
 x11-libs/gtk+
 x11-libs/gtk+:3
 x11-libs/libXScrnSaver
