@@ -23,5 +23,4 @@ alias \
     k="kubectl" \
     kx="kubectx" \
     kn="kubens" \
-    sez="TERM=xterm ssh -i $HOME/.ssh/seznam -l ubuntu" \
     ss="ss -lntpa"

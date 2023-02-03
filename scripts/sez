@@ -1,0 +1,28 @@
+#!/bin/sh
+
+# SSH to a node based on its name
+
+SSH="$HOME/.ssh/seznam"
+USER="ubuntu"
+
+# Check that we were given an argument -- the node name
+[ "$1" = "" ] && exit
+NODE_NAME="$1"
+
+# First, try to get it through the `Machine` CRD. This will work even if the
+# node is not yet attached to the cluster.
+NODE=$(kubectl --namespace "kube-system" get machine -o wide | grep "$NODE_NAME")
+
+# If we didn't get it, try to get it as a node and if we still can't get it,
+# get fucked lol
+[ "$NODE" = "" ] && NODE=$(kubectl --namespace "kube-system" get nodes -o wide | grep "$NODE")
+
+# If we still didn't get it, get fucked
+[ "$NODE" = "" ] && exit
+
+# Get the IP
+NODE=$(echo "$NODE" | awk '{print $6}')
+
+# Normalize the terminal and ssh into the node
+export TERM=xterm
+ssh -i "$SSH" -l "$USER" "$NODE"
