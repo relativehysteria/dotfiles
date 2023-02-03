@@ -18,3 +18,23 @@ hotKey:
     shortCut:    Shift-4
     description: View configmaps
     command:     configmaps
+
+  shift-5:
+    shortCut:    Shift-5
+    description: View machinedeployments
+    command:     machinedeployments
+
+  shift-6:
+    shortCut:    Shift-6
+    description: View nodes
+    command:     nodes
+
+  shift-9:
+    shortCut:    Shift-9
+    description: View namespaces
+    command:     contexts
+
+  shift-0:
+    shortCut:    Shift-0
+    description: View namespaces
+    command:     namespaces

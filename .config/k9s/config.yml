@@ -2,28 +2,53 @@ k9s:
   refreshRate: 2
   maxConnRetry: 5
   enableMouse: false
-  headless: false
+  headless: true
   logoless: true
-  crumbsless: false
+  crumbsless: true
   readOnly: true
   noExitOnCtrlC: false
   noIcons: false
+  skipLatestRevCheck: false
   logger:
-    tail: 100
+    tail: 1000
     buffer: 5000
-    sinceSeconds: 60
+    sinceSeconds: 3600
     fullScreenLogs: false
     textWrap: false
     showTime: false
-  currentContext: user-profile.ng
-  currentCluster: user-profile.ng
+  currentContext: k8s-test-4
+  currentCluster: k8s-test-4
   clusters:
-    dataops.ko:
+    cileni-dev.oa:
       namespace:
-        active: ingress-nginx
+        active: kube-system
         lockFavorites: false
         favorites:
         - all
+        - kube-system
+        - default
+      view:
+        active: deployments
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        labels: {}
+      portForwardAddress: localhost
+    cileni-stable.ko:
+      namespace:
+        active: kube-system
+        lockFavorites: false
+        favorites:
+        - all
+        - kube-system
+        - default
       view:
         active: pod
       featureGates:
@@ -36,15 +61,18 @@ k9s:
         limits:
           cpu: 100m
           memory: 100Mi
+        labels: {}
       portForwardAddress: localhost
-    user-profile.ko:
+    cileni-stable.oa:
       namespace:
-        active: user-profile-production
+        active: all
         lockFavorites: false
         favorites:
         - all
+        - kube-system
+        - default
       view:
-        active: po
+        active: pod
       featureGates:
         nodeShell: false
       shellPod:
@@ -55,17 +83,126 @@ k9s:
         limits:
           cpu: 100m
           memory: 100Mi
+        labels: {}
       portForwardAddress: localhost
-    user-profile.ng:
+    k8s-test-1:
+      namespace:
+        active: all
+        lockFavorites: false
+        favorites:
+        - default
+      view:
+        active: pod
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        labels: {}
+      portForwardAddress: localhost
+    k8s-test-4:
+      namespace:
+        active: all
+        lockFavorites: false
+        favorites:
+        - cloud-init-settings
+        - kube-public
+        - all
+        - kube-system
+        - default
+      view:
+        active: machines
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        labels: {}
+      portForwardAddress: localhost
+    kube1.ko:
+      namespace:
+        active: sandbox
+        lockFavorites: false
+        favorites:
+        - sandbox
+        - default
+      view:
+        active: nodes
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        labels: {}
+      portForwardAddress: localhost
+    kube1.ng:
+      namespace:
+        active: default
+        lockFavorites: false
+        favorites:
+        - default
+      view:
+        active: pod
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        labels: {}
+      portForwardAddress: localhost
+    kube2.ko:
+      namespace:
+        active: sklik-vydej-production
+        lockFavorites: false
+        favorites:
+        - sklik-vydej-production
+        - cileni-stable
+        - cileni-dev
+        - user-profile-master
+        - default
+      view:
+        active: contexts
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        labels: {}
+      portForwardAddress: localhost
+    kube2.ng:
       namespace:
         active: user-profile-production
         lockFavorites: false
         favorites:
         - user-profile-production
-        - leash
-        - all
+        - default
       view:
-        active: configmaps
+        active: deployments
       featureGates:
         nodeShell: false
       shellPod:
@@ -76,6 +213,71 @@ k9s:
         limits:
           cpu: 100m
           memory: 100Mi
+        labels: {}
+      portForwardAddress: localhost
+    user-profile-dev.ko:
+      namespace:
+        active: all
+        lockFavorites: false
+        favorites:
+        - all
+        - cileni-kubeflow
+        - cert-manager
+        - user-profile-master
+        - default
+      view:
+        active: pod
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        labels: {}
+      portForwardAddress: localhost
+    user-profile.ko:
+      namespace:
+        active: all
+        lockFavorites: true
+        favorites:
+        - all
+      view:
+        active: jobs
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        labels: {}
+      portForwardAddress: localhost
+    user-profile.ng:
+      namespace:
+        active: user-profile-production
+        lockFavorites: true
+        favorites:
+        - all
+      view:
+        active: namespaces
+      featureGates:
+        nodeShell: false
+      shellPod:
+        image: busybox:1.35.0
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        labels: {}
       portForwardAddress: localhost
   thresholds:
     cpu:
