@@ -51,12 +51,12 @@ shell none
 # Disable tracelog, it breaks or causes major issues with many firefox based browsers, see https://github.com/netblue30/firejail/issues/1930.
 #tracelog
 
-disable-mnt
-?BROWSER_DISABLE_U2F: private-dev
+# disable-mnt
+# ?BROWSER_DISABLE_U2F: private-dev
 # private-etc below works fine on most distributions. There are some problems on CentOS.
 # Add it to your firefox-common.local if you want to enable it.
 #private-etc alternatives,asound.conf,ca-certificates,crypto-policies,dconf,fonts,group,gtk-2.0,gtk-3.0,hostname,hosts,ld.so.cache,ld.so.conf,ld.so.conf.d,ld.so.preload,localtime,machine-id,mailcap,mime.types,nsswitch.conf,pango,passwd,pki,pulse,resolv.conf,selinux,ssl,X11,xdg
-private-tmp
+# private-tmp
 
 blacklist ${PATH}/curl
 blacklist ${PATH}/wget
