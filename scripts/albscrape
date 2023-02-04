@@ -39,5 +39,5 @@ date=$(echo "$date" | sed -e "s/^.*released //g")
 echo "artist=\"$artist\""
 echo "album=\"$title\"  # $date"
 echo "url='$main_url'"
-echo 'musicdl "$url" "$artist" "$album"'
+echo 'musicdl -u "$url" -a "$artist" -l "$album"'
 echo

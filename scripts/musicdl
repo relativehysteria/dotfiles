@@ -1,15 +1,28 @@
 #!/bin/sh
 
-musicroot="$HOME/music"
+MUSICROOT="$HOME/music"
 
-url="$1"
-author="$2"
-album="$3"
-
+# Useful as shit
 usage() {
-    echo "Usage: $0 <url> [author [album]]"
+    echo "Usage: $0 <-u url> [-a author] [-l album] [-m]"
     exit
 }
+
+url=""
+author=""
+album=""
+mp3=""
+
+# Get the arguments
+while getopts "hu:a:l:m" opt; do
+    case "$opt" in
+        h) usage;;
+        u) url="$OPTARG";;
+        a) author="$OPTARG";;
+        l) album="$OPTARG";;
+        m) mp3="--audio-format mp3"
+    esac
+done
 
 [ "$url" = "" ] && usage
 
@@ -19,4 +32,4 @@ case "$url" in
     *)                          proxy='--proxy socks5://localhost:9050'
 esac
 
-yt-dlp $proxy -x -o "$musicroot/$author/$album/%(playlist_index)s %(title)s.%(ext)s" "$url"
+yt-dlp $proxy -x $mp3 -o "$MUSICROOT/$author/$album/%(playlist_index)s %(title)s.%(ext)s" "$url"
