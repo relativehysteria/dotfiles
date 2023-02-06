@@ -15,7 +15,14 @@ precmd() {
     vcs_info
 }
 
-PS1="%B%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[cyan]%}%M"
+# Default colors
+PS1="%B%{$fg[green]%}%n%{$fg[cyan]%}@%{$fg[yellow]%}%M"
+
+# Colors for home computer
+if [ "$(hostname)" = "andromeda" ]; then
+    PS1="%B%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[cyan]%}%M"
+fi
+
 PS1="$PS1 %{$fg[red]%}[%{$fg[magenta]%}%~%{$fg[red]%}]"
 PS1="$PS1%b%{$fg[green]%}\$vcs_info_msg_0_"
 PS1="$PS1%{$reset_color%}%B%{$fg[magenta]%}$ %b"
