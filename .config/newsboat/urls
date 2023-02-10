@@ -31,10 +31,10 @@ https://xkcd.com/rss.xml "comics" "~Xkcd"
 https://twitchrss.appspot.com/vod/gamozo  "twitch" "~Gamozolabs"
 
 # Twitter
-https://nitter.pussthecat.org/vxunderground/rss "tech" "~Vx-Underground"
-https://nitter.pussthecat.org/Tomato_Gaming/rss "fun" "~Tamto"
-https://nitter.pussthecat.org/gamozolabs/rss "tech" "~Brandon"
-https://nitter.pussthecat.org/gynvael/rss "tech" "~Gynvael"
+https://nitter.fly.dev/vxunderground/rss "tech" "~Vx-Underground"
+https://nitter.fly.dev/Tomato_Gaming/rss "fun" "~Tamto"
+https://nitter.fly.dev/gamozolabs/rss "tech" "~Brandon"
+https://nitter.fly.dev/gynvael/rss "tech" "~Gynvael"
 
 # Blogs and stuff
 https://feeds.feedburner.com/GynvaelColdwindEN "tech" "~Gynvael"
@@ -52,9 +52,7 @@ https://www.secjuice.com/rss "tech" "~Secjuice"
 # The fields may be interesting but a major portion of their content is not.
 https://lobste.rs/t/c.rss         "lobste.rs" "~c"
 https://lobste.rs/t/rust.rss      "lobste.rs" "~rust"
-https://lobste.rs/t/vim.rss       "lobste.rs" "~vim"
 https://lobste.rs/t/law.rss       "lobste.rs" "~law"
-https://lobste.rs/t/book.rss      "lobste.rs" "~book"
 https://lobste.rs/t/satire.rss    "lobste.rs" "~satire"
 https://lobste.rs/t/rant.rss      "lobste.rs" "~rant"
 https://lobste.rs/t/security.rss  "lobste.rs" "~security"
