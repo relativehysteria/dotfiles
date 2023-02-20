@@ -23,4 +23,5 @@ alias \
     k="kubectl" \
     kx="kubectx" \
     kn="kubens" \
-    ss="ss -lntpa"
+    ss="ss -lntpa" \
+    ruzickar="TERM=xterm ssh ruzickar@ruzickarovo"
