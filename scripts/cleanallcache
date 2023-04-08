@@ -4,5 +4,8 @@ rm -rf "$HOME/"{Steam,.xonotic,.steam,.mozilla,.dbus,.pulse-cookie,.pki,.gnome,.
 # *.log isn't cleared because that could be counter productive
 rm -f ./{*.aux,*.ctn,*.idx,*.ilg,*.ind}
 
+# screenshots
+rm -f ~/pictures/screens/*
+
 # Clean the SSH cache
 echo > "$HOME/".ssh/known_hosts

@@ -1,0 +1,15 @@
+/.config/mpd/playlists
+/.config/mpd/database
+/.config/mpd/pid
+/.config/mpd/state
+/.config/mpd/sticker.sql
+
+/.config/ncmpcpp/lyrics
+/.config/ncmpcpp/error.log
+/.config/ncmpcpp/patterns.list
+
+/.config/nvim/pack
+/.config/nvim/.netrwhist
+/.config/nvim/spell
+
+/.config/zsh/.zcomp*
