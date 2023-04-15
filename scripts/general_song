@@ -1,0 +1,60 @@
+#!/usr/bin/env python
+
+from sys import argv
+from os.path import expanduser
+from os import listdir, rename
+from concurrent.futures import ThreadPoolExecutor
+import yt_dlp
+
+# Path to the general directory and all of the songs within it
+gen = expanduser("~/music/Various Artists/General")
+songs = sorted(listdir(gen), reverse=True)
+
+if len(argv) == 1:
+    print(f"{argv[0]} <url> <name>")
+    exit()
+
+# Based on the last song in the directory, get the index of the song we are
+# about to add
+try:
+    lstnum = int(iter(songs).__next__().split()[0])
+except:
+    lstnum = 0
+finally:
+    curnum = lstnum + 1
+
+# Get the arguments
+url  = argv[1].split('&')[0]
+name = f"{curnum} {argv[2]}"
+
+# Make sure there's no duplicates
+for song in songs:
+    # Get rid of ".mp3" and the index
+    song_name = ' '.join(song[:-4].split()[1:])
+
+    # If the names match, this is a duplicate.
+    if song_name.lower() == argv[2].lower():
+        print(f"Duplicate.")
+        exit()
+
+# If the current index would have more digits than the last one,
+# we have to rename every single file and start the old ones with a trailing '0'
+if len(str(curnum)) > len(str(lstnum)):
+    with ThreadPoolExecutor(max_workers=10) as exe:
+        for song in songs:
+            exe.submit(rename, f"{gen}/{song}", f"{gen}/0{song}")
+
+# Options for yt-dlp; mp3 format for everything
+ydl_opts = {
+    "format": "bestaudio/best",
+    "outtmpl": f"{gen}/{name}.%(ext)s",
+    "postprocessors": [{
+        "key": "FFmpegExtractAudio",
+        "preferredcodec": "mp3",
+        "preferredquality": "192",
+    }],
+}
+
+# Download the song
+with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+    ydl.download([url])
