@@ -28,7 +28,7 @@ done
 
 # Youtube doesn't like tor connections :>
 case "$url" in
-    "https://www.youtube.com"*) proxy='';;
+    "https://www.youtube.com"*|"https://music.youtube.com"*) proxy='';;
     *)                          proxy='--proxy socks5://localhost:9050'
 esac
 
