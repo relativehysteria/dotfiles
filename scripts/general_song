@@ -5,13 +5,14 @@ from os.path import expanduser
 from os import listdir, rename
 from concurrent.futures import ThreadPoolExecutor
 import yt_dlp
+from mutagen.easyid3 import EasyID3
 
 # Path to the general directory and all of the songs within it
 gen = expanduser("~/music/Various Artists/General")
 songs = sorted(listdir(gen), reverse=True)
 
 if len(argv) == 1:
-    print(f"{argv[0]} <url> <name>")
+    print(f"{argv[0]} <url> <artist> <song_title>")
     exit()
 
 # Based on the last song in the directory, get the index of the song we are
@@ -24,8 +25,9 @@ finally:
     curnum = lstnum + 1
 
 # Get the arguments
-url  = argv[1].split('&')[0]
-name = f"{curnum} {argv[2]}"
+url     = argv[1].split('&')[0]
+name    = f"{curnum} {argv[2]} - {argv[3]}"
+outfile = f"{gen}/{name}"
 
 # Make sure there's no duplicates
 for song in songs:
@@ -47,7 +49,7 @@ if len(str(curnum)) > len(str(lstnum)):
 # Options for yt-dlp; mp3 format for everything
 ydl_opts = {
     "format": "bestaudio/best",
-    "outtmpl": f"{gen}/{name}.%(ext)s",
+    "outtmpl": outfile,
     "postprocessors": [{
         "key": "FFmpegExtractAudio",
         "preferredcodec": "mp3",
@@ -58,3 +60,12 @@ ydl_opts = {
 # Download the song
 with yt_dlp.YoutubeDL(ydl_opts) as ydl:
     ydl.download([url])
+
+# Add ID3 tags to it
+song = EasyID3(f"{outfile}.mp3")
+song["tracknumber"] = [str(curnum)]
+song["composer"]    = [argv[2]]
+song["artist"]      = "Various Artists"
+song["album"]       = "General"
+song["title"]       = [argv[3]]
+song.save()
