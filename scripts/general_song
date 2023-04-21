@@ -35,7 +35,7 @@ for song in songs:
     song_name = ' '.join(song[:-4].split()[1:])
 
     # If the names match, this is a duplicate.
-    if song_name.lower() == argv[2].lower():
+    if song_name.lower() == f"{argv[2]} - {argv[3]}".lower():
         print(f"Duplicate.")
         exit()
 
