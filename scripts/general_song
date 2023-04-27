@@ -12,7 +12,7 @@ gen = expanduser("~/music/Various Artists/General")
 songs = sorted(listdir(gen), reverse=True)
 
 if len(argv) == 1:
-    print(f"{argv[0]} <url> <artist> <song_title>")
+    print(f"{argv[0]} <url> <artist> <song_title> [index]")
     exit()
 
 # Based on the last song in the directory, get the index of the song we are
@@ -25,6 +25,26 @@ finally:
     curnum = lstnum + 1
 
 # Get the arguments
+
+# If we got an index as well, change the curnum
+if len(argv) > 4:
+    # Make sure it's a number
+    idx = int(argv[4])
+
+    # It mustn't be larger than the one that we have right now or smaller than 0
+    if idx > curnum or idx < 1:
+        print("Incorrect index.")
+        exit(1)
+
+    # And make sure the padding won't get fucked, e.g. if the index is 0000001
+    if len(str(curnum)) - len(argv[4]) < 0:
+        print("Don't pad your index.")
+        exit(1)
+
+    # Zero pad the index
+    padding = '0' * (len(str(curnum)) - len(argv[4]))
+    curnum  = padding + argv[4]
+
 url     = argv[1].split('&')[0]
 name    = f"{curnum} {argv[2]} - {argv[3]}"
 outfile = f"{gen}/{name}"
@@ -36,7 +56,7 @@ for song in songs:
 
     # If the names match, this is a duplicate.
     if song_name.lower() == f"{argv[2]} - {argv[3]}".lower():
-        print(f"Duplicate.")
+        print(f"Duplicate ({song.split()[0]}).")
         exit()
 
 # If the current index would have more digits than the last one,
