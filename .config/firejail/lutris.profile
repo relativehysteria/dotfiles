@@ -7,6 +7,7 @@ include lutris.local
 include globals.local
 
 private /steam
+whitelist /home/crius/documents/games/stalker
 
 #noblacklist ${PATH}/llvm*
 #noblacklist ${HOME}/Games
