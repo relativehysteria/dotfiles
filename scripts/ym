@@ -9,7 +9,7 @@ from mutagen.easyid3 import EasyID3
 
 # Path to the general directory and all of the songs within it
 gen = expanduser("~/music/Various Artists/General")
-songs = sorted(listdir(gen), reverse=True)
+songs = sorted(listdir(gen))
 
 if len(argv) == 1:
     print(f"{argv[0]} <url> <artist> <song_title> [index]")
@@ -17,12 +17,11 @@ if len(argv) == 1:
 
 # Based on the last song in the directory, get the index of the song we are
 # about to add
-try:
-    lstnum = int(iter(songs).__next__().split()[0])
-except:
-    lstnum = 0
-finally:
-    curnum = lstnum + 1
+curnum = 1
+for num in [int(i.split()[0]) for i in songs]:
+    if curnum != num:
+        break
+    curnum += 1
 
 # Get the arguments
 
@@ -61,7 +60,8 @@ for song in songs:
 
 # If the current index would have more digits than the last one,
 # we have to rename every single file and start the old ones with a trailing '0'
-if len(str(curnum)) > len(str(lstnum)):
+songidx = 0 if len(songs) == 0 else len(str(songs[-1].split()[0]))
+if len(str(curnum)) > songidx:
     with ThreadPoolExecutor(max_workers=10) as exe:
         for song in songs:
             exe.submit(rename, f"{gen}/{song}", f"{gen}/0{song}")
