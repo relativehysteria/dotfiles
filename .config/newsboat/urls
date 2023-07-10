@@ -19,6 +19,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCdC0An4ZPNr_YiFiYoVbwaw "yt
 https://www.youtube.com/feeds/videos.xml?channel_id=UCLM0Xm8XkfI0g4zpt1qrsfg "yt" "~Ukraine"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC5nw0mUW1xM_0oEUU8WcuFw "yt" "~Slappybag"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCHnyfMqiRRG1u-2MsSQLbXA "yt" "~Veritasium"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCutMaHIqzk-QkA44LQizudA "yt" "~Qloud"
 
 # Comics
 https://buttercupfestival.tumblr.com/rss "comics" "~Buttercup Festival"
@@ -31,10 +32,11 @@ https://xkcd.com/rss.xml "comics" "~Xkcd"
 https://twitchrss.appspot.com/vod/gamozo  "twitch" "~Gamozolabs"
 
 # Twitter
-https://nitter.fly.dev/vxunderground/rss "tech" "~Vx-Underground"
-https://nitter.fly.dev/Tomato_Gaming/rss "fun" "~Tamto"
-https://nitter.fly.dev/gamozolabs/rss "tech" "~Brandon"
-https://nitter.fly.dev/gynvael/rss "tech" "~Gynvael"
+https://nitter.snopyta.org/vxunderground/rss "tech" "~Vx-Underground"
+https://nitter.snopyta.org/Tomato_Gaming/rss "fun" "~Tamto"
+https://nitter.snopyta.org/gamozolabs/rss "tech" "~Brandon"
+https://nitter.snopyta.org/gynvael/rss "tech" "~Gynvael"
+https://nitter.snopyta.org/Liveuamap/rss "fun" "~UAMap"
 
 # Blogs and stuff
 https://feeds.feedburner.com/GynvaelColdwindEN "tech" "~Gynvael"
@@ -42,6 +44,7 @@ https://fasterthanli.me/index.xml "tech" "~Faster Than Lime"
 https://gamozolabs.github.io/feed.xml "tech" "~Gamozo"
 https://nullderef.com/index.xml "tech" "~NullDeref"
 https://www.secjuice.com/rss "tech" "~Secjuice"
+https://lwn.net/headlines/rss "tech" "~LWN"
 
 # Lobsters
 # Tags are put into individual feeds because it keeps them cleaner -- I am aware

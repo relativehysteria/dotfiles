@@ -17,8 +17,9 @@ json_file = args.json_file
 data_file = args.data_file
 
 # Get the json data, specifically the 'chapters'
-with open(json_file) as f:
-    json_data = json.load(f)
+with open(json_file, 'rb') as f:
+    data = f.read().decode()
+    json_data = json.loads(data)
     chapters = json_data['chapters']
 
 # Do the ffmpeg stuff

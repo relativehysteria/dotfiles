@@ -24,4 +24,5 @@ alias \
     kx="kubectx" \
     kn="kubens" \
     ss="ss -lntpa" \
-    ruzickar="TERM=xterm ssh ruzickar@ruzickarovo -i ~/.ssh/passwordless"
+    ruzickar="ssh ruzickar@ruzickarovo -i ~/.ssh/passwordless" \
+    trinity="ssh trinity@matrix -i ~/.ssh/passwordless"
