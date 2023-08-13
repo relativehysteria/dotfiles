@@ -11,15 +11,11 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCbWcXB0PoqOsAvAdfzWMf0w "yt
 https://www.youtube.com/feeds/videos.xml?channel_id=UCD6VugMZKRhSyzWEWA9W2fg "yt" "~Sseth"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCZ8Ql34vQn91fzq0xvG9Pqg "yt" "~Limmy"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCd-qVRcjoK9zjtDs_LRxSmw "yt" "~FUNKe"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCQD3awTLw9i8Xzh85FKsuJA "yt" "~SovietWomble"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC2BPoBBBf_ecTMqljYqMnGQ "yt" "~Gnome Chompski Geso"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCo03CCLE1x34004iBmjcHnA "yt" "~Clipussi"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC9cv7H0DDQU8Zt5n2igzp0Q "yt" "~Nymnion"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCdC0An4ZPNr_YiFiYoVbwaw "yt" "~Daily Dose of Internet"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCLM0Xm8XkfI0g4zpt1qrsfg "yt" "~Ukraine"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC5nw0mUW1xM_0oEUU8WcuFw "yt" "~Slappybag"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCHnyfMqiRRG1u-2MsSQLbXA "yt" "~Veritasium"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCutMaHIqzk-QkA44LQizudA "yt" "~Qloud"
 
 # Comics
 https://buttercupfestival.tumblr.com/rss "comics" "~Buttercup Festival"
@@ -36,15 +32,15 @@ https://nitter.snopyta.org/vxunderground/rss "tech" "~Vx-Underground"
 https://nitter.snopyta.org/Tomato_Gaming/rss "fun" "~Tamto"
 https://nitter.snopyta.org/gamozolabs/rss "tech" "~Brandon"
 https://nitter.snopyta.org/gynvael/rss "tech" "~Gynvael"
-https://nitter.snopyta.org/Liveuamap/rss "fun" "~UAMap"
 
 # Blogs and stuff
 https://feeds.feedburner.com/GynvaelColdwindEN "tech" "~Gynvael"
+https://connormcgarr.github.io/feed.xml "tech" "~Connor McGarr"
+https://travisdowns.github.io/feed.xml "tech" "~Travis Downs"
 https://fasterthanli.me/index.xml "tech" "~Faster Than Lime"
 https://gamozolabs.github.io/feed.xml "tech" "~Gamozo"
 https://nullderef.com/index.xml "tech" "~NullDeref"
 https://www.secjuice.com/rss "tech" "~Secjuice"
-https://lwn.net/headlines/rss "tech" "~LWN"
 
 # Lobsters
 # Tags are put into individual feeds because it keeps them cleaner -- I am aware
