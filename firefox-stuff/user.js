@@ -367,7 +367,7 @@ user_pref("browser.uidensity", 1);
 user_pref("browser.uiCustomization.state", "{\"placements\":{\"widget-overflow-fixed-list\":[],\"nav-bar\":[\"back-button\",\"forward-button\",\"stop-reload-button\",\"urlbar-container\"],\"toolbar-menubar\":[\"menubar-items\"],\"TabsToolbar\":[\"tabbrowser-tabs\",\"new-tab-button\",\"alltabs-button\"],\"PersonalToolbar\":[\"personal-bookmarks\"]},\"seen\":[\"developer-button\"],\"dirtyAreaCache\":[\"nav-bar\"],\"currentVersion\":16,\"newElementCount\":3}");
 user_pref("extensions.activeThemeID", "firefox-compact-dark@mozilla.org");
 user_pref("toolkit.legacyUserProfileCustomizations.stylesheets", true);
-user_pref("full-screen-api.warning.timeout", 0);
+user_pref("full-screen-api.warning.timeout", 1);
 user_pref("media.videocontrols.picture-in-picture.video-toggle.enabled", false);
 user_pref("browser.quitShortcut.disabled", true);
 user_pref("browser.tabs.closeWindowWithLastTab", false);
