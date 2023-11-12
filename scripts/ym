@@ -8,7 +8,9 @@ import yt_dlp
 from mutagen.easyid3 import EasyID3
 
 # Path to the general directory and all of the songs within it
-gen = expanduser("~/music/Various Artists/General")
+outartist = "Various Artists"
+outalbum  = "General"
+gen = expanduser(f"~/music/{outartist}/{outalbum}")
 songs = sorted(listdir(gen))
 
 if len(argv) == 1:
@@ -85,7 +87,7 @@ with yt_dlp.YoutubeDL(ydl_opts) as ydl:
 song = EasyID3(f"{outfile}.mp3")
 song["tracknumber"] = [str(curnum)]
 song["composer"]    = [argv[2]]
-song["artist"]      = "Various Artists"
-song["album"]       = "General"
+song["artist"]      = outartist
+song["album"]       = outalbum
 song["title"]       = [argv[3]]
 song.save()
