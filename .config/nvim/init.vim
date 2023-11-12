@@ -1,6 +1,3 @@
-" Background stuff
-let g:interspectre_background = 0
-
 " Netrw (directory listing) stuff
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0

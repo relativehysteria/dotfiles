@@ -7,20 +7,9 @@ endif
 
 let g:colors_name = "interspectre"
 
-
-if !exists("g:interspectre_background")
-    let g:interspectre_background = 0
-endif
-
-if g:interspectre_background == 1
-    hi LineNr        guifg=#573A7A guibg=#09010C guisp=#14011C gui=NONE      ctermfg=60  ctermbg=53  cterm=NONE
-    hi Normal        guifg=#AD8CD3 guibg=#0b000F guisp=#16001F gui=NONE      ctermfg=140 ctermbg=53  cterm=NONE
-    hi NonText       guifg=#9F5AFA guibg=#09010C guisp=#14011C gui=NONE      ctermfg=135 ctermbg=53  cterm=NONE
-else
-    hi LineNr        guifg=#573A7A guibg=NONE    guisp=NONE    gui=NONE      ctermfg=60  ctermbg=53  cterm=NONE
-    hi Normal        guifg=#AD8CD3 guibg=NONE    guisp=#16001F gui=NONE      ctermfg=140 ctermbg=53  cterm=NONE
-    hi NonText       guifg=#9F5AFA guibg=NONE    guisp=#14011C gui=NONE      ctermfg=135 ctermbg=53  cterm=NONE
-endif
+hi LineNr            guifg=#573A7A guibg=NONE    guisp=NONE    gui=NONE      ctermfg=60  ctermbg=53  cterm=NONE
+hi Normal            guifg=#AD8CD3 guibg=NONE    guisp=#16001F gui=NONE      ctermfg=140 ctermbg=53  cterm=NONE
+hi NonText           guifg=#9F5AFA guibg=NONE    guisp=#14011C gui=NONE      ctermfg=135 ctermbg=53  cterm=NONE
 
 
 " ---
