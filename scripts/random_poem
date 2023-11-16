@@ -2,4 +2,34 @@
 
 POEMDIR="$HOME/documents/textfiles/poems"
 
-cat $(find "$POEMDIR" | grep .txt | shuf | tail -1)
+# Get the path to a random poem
+poem=$(find "$POEMDIR" | grep .txt | shuf | tail -1)
+
+# Get the date the poem was last edited
+edit_date=$(stat -c %w $poem | awk '{print $1}')
+
+# Get the name of the collection and of the volume
+path_parts=$(echo "$poem" | tr '/' ' ')
+collection=$(echo "$path_parts" | awk '{print $(NF-2)}')
+volume=$(echo "$path_parts" | awk '{print $(NF-1)}')
+
+# Get the path to the primary latex file
+tex_file="$POEMDIR/$collection/LATEX/poetry.tex"
+
+# Get the name of the whole book and strip the newcommand stuff
+collection=$(grep ".newcommand{.booktitle}{" "$tex_file")
+collection="${collection:24:-1}"
+
+# If the volume has a special name, include the volume name as well
+if [ "$volume" != "poems" ]; then
+    # Get the name of the volume and strip the '\volumeheader{}' part
+    volume=$(grep -B 2 "include/$volume" "$tex_file" | head -1)
+    volume="${volume:14:-1}"
+fi
+
+# Print the collection and volume info
+echo "Collection: $collection"
+[ "$volume" != "poems" ] && echo "Volume: $volume"
+
+# Print the poem
+echo && echo -n "($edit_date) " && cat "$poem"
