@@ -28,11 +28,8 @@ https://xkcd.com/rss.xml "comics" "~Xkcd"
 # Twitch streams
 https://twitchrss.appspot.com/vod/gamozo  "twitch" "~Gamozolabs"
 
-# Twitter
-https://nitter.snopyta.org/vxunderground/rss "tech" "~Vx-Underground"
-https://nitter.snopyta.org/Tomato_Gaming/rss "fun" "~Tamto"
-https://nitter.snopyta.org/gamozolabs/rss "tech" "~Brandon"
-https://nitter.snopyta.org/gynvael/rss "tech" "~Gynvael"
+# Socs
+https://haunted.computer/@netspooky.rss "tech" "netspooky"
 
 # Blogs and stuff
 https://feeds.feedburner.com/GynvaelColdwindEN "tech" "~Gynvael"
