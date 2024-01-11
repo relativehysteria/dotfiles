@@ -25,13 +25,10 @@ XF86AudioPlay
 XF86AudioMute
     mpc stop &>/dev/null
 
-super + XF86Audio{Raise,Lower}Volume
-    pactl set-sink-volume alsa_output.pci-0000_25_00.3.analog-stereo {+,-}5%
-
-# System audio
-super + F{10,11}
-    pactl set-sink-volume alsa_output.pci-0000_25_00.3.analog-stereo {-,+}5%
-
+super + XF86AudioLowerVolume
+    amixer set Master '2%-'
+super + XF86AudioRaiseVolume
+    amixer set Master '2%+'
 
 #
 # bspwm hotkeys

@@ -8,6 +8,10 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCnHX5FjwtQpxkCGziuh4NJA "yt
 https://www.youtube.com/feeds/videos.xml?channel_id=UCaGev0JRG7Dp5c_R4ROADLw "yt" "~David Firth"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCbWcXB0PoqOsAvAdfzWMf0w "yt" "~Fredrik Knudsen"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC17ewSS9f2EnkCyMztCdoKA "yt" "~Gamozo"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCHnyfMqiRRG1u-2MsSQLbXA "yt" "~Veritasium"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCFhXFikryT4aFcLkLw2LBLA "yt" "~Nile Red"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC1D3yD4wlPMico0dss264XA "yt" "~Nile Blue"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC-tLyAaPbRZiYrOJxAGB7dQ "yt" "~Pursuit of Wonder"
 
 # Fun stuff
 https://www.youtube.com/feeds/videos.xml?channel_id=UCD6VugMZKRhSyzWEWA9W2fg "yt" "~Sseth"
@@ -17,7 +21,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UC2BPoBBBf_ecTMqljYqMnGQ "yt
 https://www.youtube.com/feeds/videos.xml?channel_id=UCo03CCLE1x34004iBmjcHnA "yt" "~Clipussi"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCdC0An4ZPNr_YiFiYoVbwaw "yt" "~Daily Dose of Internet"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC5nw0mUW1xM_0oEUU8WcuFw "yt" "~Slappybag"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCHnyfMqiRRG1u-2MsSQLbXA "yt" "~Veritasium"
 
 # Comics
 https://buttercupfestival.tumblr.com/rss "comics" "~Buttercup Festival"
@@ -25,12 +28,6 @@ http://www.threewordphrase.com/rss.xml "comics" "~Three Word Phrase"
 https://feeds.feedburner.com/buttersafe "comics" "~Butter Safe"
 https://www.oglaf.com/feeds/rss/ "comics" "~Oglaf"
 https://xkcd.com/rss.xml "comics" "~Xkcd"
-
-# Twitch streams
-https://twitchrss.appspot.com/vod/gamozo  "twitch" "~Gamozolabs"
-
-# Socs
-https://haunted.computer/@netspooky.rss "tech" "~netspooky"
 
 # Blogs and stuff
 https://feeds.feedburner.com/GynvaelColdwindEN "tech" "~Gynvael"
@@ -41,16 +38,16 @@ https://gamozolabs.github.io/feed.xml "tech" "~Gamozo"
 https://nullderef.com/index.xml "tech" "~NullDeref"
 https://www.secjuice.com/rss "tech" "~Secjuice"
 
-# Lobsters
-# Tags are put into individual feeds because it keeps them cleaner -- I am aware
-# that these can be put into a single link. Also, there used to be many more
-# tags here (pre-5962e7b) but most of them would spew out garbage.
-# The fields may be interesting but a major portion of their content is not.
-https://lobste.rs/t/c.rss         "lobste.rs" "~c"
-https://lobste.rs/t/rust.rss      "lobste.rs" "~rust"
-https://lobste.rs/t/law.rss       "lobste.rs" "~law"
-https://lobste.rs/t/satire.rss    "lobste.rs" "~satire"
-https://lobste.rs/t/rant.rss      "lobste.rs" "~rant"
-https://lobste.rs/t/security.rss  "lobste.rs" "~security"
-https://lobste.rs/t/privacy.rss   "lobste.rs" "~privacy"
-https://lobste.rs/t/reversing.rss "lobste.rs" "~reversing"
+# # Lobsters
+# # Tags are put into individual feeds because it keeps them cleaner -- I am aware
+# # that these can be put into a single link. Also, there used to be many more
+# # tags here (pre-5962e7b) but most of them would spew out garbage.
+# # The fields may be interesting but a major portion of their content is not.
+# https://lobste.rs/t/c.rss         "lobste.rs" "~c"
+# https://lobste.rs/t/rust.rss      "lobste.rs" "~rust"
+# https://lobste.rs/t/law.rss       "lobste.rs" "~law"
+# https://lobste.rs/t/satire.rss    "lobste.rs" "~satire"
+# https://lobste.rs/t/rant.rss      "lobste.rs" "~rant"
+# https://lobste.rs/t/security.rss  "lobste.rs" "~security"
+# https://lobste.rs/t/privacy.rss   "lobste.rs" "~privacy"
+# https://lobste.rs/t/reversing.rss "lobste.rs" "~reversing"
