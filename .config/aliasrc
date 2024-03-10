@@ -20,9 +20,5 @@ alias \
     nb="newsboat" \
     objdump="objdump -M intel" \
     nmap="nmap --system-dns" \
-    k="kubectl" \
-    kx="kubectx" \
-    kn="kubens" \
     ss="ss -lntpa" \
-    ruzickar="ssh ruzickar@ruzickarovo -i ~/.ssh/passwordless" \
     trinity="ssh trinity@matrix -i ~/.ssh/passwordless"
