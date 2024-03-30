@@ -25,7 +25,7 @@ set statusline+=%l\ \|\ %L
 set termguicolors
 set cursorline
 set colorcolumn=81
-colorscheme interspectre
+colorscheme morning
 syntax on
 
 " Indentation, width, comments
