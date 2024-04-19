@@ -22,19 +22,19 @@ bind-key n next-unread
 bind-key N prev-unread
 bind-key U show-urls
 
-color listnormal white default
-color listfocus white default underline
-color listfocus_unread white default bold underline
-color listnormal_unread white default bold
+color listnormal default default
+color listfocus default default underline
+color listfocus_unread default default bold underline
+color listnormal_unread default default bold
 color info red default bold
-color article white default
+color article default default
 color end-of-text-marker magenta default
 
 highlight article "(^Feed: |^Title: |^Author: |^Date: |^Link: )" magenta default
-highlight article "https?://[^ ]+" cyan default
+highlight article "https?://[^ ]+" blue default
 highlight article "\\[[0-9][0-9]*\\]" magenta default
 highlight article "\\[image\\ [0-9]+[^\]]*\\]" magenta default
-highlight article " .*\\(link\\)$" cyan default
+highlight article " .*\\(link\\)$" blue default
 highlight article " .*\\(image\\)$" blue default
 
 browser "xclip -r -selection clipboard <<<"

@@ -5,8 +5,8 @@ border_width=0
 color0='#000000'
 color1='#3B2668'
 
-bspc monitor HDMI-A-0 -d 1 2 3 4 5
-bspc monitor HDMI-A-1 -d 6 7 8 9 10
+bspc monitor DisplayPort-2 -d 1 2 3 4 5
+bspc monitor HDMI-A-0 -d 6 7 8 9 10
 
 bspc config border_width "$border_width"
 bspc config window_gap   "$wingap"

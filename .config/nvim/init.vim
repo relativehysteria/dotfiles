@@ -25,7 +25,11 @@ set statusline+=%l\ \|\ %L
 set termguicolors
 set cursorline
 set colorcolumn=81
-colorscheme morning
+if trim(system('should_use_light')) == "true"
+    colorscheme delek
+else
+    colorscheme interspectre
+endif
 syntax on
 
 " Indentation, width, comments
