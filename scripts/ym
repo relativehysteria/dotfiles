@@ -37,14 +37,10 @@ if len(argv) > 4:
         print("Incorrect index.")
         exit(1)
 
-    # And make sure the padding won't get fucked, e.g. if the index is 0000001
+    # Make sure the padding won't get fucked, e.g. if the index is 0000001
     if len(str(curnum)) - len(argv[4]) < 0:
         print("Don't pad your index.")
         exit(1)
-
-    # Zero pad the index
-    padding = '0' * (len(str(curnum)) - len(argv[4]))
-    curnum  = padding + argv[4]
 
 url     = argv[1].split('&')[0]
 name    = f"{curnum} {argv[2]} - {argv[3]}"
@@ -68,6 +64,8 @@ if len(str(curnum)) > songidx:
         for song in songs:
             exe.submit(rename, f"{gen}/{song}", f"{gen}/0{song}")
 
+
+
 # Options for yt-dlp; mp3 format for everything
 ydl_opts = {
     "format": "bestaudio/best",
@@ -85,7 +83,7 @@ with yt_dlp.YoutubeDL(ydl_opts) as ydl:
 
 # Add ID3 tags to it
 song = EasyID3(f"{outfile}.mp3")
-song["tracknumber"] = [str(curnum)]
+song["tracknumber"] = [f"{curnum:0{songidx}}"]
 song["composer"]    = [argv[2]]
 song["artist"]      = outartist
 song["album"]       = outalbum
