@@ -16,10 +16,10 @@ use_light() {
         (( $current_hour > $light_hour && $current_hour < $dark_hour )) || \
         (( $current_hour == $light_hour && $current_minute >= $light_minute )) || \
         (( $current_hour == $dark_hour && $current_minute < $dark_minute ))
+    elif (( $light_hour == $current_hour )); then
+        (( $current_minute >= $light_minute ))
     else
-        (( $current_hour > $light_hour || $current_hour < $dark_hour )) || \
-        (( $current_hour == $light_hour && $current_minute >= $light_minute )) || \
-        (( $current_hour == $dark_hour && $current_minute < $dark_minute ))
+        (( $current_hour < $dark_hour || ($current_hour == $dark_hour && $current_minute < $dark_minute) ))
     fi
 }
 
