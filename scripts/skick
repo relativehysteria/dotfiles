@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+
+from bs4 import BeautifulSoup
+from requests import get
+
+
+ARTISTS = {
+    "Rum Jungle": "3768296-rum-jungle",
+    "Bon Iver": "590705-bon-iver",
+    "Wolf Alice": "4126816-wolf-alice",
+    "Queen's Pleasure": "9329894-queens-pleasure",
+    "Jeff Rosenstock": "5806184-jeff-rosenstock",
+    "Ratboys": "5607023-ratboys",
+    "Royel Otis": "10162310-royel-otis",
+    "Mt. Joy": "7239669-mt-joy",
+    "Slow Pulp": "8868254-slow-pulp",
+}
+
+
+for (name, artist_path) in ARTISTS.items():
+    # Get the stuff
+    r = get(f"https://www.songkick.com/artists/{artist_path}")
+
+    # If we get blocked or something, idc
+    if not r.ok:
+        continue
+
+    # Find the header and check whether the band is touring
+    soup = BeautifulSoup(r.text, features="lxml")
+    header = soup.find("h2", class_="header-text")
+
+    # Modify the dictionary below our feet because we're psycho
+    if "find" in header.text.lower():
+        continue
+
+    # Find the closest gig details and save them
+    primary   = soup.find("strong", class_="primary-detail").text
+    secondary = soup.find("p",      class_="secondary-detail").text
+    time      = soup.find('div',    class_="local-upcoming-events-list").li.attrs["title"]
+    print(f"{name} | {primary}, {secondary} | {time}")
