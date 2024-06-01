@@ -10,18 +10,21 @@ light_minute=0
 dark_hour=20
 dark_minute=0
 
-# Function to check if current time falls within the specified range
-use_light() {
-    if (( $light_hour < $dark_hour )); then
-        (( $current_hour > $light_hour && $current_hour < $dark_hour )) || \
-        (( $current_hour == $light_hour && $current_minute >= $light_minute )) || \
-        (( $current_hour == $dark_hour && $current_minute < $dark_minute ))
-    elif (( $light_hour == $current_hour )); then
-        (( $current_minute >= $light_minute ))
-    else
-        (( $current_hour < $dark_hour || ($current_hour == $dark_hour && $current_minute < $dark_minute) ))
-    fi
-}
+# # Function to check if current time falls within the specified range
+# use_light() {
+#     if (( $light_hour < $dark_hour )); then
+#         (( $current_hour > $light_hour && $current_hour < $dark_hour )) || \
+#         (( $current_hour == $light_hour && $current_minute >= $light_minute )) || \
+#         (( $current_hour == $dark_hour && $current_minute < $dark_minute ))
+#     elif (( $light_hour == $current_hour )); then
+#         (( $current_minute >= $light_minute ))
+#     else
+#         (( $current_hour < $dark_hour || ($current_hour == $dark_hour && $current_minute < $dark_minute) ))
+#     fi
+# }
+#
+# use_light && echo "true" || echo "false"
+# use_light && exit 0 || exit 1
 
-use_light && echo "true" || echo "false"
-use_light && exit 0 || exit 1
+echo "false"
+exit 1
