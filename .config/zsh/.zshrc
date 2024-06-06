@@ -19,7 +19,7 @@ precmd() {
 PS1="%B%{$fg[green]%}%n%{$fg[cyan]%}@%{$fg[yellow]%}%M"
 
 # Colors for home computer
-if [ "$(hostname)" = "andromeda" ]; then
+if [ "$(cat /etc/hostname)" = "andromeda" ]; then
     PS1="%B%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[cyan]%}%M"
 fi
 
