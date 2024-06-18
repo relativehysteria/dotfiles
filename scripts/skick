@@ -1,35 +1,36 @@
 #!/usr/bin/env python
 
+from concurrent.futures import ThreadPoolExecutor
 from bs4 import BeautifulSoup
 from requests import get
 
 
-ARTISTS = {
-    "Rum Jungle": "3768296-rum-jungle",
-    "Bon Iver": "590705-bon-iver",
-    "Wolf Alice": "4126816-wolf-alice",
-    "Queen's Pleasure": "9329894-queens-pleasure",
-    "Jeff Rosenstock": "5806184-jeff-rosenstock",
-    "Ratboys": "5607023-ratboys",
-    "Royel Otis": "10162310-royel-otis",
-    "Mt. Joy": "7239669-mt-joy",
-    "Slow Pulp": "8868254-slow-pulp",
-    "Momma": "9582179-momma",
-    "Tamino": "8959074-tamino",
-    "Tom Rosenthal": "605621-tom-rosenthal",
-    "The Haunted Youth": "10149811-haunted-youth",
-    "Vypsaná Fixa": "120445-vypsana-fixa",
-    "Arcy Drive": "10213594-arcy-drive",
-}
+ARTISTS = [
+    "3768296-rum-jungle",
+    "590705-bon-iver",
+    "4126816-wolf-alice",
+    "9329894-queens-pleasure",
+    "5806184-jeff-rosenstock",
+    "5607023-ratboys",
+    "10162310-royel-otis",
+    "7239669-mt-joy",
+    "8868254-slow-pulp",
+    "9582179-momma",
+    "8959074-tamino",
+    "605621-tom-rosenthal",
+    "10149811-haunted-youth",
+    "120445-vypsana-fixa",
+    "10213594-arcy-drive",
+]
 
 
-for (name, artist_path) in ARTISTS.items():
+def scrape(artist_path):
     # Get the stuff
     r = get(f"https://www.songkick.com/artists/{artist_path}")
 
     # If we get blocked or something, idc
     if not r.ok:
-        continue
+        return
 
     # Find the header and check whether the band is touring
     soup = BeautifulSoup(r.text, features="lxml")
@@ -37,10 +38,18 @@ for (name, artist_path) in ARTISTS.items():
 
     # Modify the dictionary below our feet because we're psycho
     if "find" in header.text.lower():
-        continue
+        return
 
     # Find the closest gig details and save them
+    name      = soup.find("h1", class_="h0").text.strip()
     primary   = soup.find("strong", class_="primary-detail").text
     secondary = soup.find("p",      class_="secondary-detail").text
     time      = soup.find('div',    class_="local-upcoming-events-list").li.attrs["title"]
-    print(f"{name} | {primary}, {secondary} | {time}")
+    return f"{name}\n > {primary}, {secondary} \n > {time}\n"
+
+pool = ThreadPoolExecutor(max_workers=len(ARTISTS))
+
+for artist in pool.map(scrape, ARTISTS):
+    if artist is None:
+        continue
+    print(artist)
