@@ -14,6 +14,7 @@ export FILEZILLA_DIR="$SANDBOX/filezilla"
 export GHIDRA_DIR="$SANDBOX/ghidra"
 export PACKAGES="$HOME/documents/code/packages"
 export TOOLS="$PACKAGES/tools/"
+export DOTNET_ROOT="$XDG_DATA_HOME/dnet"
 
 # Default programs
 export EDITOR="nvim"
