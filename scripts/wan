@@ -1,0 +1,37 @@
+#!/bin/sh
+
+WLAN=wlan0
+WAN=enp1s0
+
+iwctl station wlan0 disconnect
+iwctl station wlan0 scan
+sleep 2
+iwctl station wlan0 connect "FBI minivan"
+
+sudo sysctl net.ipv4.ip_forward=1
+
+sudo ip addr add dev enp1s0 192.168.2.1/24
+sudo ip link set enp1s0 up
+
+sudo iptables -F
+sudo iptables -X
+
+sudo iptables -P INPUT ACCEPT
+sudo iptables -P FORWARD ACCEPT
+sudo iptables -P OUTPUT ACCEPT
+
+sudo iptables -t nat -A POSTROUTING -o wlan0 -j MASQUERADE
+sudo iptables -A FORWARD -i wlan0 -o enp1s0 -m state --state RELATED,ESTABLISHED -j ACCEPT
+sudo iptables -A FORWARD -i enp1s0 -o wlan0 -j ACCEPT
+
+
+msg="interface=$WAN"
+filename="/etc/dnsmasq.conf"
+grep "^$msg" "$filename" &>/dev/null
+[ $? = 1 ] && echo "$msg" > "$filename"
+
+msg="dhcp-range=192.168.2.50,192.168.2.150,12h"
+grep "^$msg" "$filename" &>/dev/null
+[ $? = 1 ] && echo "$msg" > "$filename"
+
+sudo systemctl start dnsmasq.service
