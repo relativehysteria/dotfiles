@@ -94,3 +94,4 @@ autocmd FileType *          call globals#SyntaxAfter()
 " Remove trailing whitespace and newlines on save
 autocmd BufWritePre * if &filetype != "markdown" | %s/\s\+$//e
 autocmd BufWritePre * if &filetype != "markdown" | %s/\n\+\%$//e
+autocmd FileType * setlocal textwidth=80
