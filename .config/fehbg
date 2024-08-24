@@ -1,3 +1,2 @@
 #!/bin/sh
-#feh --randomize --no-fehbg --bg-fill "$HOME/pictures/wallpapers/singleMonitor/comf/"
-feh --no-fehbg --bg-max "$HOME/pictures/saved/volition.png" "$HOME/pictures/saved/kim.jpg"
+feh --randomize --no-fehbg --bg-fill "$HOME/pictures/wallpapers/singleMonitor/rostov/"

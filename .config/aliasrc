@@ -21,4 +21,4 @@ alias \
     objdump="objdump -M intel" \
     nmap="nmap --system-dns" \
     ss="ss -lntpa" \
-    trinity="ssh trinity@matrix -i ~/.ssh/passwordless"
+    cdoc="cargo doc; rm -rf $DOWNLOAD_DIR/firefox/doc/; mv target/*/doc $DOWNLOAD_DIR/firefox/"
