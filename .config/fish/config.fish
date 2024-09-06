@@ -21,20 +21,15 @@ if status is-interactive
 
         # Git info
         set git_branch " "(git branch --show-current ^/dev/null 2>/dev/null)" "
+        if test -z "$git_branch"
+            set git_branch " "(git rev-parse --short HEAD 2>/dev/null)" "
+        end
 
         # Build the prompt
         echo -n $user_color(whoami)$at_color@$host_color(hostname)" "
         echo -n $bracket_color'['$path_color(prompt_pwd)$bracket_color']'
         echo -n $git_info_color$git_branch
         echo -n $prompt_symbol'$ '
-    end
-
-    function fish_right_prompt
-        set -l exit_status_color (set_color --bold red)
-
-        if test $status -ne 0
-            echo -n $exit_status_color $status
-        end
     end
 
     # Completion
