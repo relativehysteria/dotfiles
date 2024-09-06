@@ -8,4 +8,4 @@ setxkbmap -option caps:swapescape  & # swap escape and caps
 reset_sxhkd  & # start sxhkd
 
 # start the WM
-exec dbus-launch --exit-with-session $WM
+exec $WM

@@ -18,7 +18,7 @@ export DOTNET_ROOT="$XDG_DATA_HOME/dnet"
 export EDITOR="nvim"
 export TERMINAL="st"
 export BROWSER="firefox"
-export SHELL="zsh"
+export SHELL="fish"
 export READER="zathura"
 export WM="bspwm"
 
