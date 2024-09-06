@@ -1,1 +1,1 @@
-<virtual/libcrypt-2
+=gnome-base/librsvg-2.54.4-r1

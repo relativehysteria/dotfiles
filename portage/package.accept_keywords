@@ -3,11 +3,13 @@
 =net-misc/zerotier-1.6.4 ~amd64
 
 # vagrant
-=app-emulation/vagrant-2.2.19 ~amd64
-=dev-ruby/hashicorp-checkpoint-0.1.5-r1 ~amd64
-=dev-ruby/rubyzip-2.3.2-r1 ~amd64
-=dev-ruby/listen-3.7.1 ~amd64
-=dev-ruby/vagrant_cloud-3.0.5 ~amd64
+>=app-emulation/vagrant-2.2.19 ~amd64
+>=dev-ruby/hashicorp-checkpoint-0.1.5-r1 ~amd64
+>=dev-ruby/rubyzip-2.3.2-r1 ~amd64
+>=dev-ruby/listen-3.7.1 ~amd64
+>=dev-ruby/vagrant_cloud-3.0.5 ~amd64
+>=sys-cluster/k3s-1.25.4_p1 ~amd64
+>=app-misc/yq-3.1.0-r1 ~amd64
 
 # gtk for some dumb fucking reason
 >=net-libs/webkit-gtk-0 ~amd64
@@ -16,6 +18,7 @@
 =net-misc/yt-dlp-9999 **
 
 # rust
+=dev-util/rustup-9999 **
 =dev-lang/rust-bin-9999 **
 =dev-lang/rust-9999 **
 =virtual/rust-9999 **
@@ -59,6 +62,9 @@
 =games-util/lutris-9999 **
 >=dev-ruby/libusb-0.6.4 ~amd64
 >=net-libs/libsoup-3.2.2 ~amd64
+>=dev-python/pypresence-4.2.1 ~amd64
+>=dev-python/moddb-0.8.1 ~amd64
+>=dev-python/pyrate-limiter-2.8.2 ~amd64
 
 # redteaming and stuff
 =app-exploits/exploitdb-99999999 **
@@ -70,9 +76,18 @@
 >=dev-ruby/bundler-audit-0 ~amd64
 >=net-analyzer/wfuzz-1 ~amd64
 >=net-analyzer/nikto-1 ~amd64
+>=dev-lang/zig-bin-0 ~amd64
+>=app-eselect/eselect-zig-1 ~amd64
 
 # Cheat Engine in wine
 >=dev-python/ntlm-auth-1 ~amd64
 
 # :)
 =sys-apps/man-pages-9999 **
+=dev-util/ctags-99999999 **
+=sys-kernel/linux-firmware-99999999 **
+>=sys-kernel/gentoo-sources-0 ~amd64
+=x11-terms/kitty-9999 **
+=sys-process/nvtop-9999 **
+>=sci-biology/foldingathome-0 ~amd64
+=app-editors/neovim-9999 **

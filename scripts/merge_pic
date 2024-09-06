@@ -13,4 +13,4 @@ usage() {
 [ "$audio" = "" ]   && usage
 [ "$outfile" = "" ] && outfile="$audio-video.mp4"
 
-ffmpeg -i "$pic" -i "$audio" -c:v libx264 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest "$outfile"
+ffmpeg -loop 1 -i "$pic" -i "$audio" -c:v libx264 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest "$outfile"

@@ -40,7 +40,7 @@ def scrape(artist_path):
     header = soup.find("h2", class_="header-text")
 
     # Modify the dictionary below our feet because we're psycho
-    if "find" in header.text.lower():
+    if header is None or "find" in header.text.lower():
         return
 
     # Find the closest gig details and save them
