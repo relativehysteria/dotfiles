@@ -20,7 +20,7 @@ if status is-interactive
         end
 
         # Git info
-        set git_branch " "(git branch --show-current ^/dev/null)" "
+        set git_branch " "(git branch --show-current ^/dev/null 2>/dev/null)" "
 
         # Build the prompt
         echo -n $user_color(whoami)$at_color@$host_color(hostname)" "
