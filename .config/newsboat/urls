@@ -21,11 +21,9 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCWvq4kcdNI1r1jZKFw9TiUA "yt
 https://www.youtube.com/feeds/videos.xml?channel_id=UCcFOPnIMW5NtPKJAR0fDxkw "yt" "~Neurophile"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC6QYFutt9cluQ3uSM963_KQ "yt" "~Ninja Nerd"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCR2uRTQ53V_egXKFflMMaaw "yt" "~Artem Kirsanov"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC0QHWhjbe5fGJEPz3sVb6nw "yt" "~Dr. Mike"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCgBg0aacyJnw4qUnb1FlfEQ "yt" "~Anatomy Lab"
-https://www.youtube.com/feeds/videos.xml?channel_id=UCOkmZTdNgE2jTuqItaocbxQ "yt" "~Barrow Neuro Institute"
 
 # Fun stuff
+https://www.youtube.com/feeds/videos.xml?channel_id=UCdC0An4ZPNr_YiFiYoVbwaw "yt" "~Daily Dose"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCaGev0JRG7Dp5c_R4ROADLw "yt" "~David Firth"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCd-qVRcjoK9zjtDs_LRxSmw "yt" "~FUNKe"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCo03CCLE1x34004iBmjcHnA "yt" "~Clipussi"
@@ -43,14 +41,11 @@ https://feeds.feedburner.com/GynvaelColdwindEN "tech" "~Gynvael"
 https://connormcgarr.github.io/feed.xml "tech" "~Connor McGarr"
 https://travisdowns.github.io/feed.xml "tech" "~Travis Downs"
 https://fasterthanli.me/index.xml "tech" "~Faster Than Lime"
+https://thesquareplanet.com/feed.xml "tech" "~Jon Gjengset"
 https://gamozolabs.github.io/feed.xml "tech" "~Gamozo"
 https://nullderef.com/index.xml "tech" "~NullDeref"
 https://www.palettepoetry.com/poetry/feed "poetry" "~Palette"
 
 # # Lobsters
-# # Tags are put into individual feeds because it keeps them cleaner -- I am aware
-# # that these can be put into a single link. Also, there used to be many more
-# # tags here (pre-5962e7b) but most of them would spew out garbage.
-# # The fields may be interesting but a major portion of their content is not.
 https://lobste.rs/t/rust.rss      "lobste.rs" "~rust"
 https://lobste.rs/t/security.rss  "lobste.rs" "~security"
