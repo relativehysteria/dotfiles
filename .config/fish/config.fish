@@ -49,7 +49,7 @@ set -x XDG_DATA_DIRS /usr/share
 
 # Directories
 set -x SCRIPTDIR "$HOME/documents/code/scripts"
-set -x DOWNLOAD_DIR "$HOME/.local/share/downloads"
+set -x DOWNLOAD_DIR "$HOME/.local/share/downloads/firefox"
 set -x SANDBOX "$XDG_DATA_HOME/sandbox"
 set -x PACKAGES "$HOME/documents/code/packages"
 set -x TOOLS "$PACKAGES/tools/"

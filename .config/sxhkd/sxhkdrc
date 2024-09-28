@@ -1,6 +1,10 @@
-#
-# Basic stuff
-#
+# Recording
+KP_Insert
+    killall mpv
+
+KP_End
+    $HOME/videos/recording/joan/final_mix
+
 # Programs
 super + Return
     $TERMINAL

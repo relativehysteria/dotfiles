@@ -60,6 +60,11 @@ function ss
     command ss -lntpa $argv
 end
 
+function compand
+    command sox $argv[1] -p compand 0.3,1 6:-70,-60,-20 -5 -90 0.2 > $argv[2].wav
+end
+
+
 function cdoc
     command cargo doc
     rm -rf $DOWNLOAD_DIR/firefox/doc/
