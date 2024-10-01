@@ -5,6 +5,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UC--DwaiMV-jtO-6EvmKOnqg "yt
 https://www.youtube.com/feeds/videos.xml?channel_id=UCnHX5FjwtQpxkCGziuh4NJA "yt" "~Logan Smith"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC17ewSS9f2EnkCyMztCdoKA "yt" "~Gamozo"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC_iD0xppBwwsrM9DegC5cQQ "yt" "~Jon Gjengset"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCa6eh7gCkpPo5XXUDfygQQA "yt" "~Ippsec"
 
 # Mostly science
 https://www.youtube.com/feeds/videos.xml?channel_id=UCbWcXB0PoqOsAvAdfzWMf0w "yt" "~Fredrik Knudsen"
@@ -19,7 +20,6 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCWvq4kcdNI1r1jZKFw9TiUA "yt
 
 # Neurology and Medicine
 https://www.youtube.com/feeds/videos.xml?channel_id=UCcFOPnIMW5NtPKJAR0fDxkw "yt" "~Neurophile"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC6QYFutt9cluQ3uSM963_KQ "yt" "~Ninja Nerd"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCR2uRTQ53V_egXKFflMMaaw "yt" "~Artem Kirsanov"
 
 # Fun stuff
@@ -28,6 +28,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCaGev0JRG7Dp5c_R4ROADLw "yt
 https://www.youtube.com/feeds/videos.xml?channel_id=UCd-qVRcjoK9zjtDs_LRxSmw "yt" "~FUNKe"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCo03CCLE1x34004iBmjcHnA "yt" "~Clipussi"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCd25I7Y3-NEKNOoImYhQ-3g "yt" "~Henlips"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCm9K6rby98W8JigLoZOh6FQ "yt" "~Lockpicking Lawyer"
 
 # Comics
 https://buttercupfestival.tumblr.com/rss "comics" "~Buttercup Festival"
@@ -43,7 +44,10 @@ https://travisdowns.github.io/feed.xml "tech" "~Travis Downs"
 https://fasterthanli.me/index.xml "tech" "~Faster Than Lime"
 https://thesquareplanet.com/feed.xml "tech" "~Jon Gjengset"
 https://gamozolabs.github.io/feed.xml "tech" "~Gamozo"
+https://xcancel.com/vxunderground/rss "tech" "~vxug"
+https://xcancel.com/gamozolabs/rss "tech" "~Brandon"
 https://nullderef.com/index.xml "tech" "~NullDeref"
+https://krebsonsecurity.com/feed/ "tech" "~Krebs"
 https://www.palettepoetry.com/poetry/feed "poetry" "~Palette"
 
 # # Lobsters

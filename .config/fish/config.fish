@@ -80,7 +80,6 @@ set -x VAGRANT_DEFAULT_PROVIDER "libvirt"
 
 # Start the WM (Window Manager)
 if test (tty) = "/dev/tty1"
-    and not pgrep -q Xorg
-        $SCRIPTDIR/cleanallcache
-        exec startx "$XDG_CONFIG_HOME/X11/xinitrc"
+    $SCRIPTDIR/cleanallcache
+    exec startx "$XDG_CONFIG_HOME/X11/xinitrc"
 end
