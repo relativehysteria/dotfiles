@@ -19,7 +19,8 @@ function! globals#SyntaxAfter()
 	endif
 	syntax match _Delimiter "[.,;:]"
 
-	hi BrackParen guifg=#A00EFF guibg=NONE guisp=NONE gui=NONE ctermfg=140 ctermbg=53 cterm=NONE
+	"hi BrackParen guifg=#A00EFF guibg=NONE guisp=NONE gui=NONE ctermfg=140 ctermbg=53 cterm=NONE
+	hi BrackParen guifg=#9BCEE4 guibg=NONE guisp=NONE gui=NONE ctermfg=140 ctermbg=53 cterm=NONE
 
 	hi link _Paren BrackParen
 	hi link _Operator Operator

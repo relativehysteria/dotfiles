@@ -28,7 +28,12 @@ set colorcolumn=81
 if trim(system('should_use_light')) == "true"
     colorscheme delek
 else
-    colorscheme interspectre
+    colorscheme kanagawa
+    hi Normal guibg=None
+    hi LineNr guibg=None
+    hi CursorLine guibg=None
+    hi CursorLineNr guibg=None
+    hi ColorColumn guibg=#A01030
 endif
 syntax on
 
