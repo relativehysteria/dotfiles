@@ -1,0 +1,10 @@
+#!/bin/sh
+
+url="$1"
+[ "$url" = "" ] && exit
+
+json=$(yt-dlp -j --no-playlist "$url")
+artist=$(echo "$json" | jq -r '.artist')
+title=$(echo "$json" | jq -r '.title')
+
+ym "$url" "$artist" "$title"

@@ -34,6 +34,7 @@ else
     hi CursorLine guibg=None
     hi CursorLineNr guibg=None
     hi ColorColumn guibg=#A01030
+    hi SpellBad guifg=#D84587
 endif
 syntax on
 
