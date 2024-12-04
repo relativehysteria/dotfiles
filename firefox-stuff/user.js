@@ -373,3 +373,5 @@ user_pref("browser.quitShortcut.disabled", true);
 user_pref("browser.tabs.closeWindowWithLastTab", false);
 user_pref("ui.systemUsesDarkTheme", 1);
 user_pref("ui.prefersReducedMotion", 1);
+user_pref("browser.tabs.hoverPreview.enabled", false);
+user_pref("browser.tabs.hoverPreview.showThumbnails", false);
