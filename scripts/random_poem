@@ -8,10 +8,9 @@ poem=$(find "$POEMDIR" | grep .txt | shuf | tail -1)
 # Get the date the poem was last edited
 edit_date=$(stat -c %w $poem | awk '{print $1}')
 
-# Get the name of the collection and of the volume
+# Get the name of the collection
 path_parts=$(echo "$poem" | tr '/' ' ')
 collection=$(echo "$path_parts" | awk '{print $(NF-2)}')
-volume=$(echo "$path_parts" | awk '{print $(NF-1)}')
 
 # Get the path to the primary latex file
 tex_file="$POEMDIR/$collection/LATEX/poetry.tex"
@@ -20,16 +19,8 @@ tex_file="$POEMDIR/$collection/LATEX/poetry.tex"
 collection=$(grep ".newcommand{.booktitle}{" "$tex_file")
 collection="${collection:24:-1}"
 
-# If the volume has a special name, include the volume name as well
-if [ "$volume" != "poems" ]; then
-    # Get the name of the volume and strip the '\volumeheader{}' part
-    volume=$(grep -B 2 "include/$volume" "$tex_file" | head -1)
-    volume="${volume:14:-1}"
-fi
-
-# Print the collection and volume info
+# Print the collection info
 echo "Collection: $collection"
-[ "$volume" != "poems" ] && echo "Volume: $volume"
 
 # Print the poem
 echo && echo -n "($edit_date) " && cat "$poem"
