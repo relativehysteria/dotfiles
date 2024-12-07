@@ -26,16 +26,19 @@ set termguicolors
 set cursorline
 set colorcolumn=81
 if trim(system('should_use_light')) == "true"
-    colorscheme delek
+    " I don't know why, but shine into wildcharm creates pretty colors
+    colorscheme shine
+    colorscheme wildcharm
 else
     colorscheme kanagawa
-    hi Normal guibg=None
-    hi LineNr guibg=None
-    hi CursorLine guibg=None
-    hi CursorLineNr guibg=None
-    hi ColorColumn guibg=#A01030
-    hi SpellBad guifg=#D84587
+    autocmd FileType * call globals#SyntaxAfter()
 endif
+hi Normal guibg=None
+hi LineNr guibg=None
+hi CursorLine guibg=None
+hi CursorLineNr guibg=None
+hi ColorColumn guibg=#A01030
+hi SpellBad guifg=#D84587
 syntax on
 
 " Indentation, width, comments
@@ -94,8 +97,7 @@ vnoremap <Leader>y "+y
 vnoremap <Leader>Y "+Y
 
 " Misc stuff
-autocmd BufNewFile *.h      call globals#InsertHeaderGuardian()
-autocmd FileType *          call globals#SyntaxAfter()
+autocmd BufNewFile *.h call globals#InsertHeaderGuardian()
 
 " Remove trailing whitespace and newlines on save
 autocmd BufWritePre * if &filetype != "markdown" | %s/\s\+$//e
