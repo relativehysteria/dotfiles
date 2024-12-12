@@ -18,32 +18,46 @@
 =net-misc/yt-dlp-9999 **
 
 # rust
-=dev-util/rustup-9999 **
-=dev-lang/rust-bin-9999 **
-=dev-lang/rust-9999 **
-=virtual/rust-9999 **
->=dev-lang/rust-bin-1 ~amd64
->=dev-lang/rust-1 ~amd64
->=virtual/rust-1 ~amd64
+# =dev-util/rustup-9999 **
+# =dev-lang/rust-bin-9999 **
+# =dev-lang/rust-9999 **
+# =virtual/rust-9999 **
+# >=dev-lang/rust-bin-1 ~amd64
+# >=dev-lang/rust-1 ~amd64
+# >=virtual/rust-1 ~amd64
 
 # perf
 >=dev-util/perf-1 ~amd64
 
 # clang
->=sys-devel/clang-1 ~amd64
->=sys-devel/clang-runtime-1 ~amd64
->=sys-devel/clang-common-1 ~amd64
->=sys-devel/lld-toolchain-symlinks-1 ~amd64
->=sys-devel/llvm-toolchain-symlinks-1 ~amd64
->=sys-devel/clang-toolchain-symlinks-1 ~amd64
->=sys-devel/lld-1 ~amd64
->=sys-devel/llvm-1 ~amd64
->=sys-devel/llvmgold-1 ~amd64
->=sys-libs/compiler-rt-1 ~amd64
->=sys-libs/compiler-rt-sanitizers-1 ~amd64
->=sys-libs/libcxx-1 ~amd64
->=sys-libs/libcxxabi-1 ~amd64
->=sys-libs/libomp-1 ~amd64
+# move sys-devel/clang llvm-core/clang
+>=llvm-core/clang-1 ~amd64
+# move sys-devel/clang-runtime llvm-core/clang-runtime
+>=llvm-core/clang-runtime-1 ~amd64
+# move sys-devel/clang-common llvm-core/clang-common
+>=llvm-core/clang-common-1 ~amd64
+# move sys-devel/lld-toolchain-symlinks llvm-core/lld-toolchain-symlinks
+>=llvm-core/lld-toolchain-symlinks-1 ~amd64
+# move sys-devel/llvm-toolchain-symlinks llvm-core/llvm-toolchain-symlinks
+>=llvm-core/llvm-toolchain-symlinks-1 ~amd64
+# move sys-devel/clang-toolchain-symlinks llvm-core/clang-toolchain-symlinks
+>=llvm-core/clang-toolchain-symlinks-1 ~amd64
+# move sys-devel/lld llvm-core/lld
+>=llvm-core/lld-1 ~amd64
+# move sys-devel/llvm llvm-core/llvm
+>=llvm-core/llvm-1 ~amd64
+# move sys-devel/llvmgold llvm-core/llvmgold
+>=llvm-core/llvmgold-1 ~amd64
+# move sys-libs/compiler-rt llvm-runtimes/compiler-rt
+>=llvm-runtimes/compiler-rt-1 ~amd64
+# move sys-libs/compiler-rt-sanitizers llvm-runtimes/compiler-rt-sanitizers
+>=llvm-runtimes/compiler-rt-sanitizers-1 ~amd64
+# move sys-libs/libcxx llvm-runtimes/libcxx
+>=llvm-runtimes/libcxx-1 ~amd64
+# move sys-libs/libcxxabi llvm-runtimes/libcxxabi
+>=llvm-runtimes/libcxxabi-1 ~amd64
+# move sys-libs/libomp llvm-runtimes/openmp
+>=llvm-runtimes/openmp-1 ~amd64
 >=sys-libs/libunwind-1 ~amd64
 
 # apparmor
@@ -90,4 +104,5 @@
 =x11-terms/kitty-9999 **
 =sys-process/nvtop-9999 **
 >=sci-biology/foldingathome-0 ~amd64
-=app-editors/neovim-9999 **
+=x11-terms/alacritty-9999 **
+# =app-editors/neovim-9999 **

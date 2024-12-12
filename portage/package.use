@@ -32,7 +32,8 @@ dev-libs/libgpg-error         static-libs
 dev-libs/libpcre2             pcre16 -readline
 dev-libs/libpcre              -readline
 dev-libs/lzo                  static-libs
-dev-python/PyQt5              gui widgets
+dev-python/pyqt5              gui widgets declarative network
+dev-qt/qtcore                 icu
 mail-client/thunderbird       eme-free hwaccel lto
 media-fonts/noto              cjk
 media-gfx/feh                 curl
@@ -68,11 +69,10 @@ sys-apps/util-linux           ncurses
 sys-auth/pambase              elogind
 sys-boot/grub                 device-mapper doc mount -themes
 sys-devel/binutils            multitarget
-sys-devel/clang-runtime       libcxx
+llvm-core/clang-runtime       libcxx
 sys-devel/gcc                 doc graphite pie
-# move sys-devel/gdb dev-debug/gdb
 dev-debug/gdb                 xml source-highlight
-sys-devel/llvm                gold
+llvm-core/llvm                gold
 sys-fs/cryptsetup             luks1_default
 sys-kernel/gentoo-sources     symlink experimental
 sys-kernel/installkernel      grub
@@ -216,8 +216,8 @@ dev-libs/libgpg-error abi_x86_32
 >=media-libs/libglvnd-1.5.0 abi_x86_32
 >=x11-libs/libxshmfence-1.3.1 abi_x86_32
 >=x11-libs/libXxf86vm-1.1.5 abi_x86_32
->=sys-devel/clang-15.0.6 abi_x86_32
->=sys-devel/llvm-15.0.6 abi_x86_32
+>=llvm-core/clang-15.0.6 abi_x86_32
+>=llvm-core/llvm-15.0.6 abi_x86_32
 >=virtual/opengl-7.0-r2 abi_x86_32
 >=virtual/libelf-3-r1 abi_x86_32
 >=x11-libs/libvdpau-1.5 abi_x86_32
@@ -240,6 +240,7 @@ virtual/wine proton
 >=net-misc/curl-8.5.0 abi_x86_32
 >=net-dns/c-ares-1.25.0-r1 abi_x86_32
 >=net-libs/nghttp2-1.57.0 abi_x86_32
+>=net-libs/nghttp3-1.6.0 abi_x86_32
 >=app-accessibility/at-spi2-core-2.50.1 abi_x86_32
 >=dev-libs/dbus-glib-0.112 abi_x86_32
 >=dev-libs/nspr-4.35-r2 abi_x86_32
