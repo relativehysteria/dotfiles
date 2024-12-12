@@ -26,4 +26,5 @@ bspc config automatic_scheme "alternate"
 
 bspc config focus_follows_pointer "true"
 
-setsid st
+rm $XDG_RUNTIME_DIR/alacritty.sock
+cd ~; setsid alacritty --daemon --socket $XDG_RUNTIME_DIR/alacritty.sock

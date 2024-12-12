@@ -23,9 +23,9 @@ XF86AudioMute
     mpc stop &>/dev/null
 
 super + XF86AudioLowerVolume
-    amixer set Master '2%-'
+    amixer set Master '1%-'
 super + XF86AudioRaiseVolume
-    amixer set Master '2%+'
+    amixer set Master '1%+'
 
 #
 # bspwm hotkeys

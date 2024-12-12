@@ -25,10 +25,13 @@ set statusline+=%l\ \|\ %L
 set termguicolors
 set cursorline
 set colorcolumn=81
+
+syntax on
 if trim(system('should_use_light')) == "true"
     " I don't know why, but shine into wildcharm creates pretty colors
     colorscheme shine
     colorscheme wildcharm
+    hi LineNr guifg=#303030 guibg=None
 else
     colorscheme kanagawa
     autocmd FileType * call globals#SyntaxAfter()
@@ -39,7 +42,6 @@ hi CursorLine guibg=None
 hi CursorLineNr guibg=None
 hi ColorColumn guibg=#A01030
 hi SpellBad guifg=#D84587
-syntax on
 
 " Indentation, width, comments
 set textwidth=0
