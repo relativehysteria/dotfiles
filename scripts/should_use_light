@@ -11,7 +11,7 @@ light_minute=0
 dark_hour=15
 dark_minute=0
 
-# Function to check if current time falls within the specified range
+# Check if current time falls within the specified range
 use_light() {
     if (( $light_hour < $dark_hour )); then
         (( $current_hour > $light_hour && $current_hour < $dark_hour )) || \

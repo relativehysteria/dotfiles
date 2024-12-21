@@ -33,7 +33,7 @@ if trim(system('should_use_light')) == "true"
     colorscheme wildcharm
     hi LineNr guifg=#303030 guibg=None
 else
-    colorscheme kanagawa
+    colorscheme habamax
     autocmd FileType * call globals#SyntaxAfter()
 endif
 hi Normal guibg=None

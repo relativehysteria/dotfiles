@@ -3,14 +3,13 @@ super + Return
     $TERMINAL
 super + backslash
     dmenu_run
-super + c
-    clicker.py
 
 # Shortcuts
 Print
     printScreen
 super + r
     sudo rc-service tor restart
+
 
 # XF86 keys
 XF86Audio{Raise,Lower}Volume

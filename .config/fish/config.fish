@@ -57,7 +57,7 @@ set -x DOTNET_ROOT "$XDG_DATA_HOME/dnet"
 
 # Default programs
 set -x EDITOR "nvim"
-set -x TERMINAL "alacritty"
+set -x TERMINAL "st"
 set -x BROWSER "firefox"
 set -x SHELL "fish"
 set -x READER "zathura"
