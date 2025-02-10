@@ -9,6 +9,8 @@ Print
     printScreen
 super + r
     sudo rc-service tor restart
+super + c
+    transset
 
 
 # XF86 keys
