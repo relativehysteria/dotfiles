@@ -69,3 +69,15 @@ function cdoc
     rm -rf $DOWNLOAD_DIR/firefox/doc/
     mv target/*/doc $DOWNLOAD_DIR/firefox/
 end
+
+function cdbase
+    set dir (pwd)
+    while test "$dir" != "/"
+        if test -f "$dir/Cargo.toml"
+            cd "$dir"
+            return 0
+        end
+        set dir (dirname "$dir")
+    end
+    return 1
+end

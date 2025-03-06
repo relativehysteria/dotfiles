@@ -98,6 +98,10 @@ nnoremap <C-]> g<C-]>
 vnoremap <Leader>y "+y
 vnoremap <Leader>Y "+Y
 
+" vim easy align stuff
+xnoremap ga <Plug>(EasyAlign)
+nnoremap ga <Plug>(EasyAlign)
+
 " Misc stuff
 autocmd BufNewFile *.h call globals#InsertHeaderGuardian()
 

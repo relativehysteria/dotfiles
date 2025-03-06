@@ -6,26 +6,25 @@ current_minute=$(date +"%M" | sed 's/^0*//')
 [ "$current_minute" = "" ] && current_minute=0
 
 # Define light and dark times
-light_hour=8
+light_hour=7
 light_minute=0
-dark_hour=15
+dark_hour=18
 dark_minute=0
 
-# # Check if current time falls within the specified range
-# use_light() {
-#     if (( $light_hour < $dark_hour )); then
-#         (( $current_hour > $light_hour && $current_hour < $dark_hour )) || \
-#         (( $current_hour == $light_hour && $current_minute >= $light_minute )) || \
-#         (( $current_hour == $dark_hour && $current_minute < $dark_minute ))
-#     elif (( $light_hour == $current_hour )); then
-#         (( $current_minute >= $light_minute ))
-#     else
-#         (( $current_hour < $dark_hour || ($current_hour == $dark_hour && $current_minute < $dark_minute) ))
-#     fi
-# }
-#
-# use_light && echo "true" || echo "false"
-# use_light && exit 0 || exit 1
+# Check if current time falls within the specified range
+use_light() {
+    if (( $light_hour < $dark_hour )); then
+        (( $current_hour > $light_hour && $current_hour < $dark_hour )) || \
+        (( $current_hour == $light_hour && $current_minute >= $light_minute )) || \
+        (( $current_hour == $dark_hour && $current_minute < $dark_minute ))
+    elif (( $light_hour == $current_hour )); then
+        (( $current_minute >= $light_minute ))
+    else
+        (( $current_hour < $dark_hour || ($current_hour == $dark_hour && $current_minute < $dark_minute) ))
+    fi
+}
 
-echo "false"
+use_light && echo "true" || echo "false"
+use_light && exit 0 || exit 1
+
 exit 1

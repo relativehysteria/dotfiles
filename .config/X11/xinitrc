@@ -7,5 +7,10 @@ $XDG_CONFIG_HOME/fehbg  & # wallpaper
 setxkbmap -option caps:swapescape  & # swap escape and caps
 reset_sxhkd  & # start sxhkd
 
+# exercise!
+if [ "$(pgrep -f 'exercise_reminder')" = "" ]; then
+    exercise_reminder &
+end
+
 # start the WM
 exec $WM
