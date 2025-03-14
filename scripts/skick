@@ -57,8 +57,7 @@ def scrape(artist_path):
     name      = soup.find("h1", class_="h0").text.strip()
     primary   = soup.find("strong", class_="primary-detail").text
     secondary = soup.find("p",      class_="secondary-detail").text
-    time      = soup.find('div',    class_="local-upcoming-events-list").li.attrs["title"]
-    return f"{name}\n > {primary}, {secondary} \n > {time}\n"
+    return f"{name}\n > {primary}, {secondary}\n"
 
 pool = ThreadPoolExecutor(max_workers=len(ARTISTS))
 
