@@ -66,32 +66,23 @@ end
 
 function cdoc
     command cargo doc
-    rm -rf $DOWNLOAD_DIR/firefox/doc/
-    mv target/*/doc $DOWNLOAD_DIR/firefox/
+    rm -rf $DOWNLOAD_DIR/doc/
+    mv target/*/doc $DOWNLOAD_DIR/
 end
 
 function cdbase
-    # try to find a directory with Cargo.toml and cd into it
-    set dir (pwd)
-    while test "$dir" != "/"
-        if test -f "$dir/Cargo.toml"
-            cd "$dir"
-            return 0
+    set search_targets "Cargo.toml" ".git"
+
+    for target in $search_targets
+        set dir (pwd)
+        while test "$dir" != "/"
+            if test -e "$dir/$target"
+                cd "$dir"
+                return 0
+            end
+            set dir (dirname "$dir")
         end
-        set dir (dirname "$dir")
     end
 
-    # if no cargo.toml directory is found, maybe try looking for a .git
-    # directory
-    set dir (pwd)
-    while test "$dir" != "/"
-        if test -d "$dir/.git"
-            cd "$dir"
-            return 0
-        end
-        set dir (dirname "$dir")
-    end
-
-    # no directory found :(
     return 1
 end

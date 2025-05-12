@@ -36,6 +36,8 @@ else
     colorscheme habamax
     autocmd FileType * call globals#SyntaxAfter()
 endif
+"hi Comment guifg=#707095
+"hi SpecialComment guifg=#907090
 hi Normal guibg=None
 hi LineNr guibg=None
 hi CursorLine guibg=None
