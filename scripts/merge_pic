@@ -1,16 +1,23 @@
-#!/bin/sh
+#!/bin/bash
 
-pic="$1"
-audio="$2"
-outfile="$3"
+# Usage: ./merge_image_audio.sh image.jpg audio.mp3 output.mp4
 
-usage() {
-    echo "Usage: $0 <pic> <audio> [outfile]"
-    exit
-}
+# Check for correct number of arguments
+if [ "$#" -ne 3 ]; then
+    echo "Usage: $0 image_file audio_file output_file"
+    exit 1
+fi
 
-[ "$pic" = "" ]     && usage
-[ "$audio" = "" ]   && usage
-[ "$outfile" = "" ] && outfile="$audio-video.mp4"
+IMAGE="$1"
+AUDIO="$2"
+OUTPUT="$3"
 
-ffmpeg -loop 1 -i "$pic" -i "$audio" -c:v libx264 -tune stillimage -c:a aac -b:a 192k -pix_fmt yuv420p -shortest "$outfile"
+# Check if ffmpeg is installed
+if ! command -v ffmpeg &> /dev/null
+then
+    echo "Error: ffmpeg is not installed."
+    exit 1
+fi
+
+# Run ffmpeg to create the video
+ffmpeg -loop 1 -i "$IMAGE" -i "$AUDIO" -c:v libx264 -tune stillimage -c:a aac -b:a 192k -shortest "$OUTPUT"

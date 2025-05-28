@@ -6,9 +6,9 @@ current_minute=$(date +"%M" | sed 's/^0*//')
 [ "$current_minute" = "" ] && current_minute=0
 
 # Define light and dark times
-light_hour=3
+light_hour=8
 light_minute=0
-dark_hour=18
+dark_hour=20
 dark_minute=0
 
 # Check if current time falls within the specified range
