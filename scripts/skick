@@ -33,13 +33,15 @@ ARTISTS = [
     "1706007-pygmy-lush",
     "421785-toe",
     "1667252-enumclaw",
+    "10370116-racing-mount-pleasant",
     "8663139-haley-heynderickx",
 ]
 
 
 def scrape(artist_path):
     # Get the stuff
-    r = get(f"https://www.songkick.com/artists/{artist_path}")
+    hdrs = { "User-Agent": "Mozilla/5.0" }
+    r = get(f"https://www.songkick.com/artists/{artist_path}", headers=hdrs)
 
     # If we get blocked or something, idc
     if not r.ok:
