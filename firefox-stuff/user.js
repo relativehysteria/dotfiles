@@ -279,15 +279,9 @@ user_pref("browser.bookmarks.max_backups", 0);
 user_pref("browser.download.folderList", 2);
 user_pref("browser.download.useDownloadDir", true);
 
-// New tab
-user_pref("browser.newtabpage.enabled", false);
+// New tab and home page
+user_pref("browser.startup.homepage", "about:blank")
 user_pref("browser.newtab.url", "about:blank");
-user_pref("browser.newtabpage.activity-stream.feeds.snippets", false);
-user_pref("browser.newtabpage.activity-stream.enabled", false);
-user_pref("browser.newtabpage.enhanced", false);
-user_pref("browser.newtab.preload", false);
-user_pref("browser.newtabpage.directory.ping", "");
-user_pref("browser.newtabpage.directory.source", "data:text/plain,{}");
 
 // CSS
 user_pref("layout.css.visited_links_enabled", false);
