@@ -14,8 +14,6 @@ include disable-exec.inc
 include disable-programs.inc
 
 whitelist ${DOWNLOADS}
-whitelist ${HOME}/.config/BetterDiscord
-whitelist ${HOME}/.local/share/betterdiscordctl
 whitelist ${HOME}/pictures/screens
 whitelist ${HOME}/pictures/saved
 whitelist ${HOME}/music

@@ -65,8 +65,6 @@ set -x WM "bspwm"
 
 # Home clean up
 set -x LESSHISTFILE "-"
-set -x XAUTHORITY "$XDG_RUNTIME_DIR/Xauthority"
-set -x ZDOTDIR "$XDG_CONFIG_HOME/zsh"
 set -x GNUPGHOME "$XDG_DATA_HOME/gnupg"
 
 # Pass
@@ -74,12 +72,12 @@ set -x PASSWORD_STORE_DIR "$XDG_DATA_HOME/password_database"
 set -x PASSWORD_STORE_CLIP_TIME "20"
 set -x PASSWORD_STORE_GENERATED_LENGTH "128"
 
-# Other stuff
-set -x PATH "$SCRIPTDIR" "$HOME/.local/bin" "$CARGO_HOME/bin" $PATH
-set -x VAGRANT_DEFAULT_PROVIDER "libvirt"
+# Set up PATH
+set -Ue PATH
+set -x PATH "$SCRIPTDIR" "$HOME/.local/bin" $PATH
 
 # Start the WM (Window Manager)
 if test (tty) = "/dev/tty1"
     $SCRIPTDIR/cleanallcache
-    exec startx "$XDG_CONFIG_HOME/X11/xinitrc"
+    exec sway
 end

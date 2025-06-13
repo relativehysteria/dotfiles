@@ -1,0 +1,5 @@
+#/bin/sh
+exec pipewire
+exec pipewire-pulse
+exec wireplumber
+exec ~/.config/wallpaper

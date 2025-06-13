@@ -6,6 +6,7 @@ include firefox.local
 # Persistent global definitions
 include globals.local
 
+private ${HOME}/.local/share/sandbox/firefox
 noblacklist ${HOME}/.cache/mozilla
 noblacklist ${HOME}/.mozilla
 
