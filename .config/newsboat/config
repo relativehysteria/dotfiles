@@ -37,5 +37,5 @@ highlight article "\\[image\\ [0-9]+[^\]]*\\]" magenta default
 highlight article " .*\\(link\\)$" blue default
 highlight article " .*\\(image\\)$" blue default
 
-browser "xclip -r -selection clipboard <<<"
+browser "wl-copy <<<"
 macro o set browser

@@ -80,7 +80,6 @@ protocol unix,inet,inet6,netlink
 # seccomp sometimes causes issues (see #2951, #3267),
 # comment it or add 'ignore seccomp' to steam.local if so.
 #seccomp !ptrace
-shell none
 # tracelog breaks integrated browser
 #tracelog
 

@@ -38,7 +38,6 @@ nou2f
 novideo
 protocol inet,inet6,unix
 seccomp
-shell none
 
 disable-mnt
 private-cache
