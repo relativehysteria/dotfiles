@@ -375,3 +375,6 @@ user_pref("ui.systemUsesDarkTheme", 1);
 user_pref("ui.prefersReducedMotion", 1);
 user_pref("browser.tabs.hoverPreview.enabled", false);
 user_pref("browser.tabs.hoverPreview.showThumbnails", false);
+
+// AI.. i don't even know
+user_pref("browser.ml.chat.enabled", false);

@@ -38,6 +38,7 @@ else
 endif
 "hi Comment guifg=#707095
 "hi SpecialComment guifg=#907090
+hi StatusLine guibg=None
 hi Normal guibg=None
 hi LineNr guibg=None
 hi CursorLine guibg=None
@@ -110,4 +111,7 @@ autocmd BufNewFile *.h call globals#InsertHeaderGuardian()
 " Remove trailing whitespace and newlines on save
 autocmd BufWritePre * if &filetype != "markdown" | %s/\s\+$//e
 autocmd BufWritePre * if &filetype != "markdown" | %s/\n\+\%$//e
+
+" 80 char wrapping but also no colorcolumn on no filetype
 autocmd FileType * setlocal textwidth=80
+autocmd BufEnter,BufWinEnter * if &filetype ==# '' | setlocal colorcolumn= | endif
