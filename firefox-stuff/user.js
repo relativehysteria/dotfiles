@@ -52,7 +52,7 @@ user_pref("dom.enable_resource_timing", false);
 user_pref("dom.archivereader.enabled", false);
 user_pref("dom.flyweb.enabled", false);
 user_pref("browser.uitour.enabled", false);
-user_pref("browser.tabs.firefox-view", false)
+user_pref("browser.tabs.firefox-view", false);
 
 // Disable firefox accounts
 user_pref("identity.fxaccounts.enabled", false);
@@ -378,9 +378,6 @@ user_pref("browser.tabs.hoverPreview.showThumbnails", false);
 
 // AI.. i don't even know
 user_pref("browser.ml.chat.enabled", false);
-
-// Sync and stuff
-user_pref("identity.fxaccounts.enabled", false);
 
 // Get rid of the fucky tabs thing
 user_pref("browser.tabs.inTitlebar", 0);
