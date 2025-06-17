@@ -57,15 +57,18 @@ set -x DOTNET_ROOT "$XDG_DATA_HOME/dnet"
 
 # Default programs
 set -x EDITOR "nvim"
-set -x TERMINAL "st"
+set -x TERMINAL "foot"
 set -x BROWSER "firefox"
 set -x SHELL "fish"
 set -x READER "zathura"
-set -x WM "bspwm"
 
 # Home clean up
 set -x LESSHISTFILE "-"
 set -x GNUPGHOME "$XDG_DATA_HOME/gnupg"
+
+# Rust
+set -x CARGO_HOME "/opt/rust/cargo"
+set -x RUSTUP_HOME "/opt/rust/rustup"
 
 # Pass
 set -x PASSWORD_STORE_DIR "$XDG_DATA_HOME/password_database"
