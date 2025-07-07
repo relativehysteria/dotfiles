@@ -1,89 +1,154 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
-from sys import argv
-from os.path import expanduser
-from os import listdir, rename
-from concurrent.futures import ThreadPoolExecutor
-import yt_dlp
+import os
+import sys
+import re
+from os.path import expanduser, join
+from typing import List, Optional
 from mutagen.easyid3 import EasyID3
+from yt_dlp import YoutubeDL
 
-# Path to the general directory and all of the songs within it
-outartist = "Various Artists"
-outalbum  = "General"
-gen = expanduser(f"~/music/{outartist}/{outalbum}")
-songs = sorted(listdir(gen))
+def sanitize(name: str) -> str:
+    """Replace slashes with underscores and strip whitespace from a string."""
+    return re.sub(r'[\\/]', '_', name.strip())
 
-if len(argv) == 1:
-    print(f"{argv[0]} <url> <artist> <song_title> [index]")
-    exit()
+def get_existing_indices(song_dir: str) -> List[int]:
+    """
+    Get a sorted list of numerical indices from existing MP3 files in the
+    directory. Assumes filenames are like '0001 Artist - Title.mp3'.
+    """
+    indices = []
+    for fname in os.listdir(song_dir):
+        match = re.match(r'^(\d+)\s.+\.mp3$', fname)
+        if match:
+            indices.append(int(match.group(1)))
+    return sorted(indices)
 
-# Based on the last song in the directory, get the index of the song we are
-# about to add
-curnum = 1
-for num in [int(i.split()[0]) for i in songs]:
-    if curnum != num:
-        break
-    curnum += 1
+def find_next_index(existing_indices: List[int]) -> int:
+    """
+    Find the smallest missing index (a "skip") or return the next available
+    number. For example, from [1, 2, 4], return 3.
+    """
+    if not existing_indices:
+        return 1
+    for i in range(1, existing_indices[-1] + 2):
+        if i not in existing_indices:
+            return i
+    return existing_indices[-1] + 1
 
-# If we got an index as well, change the curnum
-if len(argv) > 4:
-    # Make sure it's a number
-    idx = int(argv[4])
+def normalize_filenames(song_dir: str, width: int) -> None:
+    """
+    Rename all MP3 files in the directory to have consistent zero-padded index
+    widths. Example: '42 Artist - Title.mp3' -> '042 Artist - Title.mp3'
+    """
+    for fname in os.listdir(song_dir):
+        match = re.match(r'^(\d+)(\s.+\.mp3)$', fname)
+        if match:
+            old_index, rest = match.groups()
+            new_index = f"{int(old_index):0{width}}"
+            new_name = f"{new_index}{rest}"
+            old_path = join(song_dir, fname)
+            new_path = join(song_dir, new_name)
+            if old_path != new_path:
+                os.rename(old_path, new_path)
 
-    # It mustn't be larger than the one that we have right now or smaller than 0
-    if idx > curnum or idx < 1:
-        print("Incorrect index.")
-        exit(1)
+def song_exists(song_dir: str, artist: str, title: str) -> Optional[str]:
+    """
+    Check if a song already exists by artist and title (case-insensitive).
+    Returns the existing index if found, otherwise None.
+    """
+    target = f"{artist} - {title}".lower()
+    for fname in os.listdir(song_dir):
+        if fname.lower().endswith('.mp3'):
+            # remove '.mp3' and split
+            parts = fname[:-4].split(' ', 1)
 
-    # Make sure the padding won't get fucked, e.g. if the index is 0000001
-    if len(str(curnum)) - len(argv[4]) < 0:
-        print("Don't pad your index.")
-        exit(1)
+            # return the index part
+            if len(parts) == 2 and parts[1].lower() == target:
+                return parts[0]
+    return None
 
-url     = argv[1].split('&')[0]
-name    = f"{curnum} {argv[2]} - {argv[3]}"
-outfile = f"{gen}/{name}"
+def download_song(url: str, out_path: str) -> None:
+    """
+    Use yt-dlp to download the given URL as an MP3 and save it to out_path.
+    yt-dlp appends .mp3 automatically via postprocessing.
+    """
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'outtmpl': out_path,
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
+        'quiet': False,
+        'no_warnings': True
+    }
+    with YoutubeDL(ydl_opts) as ydl:
+        ydl.download([url])
 
-# Make sure there's no duplicates
-for song in songs:
-    # Get rid of ".mp3" and the index
-    song_name = ' '.join(song[:-4].split()[1:])
+def add_id3_tags(filepath: str, index: int, artist: str, album_artist: str,
+                 album: str, title: str, width: int) -> None:
+    """
+    Add standard ID3 tags to the MP3 file using mutagen.
+    """
+    audio = EasyID3(filepath)
+    audio['tracknumber'] = [f"{index:0{width}}"]
+    audio['composer'] = [artist]
+    audio['artist'] = [album_artist]
+    audio['album'] = [album]
+    audio['title'] = [title]
+    audio.save()
 
-    # If the names match, this is a duplicate.
-    if song_name.lower() == f"{argv[2]} - {argv[3]}".lower():
-        print(f"Duplicate ({song.split()[0]}).")
-        exit()
+def main() -> None:
+    # Check argument count
+    if len(sys.argv) != 4:
+        print("Usage: ym \"Artist Name\" \"Song Title\" \"URL\"")
+        sys.exit(1)
 
-# If the current index would have more digits than the last one,
-# we have to rename every single file and start the old ones with a trailing '0'
-songidx = 0 if len(songs) == 0 else len(str(songs[-1].split()[0]))
-if len(str(curnum)) > songidx:
-    with ThreadPoolExecutor(max_workers=10) as exe:
-        for song in songs:
-            exe.submit(rename, f"{gen}/{song}", f"{gen}/0{song}")
+    # Parse and sanitize inputs
+    artist_raw, title_raw, url_raw = sys.argv[1:4]
+    artist = sanitize(artist_raw)
+    title = sanitize(title_raw)
+    url = url_raw.split('&')[0]
 
+    # Define output directory structure
+    outartist = "Various Artists"
+    outalbum = "General"
+    base_dir = expanduser(f"~/music/{outartist}/{outalbum}")
+    os.makedirs(base_dir, exist_ok=True)
 
+    # Check for duplicates before continuing
+    existing_index = song_exists(base_dir, artist, title)
+    if existing_index:
+        print(f"Duplicate found at index {existing_index}. Aborting.")
+        sys.exit(1)
 
-# Options for yt-dlp; mp3 format for everything
-ydl_opts = {
-    "format": "bestaudio/best",
-    "outtmpl": outfile,
-    "postprocessors": [{
-        "key": "FFmpegExtractAudio",
-        "preferredcodec": "mp3",
-        "preferredquality": "192",
-    }],
-}
+    # Determine the next index
+    existing_indices = get_existing_indices(base_dir)
+    new_index = find_next_index(existing_indices)
 
-# Download the song
-with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-    ydl.download([url])
+    # Determine width (digit count) for zero-padding
+    max_index = max(existing_indices + [new_index])
+    digit_width = len(str(max_index))
 
-# Add ID3 tags to it
-song = EasyID3(f"{outfile}.mp3")
-song["tracknumber"] = [f"{curnum:0{songidx}}"]
-song["composer"]    = [argv[2]]
-song["artist"]      = outartist
-song["album"]       = outalbum
-song["title"]       = [argv[3]]
-song.save()
+    # Normalize filenames in directory
+    normalize_filenames(base_dir, digit_width)
+
+    # Construct final filename and path
+    filename = f"{new_index:0{digit_width}} {artist} - {title}.mp3"
+    filepath = join(base_dir, filename.replace('"', "'"))
+
+    # Download the song
+    print(f"Downloading to {filepath}...")
+    download_song(url, filepath[:-4])
+
+    # Add ID3 tags
+    print("Adding ID3 tags...")
+    add_id3_tags(filepath, new_index, artist, outartist,
+                 outalbum, title, digit_width)
+
+    print(f"{filename}")
+
+if __name__ == "__main__":
+    main()

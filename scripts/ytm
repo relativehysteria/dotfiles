@@ -3,6 +3,7 @@
 url="$1"
 [ "$url" = "" ] && exit
 
+echo "Extracting info"
 json=$(yt-dlp -j --no-playlist "$url")
 artist=$(echo "$json" | jq -r '.artist')
 title=$(echo "$json" | jq -r '.title')
@@ -12,4 +13,4 @@ if [ "$artist" = "null" ]; then
     exit 1
 fi
 
-ym "$url" "$artist" "$title"
+ym "$artist" "$title" "$url"
