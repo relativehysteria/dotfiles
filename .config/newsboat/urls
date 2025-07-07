@@ -5,6 +5,7 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UC--DwaiMV-jtO-6EvmKOnqg "yt
 https://www.youtube.com/feeds/videos.xml?channel_id=UCnHX5FjwtQpxkCGziuh4NJA "yt" "~Logan Smith"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC17ewSS9f2EnkCyMztCdoKA "yt" "~Gamozo"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC_iD0xppBwwsrM9DegC5cQQ "yt" "~Jon Gjengset"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCbvDQKzAJ5GwCjTrv4FWkxg "yt" "~Jordan has no life"
 
 # Mostly science
 https://www.youtube.com/feeds/videos.xml?channel_id=UCbWcXB0PoqOsAvAdfzWMf0w "yt" "~Fredrik Knudsen"
@@ -39,8 +40,8 @@ https://travisdowns.github.io/feed.xml "tech" "~Travis Downs"
 https://fasterthanli.me/index.xml "tech" "~Faster Than Lime"
 https://thesquareplanet.com/feed.xml "tech" "~Jon Gjengset"
 https://gamozolabs.github.io/feed.xml "tech" "~Gamozo"
-https://www.palettepoetry.com/poetry/feed "poetry" "~Palette"
+https://this-week-in-rust.org/rss.xml "tech" "~This Week in Rust"
 
-# # Lobsters
+# Lobsters
 https://lobste.rs/t/rust.rss      "lobste.rs" "~rust"
 https://lobste.rs/t/security.rss  "lobste.rs" "~security"
