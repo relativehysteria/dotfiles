@@ -9,7 +9,7 @@ from mutagen.easyid3 import EasyID3
 from yt_dlp import YoutubeDL, DownloadError
 
 MUSIC_DIR = "~/music"
-VA = "TEST"
+VA = "Various Artists"
 ALBUM = "General"
 
 # Precompiled regex patterns for efficiency
