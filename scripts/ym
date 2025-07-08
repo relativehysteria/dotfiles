@@ -1,78 +1,76 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import os
 import sys
 import re
 from os.path import expanduser, join
-from typing import List, Optional
+from typing import List, Optional, Dict, Tuple
 from mutagen.easyid3 import EasyID3
-from yt_dlp import YoutubeDL
+from yt_dlp import YoutubeDL, DownloadError
+
+MUSIC_DIR = "~/music"
+VA = "TEST"
+ALBUM = "General"
+
+# Precompiled regex patterns for efficiency
+PATTERN_INDEX = re.compile(r'^(\d+)\s.+\.mp3$')
+PATTERN_NORMALIZE = re.compile(r'^(\d+)(\s.+\.mp3)$')
+PATTERN_SLASHES = re.compile(r'[\\/]')
 
 def sanitize(name: str) -> str:
-    """Replace slashes with underscores and strip whitespace from a string."""
-    return re.sub(r'[\\/]', '_', name.strip())
+    """Replace slashes with underscores and strip whitespace."""
+    return PATTERN_SLASHES.sub('_', name.strip())
 
-def get_existing_indices(song_dir: str) -> List[int]:
+def get_directory_data(song_dir: str) -> Tuple[List[int], Dict[str, str]]:
     """
-    Get a sorted list of numerical indices from existing MP3 files in the
-    directory. Assumes filenames are like '0001 Artist - Title.mp3'.
+    Scan directory once and return:
+    - Sorted list of existing indices
+    - Mapping of (artist - title) to index (lowercase keys)
     """
     indices = []
+    name_to_index = {}
+
     for fname in os.listdir(song_dir):
-        match = re.match(r'^(\d+)\s.+\.mp3$', fname)
+        match = PATTERN_INDEX.match(fname)
         if match:
-            indices.append(int(match.group(1)))
-    return sorted(indices)
+            index = match.group(1)
+            indices.append(int(index))
+
+            # Extract artist-title portion case-insensitively
+            name_part = fname[len(index)+1:-4].lower()
+            name_to_index[name_part] = index
+
+    return sorted(indices), name_to_index
 
 def find_next_index(existing_indices: List[int]) -> int:
-    """
-    Find the smallest missing index (a "skip") or return the next available
-    number. For example, from [1, 2, 4], return 3.
-    """
+    """Find the smallest missing index in sorted list."""
     if not existing_indices:
         return 1
-    for i in range(1, existing_indices[-1] + 2):
-        if i not in existing_indices:
-            return i
-    return existing_indices[-1] + 1
+    max_index = existing_indices[-1]
+
+    # No gaps
+    if len(existing_indices) == max_index:
+        return max_index + 1
+
+    # Find first gap
+    return next(i for i in range(1, max_index+2) if i not in existing_indices)
 
 def normalize_filenames(song_dir: str, width: int) -> None:
-    """
-    Rename all MP3 files in the directory to have consistent zero-padded index
-    widths. Example: '42 Artist - Title.mp3' -> '042 Artist - Title.mp3'
-    """
+    """Rename files to consistent zero-padded width."""
     for fname in os.listdir(song_dir):
-        match = re.match(r'^(\d+)(\s.+\.mp3)$', fname)
+        match = PATTERN_NORMALIZE.match(fname)
         if match:
             old_index, rest = match.groups()
             new_index = f"{int(old_index):0{width}}"
             new_name = f"{new_index}{rest}"
-            old_path = join(song_dir, fname)
-            new_path = join(song_dir, new_name)
-            if old_path != new_path:
-                os.rename(old_path, new_path)
-
-def song_exists(song_dir: str, artist: str, title: str) -> Optional[str]:
-    """
-    Check if a song already exists by artist and title (case-insensitive).
-    Returns the existing index if found, otherwise None.
-    """
-    target = f"{artist} - {title}".lower()
-    for fname in os.listdir(song_dir):
-        if fname.lower().endswith('.mp3'):
-            # remove '.mp3' and split
-            parts = fname[:-4].split(' ', 1)
-
-            # return the index part
-            if len(parts) == 2 and parts[1].lower() == target:
-                return parts[0]
-    return None
+            if fname != new_name:
+                os.rename(
+                    join(song_dir, fname),
+                    join(song_dir, new_name)
+                )
 
 def download_song(url: str, out_path: str) -> None:
-    """
-    Use yt-dlp to download the given URL as an MP3 and save it to out_path.
-    yt-dlp appends .mp3 automatically via postprocessing.
-    """
+    """Download audio and convert to MP3 with error handling."""
     ydl_opts = {
         'format': 'bestaudio/best',
         'outtmpl': out_path,
@@ -84,69 +82,78 @@ def download_song(url: str, out_path: str) -> None:
         'quiet': False,
         'no_warnings': True
     }
-    with YoutubeDL(ydl_opts) as ydl:
-        ydl.download([url])
+    try:
+        with YoutubeDL(ydl_opts) as ydl:
+            ydl.download([url])
+        return True
+    except DownloadError as e:
+        print(f"Download failed: {str(e).split(';')[0]}")
+        # Clean up partial files
+        if os.path.exists(out_path + '.mp3'):
+            os.remove(out_path + '.mp3')
+        return False
 
-def add_id3_tags(filepath: str, index: int, artist: str, album_artist: str,
-                 album: str, title: str, width: int) -> None:
-    """
-    Add standard ID3 tags to the MP3 file using mutagen.
-    """
+def add_id3_tags(filepath: str, index: int, composer: str,
+                 artist: str, album: str, title: str) -> None:
+    """Add ID3 tags."""
     audio = EasyID3(filepath)
-    audio['tracknumber'] = [f"{index:0{width}}"]
-    audio['composer'] = [artist]
-    audio['artist'] = [album_artist]
+    audio['tracknumber'] = [str(index)]
+    audio['composer'] = [composer]
+    audio['artist'] = [artist]
     audio['album'] = [album]
     audio['title'] = [title]
     audio.save()
 
 def main() -> None:
-    # Check argument count
     if len(sys.argv) != 4:
-        print("Usage: ym \"Artist Name\" \"Song Title\" \"URL\"")
+        print('Usage: ym "Artist Name" "Song Title" "URL"')
         sys.exit(1)
 
-    # Parse and sanitize inputs
-    artist_raw, title_raw, url_raw = sys.argv[1:4]
-    artist = sanitize(artist_raw)
-    title = sanitize(title_raw)
-    url = url_raw.split('&')[0]
+    # Parse the arguments
+    artist = sanitize(sys.argv[1])
+    title = sanitize(sys.argv[2])
+    url = sys.argv[3].split('&', 1)[0]
 
-    # Define output directory structure
-    outartist = "Various Artists"
-    outalbum = "General"
-    base_dir = expanduser(f"~/music/{outartist}/{outalbum}")
+    # Output directory setup
+    base_dir = expanduser(f"{MUSIC_DIR}/{VA}/{ALBUM}")
     os.makedirs(base_dir, exist_ok=True)
 
-    # Check for duplicates before continuing
-    existing_index = song_exists(base_dir, artist, title)
-    if existing_index:
-        print(f"Duplicate found at index {existing_index}. Aborting.")
+    # Single directory scan for both indices and name mapping
+    existing_indices, name_map = get_directory_data(base_dir)
+
+    # Check for duplicates using normalized name
+    normalized_name = f"{artist} - {title}".lower()
+    if normalized_name in name_map:
+        print(f"Duplicate index: {name_map[normalized_name]}.")
         sys.exit(1)
 
-    # Determine the next index
-    existing_indices = get_existing_indices(base_dir)
+    # Determine next index and padding width
     new_index = find_next_index(existing_indices)
+    digit_width = len(str(new_index))
 
-    # Determine width (digit count) for zero-padding
-    max_index = max(existing_indices + [new_index])
-    digit_width = len(str(max_index))
-
-    # Normalize filenames in directory
-    normalize_filenames(base_dir, digit_width)
+    # Normalize the indices of all filenames
+    if existing_indices and len(str(existing_indices[-1])) < digit_width:
+        normalize_filenames(base_dir, digit_width)
 
     # Construct final filename and path
     filename = f"{new_index:0{digit_width}} {artist} - {title}.mp3"
     filepath = join(base_dir, filename.replace('"', "'"))
 
     # Download the song
-    print(f"Downloading to {filepath}...")
-    download_song(url, filepath[:-4])
+    print(f"Downloading to {filename}...")
+    if not download_song(url, filepath[:-4]):
+        sys.exit(1)
 
-    # Add ID3 tags
+    # Add ID3 tags with proper artist mapping
     print("Adding ID3 tags...")
-    add_id3_tags(filepath, new_index, artist, outartist,
-                 outalbum, title, digit_width)
+    add_id3_tags(
+        filepath=filepath,
+        index=new_index,
+        composer=artist,
+        artist=VA,
+        album=ALBUM,
+        title=title
+    )
 
     print(f"{filename}")
 
