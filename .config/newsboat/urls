@@ -37,10 +37,13 @@ https://googleprojectzero.blogspot.com/feeds/posts/default "tech" "~Project Zero
 https://feeds.feedburner.com/GynvaelColdwindEN "tech" "~Gynvael"
 https://connormcgarr.github.io/feed.xml "tech" "~Connor McGarr"
 https://travisdowns.github.io/feed.xml "tech" "~Travis Downs"
-https://fasterthanli.me/index.xml "tech" "~Faster Than Lime"
-https://thesquareplanet.com/feed.xml "tech" "~Jon Gjengset"
-https://gamozolabs.github.io/feed.xml "tech" "~Gamozo"
-https://this-week-in-rust.org/rss.xml "tech" "~This Week in Rust"
+# Rust specifically
+https://fasterthanli.me/index.xml "tech" "rust" "~Faster Than Lime"
+https://thesquareplanet.com/feed.xml "tech" "rust" "~Jon Gjengset"
+https://gamozolabs.github.io/feed.xml "tech" "rust" "~Gamozo"
+https://this-week-in-rust.org/rss.xml "tech" "rust" "~This Week in Rust"
+https://smallcultfollowing.com/babysteps//atom.xml "tech" "rust" "~Niko Matsakis"
+https://blog.yoshuawuyts.com/rss.xml "tech" "rust" "~Yoshua Wuyts"
 
 # Lobsters
 https://lobste.rs/t/rust.rss      "lobste.rs" "~rust"
