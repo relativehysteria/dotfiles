@@ -129,14 +129,15 @@ def main() -> None:
 
     # Determine next index and padding width
     new_index = find_next_index(existing_indices)
-    digit_width = len(str(new_index))
+    last_digit_width = len(str(existing_indices[-1]))
+    new_digit_width = max(last_digit_width, len(str(new_index)))
 
     # Normalize the indices of all filenames
-    if existing_indices and len(str(existing_indices[-1])) < digit_width:
-        normalize_filenames(base_dir, digit_width)
+    if existing_indices and last_digit_width < new_digit_width:
+        normalize_filenames(base_dir, new_digit_width)
 
     # Construct final filename and path
-    filename = f"{new_index:0{digit_width}} {artist} - {title}.mp3"
+    filename = f"{new_index:0{new_digit_width}} {artist} - {title}.mp3"
     filepath = join(base_dir, filename.replace('"', "'"))
 
     # Download the song
