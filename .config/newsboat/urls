@@ -44,6 +44,7 @@ https://gamozolabs.github.io/feed.xml "tech" "rust" "~Gamozo"
 https://this-week-in-rust.org/rss.xml "tech" "rust" "~This Week in Rust"
 https://smallcultfollowing.com/babysteps//atom.xml "tech" "rust" "~Niko Matsakis"
 https://blog.yoshuawuyts.com/rss.xml "tech" "rust" "~Yoshua Wuyts"
+https://without.boats/index.xml "tech" "rust" "~Without Boats"
 
 # Lobsters
 https://lobste.rs/t/rust.rss      "lobste.rs" "~rust"
