@@ -115,7 +115,7 @@ autocmd BufEnter,BufWinEnter * if &filetype ==# '' | setlocal colorcolumn= | end
 lua << EOF
 require('lspconfig').rust_analyzer.setup{
     on_attach = function(client, bufnr)
-        -- Disable everything except definition and semantic tokens for syntax
+        -- Disable everything except definition
         client.server_capabilities.documentRangeFormattingProvider = false
         client.server_capabilities.codeActionProvider = false
         client.server_capabilities.hoverProvider = false
@@ -124,6 +124,7 @@ require('lspconfig').rust_analyzer.setup{
         client.server_capabilities.referencesProvider = false
         client.server_capabilities.completionProvider = false
         client.server_capabilities.diagnosticProvider = false
+        client.server_capabilities.semanticTokensProvider = nil
 
         -- Suppress diagnostics
         vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
