@@ -69,8 +69,7 @@ set sidescrolloff=15
 " Function keys
 nnoremap <F1> :setlocal spell!<CR>
 nnoremap <F2> :call tex#Compile()<CR>
-nnoremap <F3> :TagbarToggle<CR>
-nnoremap <F4> :set list!<CR>
+nnoremap <F3> :set list!<CR>
 
 " Capitalization
 nnoremap <Tab> g~iw
@@ -94,9 +93,6 @@ noremap <C-M-j> <C-W>J
 noremap <C-M-k> <C-W>K
 noremap <C-M-l> <C-W>L
 
-" Tags quality of life
-nnoremap <C-]> g<C-]>
-
 " Copy into clipboard
 vnoremap <Leader>y "+y
 vnoremap <Leader>Y "+Y
@@ -115,3 +111,25 @@ autocmd BufWritePre * if &filetype != "markdown" | %s/\n\+\%$//e
 " 80 char wrapping but also no colorcolumn on no filetype
 autocmd FileType * setlocal textwidth=80
 autocmd BufEnter,BufWinEnter * if &filetype ==# '' | setlocal colorcolumn= | endif
+
+lua << EOF
+require('lspconfig').rust_analyzer.setup{
+    on_attach = function(client, bufnr)
+        -- Disable everything except definition and semantic tokens for syntax
+        client.server_capabilities.documentRangeFormattingProvider = false
+        client.server_capabilities.codeActionProvider = false
+        client.server_capabilities.hoverProvider = false
+        client.server_capabilities.renameProvider = false
+        client.server_capabilities.signatureHelpProvider = false
+        client.server_capabilities.referencesProvider = false
+        client.server_capabilities.completionProvider = false
+        client.server_capabilities.diagnosticProvider = false
+
+        -- Suppress diagnostics
+        vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+    end,
+}
+EOF
+
+" LSP quality of life stuff
+nnoremap <C-]> <cmd>lua vim.lsp.buf.definition()<CR>
