@@ -34,10 +34,9 @@ if trim(system('should_use_light')) == "true"
     hi LineNr guifg=#303030 guibg=None
 else
     colorscheme habamax
+    hi SpecialComment guifg=#906080
     autocmd FileType * call globals#SyntaxAfter()
 endif
-"hi Comment guifg=#707095
-"hi SpecialComment guifg=#907090
 hi StatusLine guibg=None
 hi Normal guibg=None
 hi LineNr guibg=None
