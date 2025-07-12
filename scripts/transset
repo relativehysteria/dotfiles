@@ -1,4 +1,0 @@
-#!/bin/sh
-percentile=$(echo | dmenu)
-[ $percentile -z ] && percentile=1
-/usr/bin/transset $percentile
