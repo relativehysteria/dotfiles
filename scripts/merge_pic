@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Usage: ./merge_image_audio.sh image.jpg audio.mp3 output.mp4
 
