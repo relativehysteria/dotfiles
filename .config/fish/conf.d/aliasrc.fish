@@ -80,3 +80,23 @@ function cdbase
 
     return 1
 end
+
+function cinfo
+    set has_non_flag 0
+
+    # Check if any argument is NOT a flag (doesn't start with '-')
+    for arg in $argv
+        if not string match -qr '^-' -- $arg
+            set has_non_flag 1
+            break
+        end
+    end
+
+    # Run with --offline
+    cargo info --offline $argv
+
+    # Fallback only if offline failed AND a non-flag argument was passed
+    if test $status -ne 0; and test $has_non_flag -eq 1
+        cargo info $argv
+    end
+end
