@@ -24,16 +24,16 @@ user_pref("media.getusermedia.screensharing.enabled", false);
 user_pref("media.getusermedia.audiocapture.enabled", false);
 
 // Beacons
-user_pref("becaon.enabled", false);
+user_pref("beacon.enabled", false);
 
 // Clipboard stuff
-user_pref("dom.evet.clipboardevents.enabled", false);
-user_pref("dom.allo_cut_copy", false);
+user_pref("dom.event.clipboardevents.enabled", false);
+user_pref("dom.allow_cut_copy", false);
 user_pref("clipboard.plainTextOnly", true);
 
 // Speech recognition and synthesis
 user_pref("media.webspeech.recognition.enable", false);
-user_pref("media.webspeech.synth.enabledl", false);
+user_pref("media.webspeech.synth.enabled", false);
 
 // Pings
 user_pref("browser.send_pings", false);
