@@ -64,6 +64,14 @@ function compand
     command sox $argv[1] -p compand 0.3,1 6:-70,-60,-20 -5 -90 0.2 > $argv[2].wav
 end
 
+function find
+    command fd $argv
+end
+
+function lines
+    command tokei $argv
+end
+
 function cdbase
     set search_targets "Cargo.toml" ".git"
 
