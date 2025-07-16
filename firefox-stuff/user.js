@@ -27,8 +27,8 @@ user_pref("media.getusermedia.audiocapture.enabled", false);
 user_pref("beacon.enabled", false);
 
 // Clipboard stuff
-user_pref("dom.event.clipboardevents.enabled", false);
-user_pref("dom.allow_cut_copy", false);
+// user_pref("dom.event.clipboardevents.enabled", false);
+// user_pref("dom.allow_cut_copy", false);
 user_pref("clipboard.plainTextOnly", true);
 
 // Speech recognition and synthesis
