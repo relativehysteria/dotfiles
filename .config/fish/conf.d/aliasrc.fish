@@ -108,3 +108,15 @@ function cinfo
         cargo info $argv
     end
 end
+
+function cdoc
+    cargo doc --document-private-items; or begin
+        return 1
+    end
+
+    rm -rf "$DOWNLOAD_DIR/doc"
+
+    mv "target/doc" "$DOWNLOAD_DIR/" ; or begin
+        return 1
+    end
+end

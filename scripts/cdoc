@@ -1,5 +1,0 @@
-#/bin/sh
-
-cargo doc
-rm -rf "$DOWNLOAD_DIR/doc"
-mv "target/doc" "$DOWNLOAD_DIR/"
