@@ -110,7 +110,7 @@ function cinfo
 end
 
 function cdoc
-    cargo doc --document-private-items; or begin
+    cargo doc --all-features --document-private-items; or begin
         return 1
     end
 
