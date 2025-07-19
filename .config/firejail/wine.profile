@@ -7,37 +7,3 @@ include wine.local
 include globals.local
 
 private /steam
-
-#noblacklist ${HOME}/.cache/winetricks
-#noblacklist ${HOME}/.Steam
-#noblacklist ${HOME}/.local/share/Steam
-#noblacklist ${HOME}/.local/share/steam
-#noblacklist ${HOME}/.steam
-#noblacklist ${HOME}/.wine
-#noblacklist /tmp/.wine-*
-#
-#include disable-common.inc
-#include disable-devel.inc
-#include disable-interpreters.inc
-#include disable-programs.inc
-#
-## whitelist /usr/share/wine
-## include whitelist-usr-share-common.inc
-#include whitelist-var-common.inc
-#
-## some applications don't need allow-debuggers, comment the next line
-## if it is not necessary (or put 'ignore allow-debuggers' in your wine.local)
-#allow-debuggers
-#caps.drop all
-## net none
-#netfilter
-#nodvd
-#nogroups
-#nonewprivs
-#noroot
-## nosound
-#notv
-## novideo
-#seccomp
-#
-#private-dev
