@@ -1,15 +1,16 @@
-# Tech stuff
+"─────────┤ Tech stuff"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCCkVMojdBWS-JtH7TliWkVg "yt" "~Gynvael Coldwind"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC3S8vxwRfqLBdIhgRlDRVzw "yt" "~Stacksmashing"
-https://www.youtube.com/feeds/videos.xml?channel_id=UC--DwaiMV-jtO-6EvmKOnqg "yt" "~OALabs"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC__DwaiMV-jtO-6EvmKOnqg "yt" "~OALabs"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCnHX5FjwtQpxkCGziuh4NJA "yt" "~Logan Smith"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCbvDQKzAJ5GwCjTrv4FWkxg "yt" "~Jordan has no life"
-# Rust
+
+"─────────┤ Rust"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC17ewSS9f2EnkCyMztCdoKA "yt" "rust" "~Gamozo"
 https://www.youtube.com/feeds/videos.xml?channel_id=UC_iD0xppBwwsrM9DegC5cQQ "yt" "rust" "~Jon Gjengset"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCUMwY9iS8oMyWDYIe6_RmoA "yt" "rust" "~No Boiler Plate"
 
-# Mostly science
+"─────────┤ Mosty science"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCbWcXB0PoqOsAvAdfzWMf0w "yt" "~Fredrik Knudsen"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCHnyfMqiRRG1u-2MsSQLbXA "yt" "~Veritasium"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCFhXFikryT4aFcLkLw2LBLA "yt" "~Nile Red"
@@ -17,10 +18,10 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UC1D3yD4wlPMico0dss264XA "yt
 https://www.youtube.com/feeds/videos.xml?channel_id=UCTpmmkp1E4nmZqWPS-dl5bg "yt" "~Quanta Zine"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCWvq4kcdNI1r1jZKFw9TiUA "yt" "~ScienceClic"
 
-# Neurology and Medicine
+"─────────┤ Neurology and medicine"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCcFOPnIMW5NtPKJAR0fDxkw "yt" "~Neurophile"
 
-# Fun stuff
+"─────────┤ Fun stuff"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCdC0An4ZPNr_YiFiYoVbwaw "yt" "~Daily Dose"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCaGev0JRG7Dp5c_R4ROADLw "yt" "~David Firth"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCd-qVRcjoK9zjtDs_LRxSmw "yt" "~FUNKe"
@@ -28,16 +29,17 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCo03CCLE1x34004iBmjcHnA "yt
 https://www.youtube.com/feeds/videos.xml?channel_id=UCd25I7Y3-NEKNOoImYhQ-3g "yt" "~Henlips"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCkr1aZ2ROxYvKqP-qneaWQg "yt" "~Tamto"
 
-# Comics
+"─────────┤ Comics"
 https://www.oglaf.com/feeds/rss/ "comics" "~Oglaf"
 https://webcomicname.com/rss "comics" "~Webcomic Name"
 
-# Blogs and stuff
+"─────────┤ Blogs"
 https://googleprojectzero.blogspot.com/feeds/posts/default "tech" "~Project Zero"
 https://feeds.feedburner.com/GynvaelColdwindEN "tech" "~Gynvael"
 https://connormcgarr.github.io/feed.xml "tech" "~Connor McGarr"
 https://travisdowns.github.io/feed.xml "tech" "~Travis Downs"
-# Rust specifically
+
+"─────────┤ Rust blogs"
 https://fasterthanli.me/index.xml "tech" "rust" "~Faster Than Lime"
 https://thesquareplanet.com/feed.xml "tech" "rust" "~Jon Gjengset"
 https://gamozolabs.github.io/feed.xml "tech" "rust" "~Gamozo"
@@ -49,7 +51,11 @@ https://without.boats/index.xml "tech" "rust" "~Without Boats"
 https://blog.rust-lang.org/feed.xml "tech" "rust" "~Rust"
 https://blog.rust-lang.org/inside-rust/feed.xml "tech" "rust" "~Inside Rust"
 
-# Lobsters
-https://lobste.rs/t/rust.rss "lobste.rs" "rust" "~l/Rust"
-https://lobste.rs/t/security.rss "lobste.rs" "~l/Security"
-https://lobste.rs/~steveklabnik/stories.rss "lobste.rs" "rust" "~l/Steve Klabnik"
+"─────────┤ Linux mailing list"
+https://lore.kernel.org/io-uring/new.atom "tech" "linux" "~io_uring"
+https://lore.kernel.org/rust-for-linux/new.atom "tech" "linux" "rust" "~Rust"
+
+"─────────┤ Lobsters"
+https://lobste.rs/t/rust.rss "lobste.rs" "rust" "~Rust"
+https://lobste.rs/t/security.rss "lobste.rs" "~Security"
+https://lobste.rs/~steveklabnik/stories.rss "lobste.rs" "rust" "~Steve Klabnik"
