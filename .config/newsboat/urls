@@ -56,6 +56,7 @@ https://lore.kernel.org/io-uring/new.atom "tech" "linux" "~io_uring"
 https://lore.kernel.org/rust-for-linux/new.atom "tech" "linux" "rust" "~Rust"
 
 "─────────┤ Watched development"
+https://openrss.org/github.com/tokio-rs/tokio/issues/7266 "tech" "~#7266 tokio │ Support io_uring for file I/O"
 
 "─────────┤ Lobsters"
 https://lobste.rs/t/rust.rss "lobste.rs" "rust" "~Rust"
