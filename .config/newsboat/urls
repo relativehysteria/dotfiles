@@ -55,6 +55,9 @@ https://blog.rust-lang.org/inside-rust/feed.xml "tech" "rust" "~Inside Rust"
 https://lore.kernel.org/io-uring/new.atom "tech" "linux" "~io_uring"
 https://lore.kernel.org/rust-for-linux/new.atom "tech" "linux" "rust" "~Rust"
 
+"─────────┤ Watched development"
+https://github.com/tokio-rs/tokio/commits/mox692/iouring_add_open.atom "tech" "rust" "~tokio iouring open"
+
 "─────────┤ Lobsters"
 https://lobste.rs/t/rust.rss "lobste.rs" "rust" "~Rust"
 https://lobste.rs/t/security.rss "lobste.rs" "~Security"
