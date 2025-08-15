@@ -82,7 +82,7 @@ listing=$(echo $json | jq '
     | select(.kind == "EP" or .kind == "Album")')
 
 # Extract the URIs
-uris=$(echo $listing | jq -s '.[] | .uri')
+uris_dates=$(echo $listing | jq -s '.[] | .uri + " " + .date')
 
 echo '#!/bin/sh'
 echo
@@ -90,6 +90,7 @@ echo 'MUSIC_ROOT="~/music"'
 echo
 echo 'download() {'
 echo '    url="https://music.youtube.com/channel/MPREb_$1"'
+echo '    date=$2'
 echo '    yt-dlp -x --audio-format mp3 --embed-metadata \'
 echo '        -o "$MUSIC_ROOT/%(artist)s/%(album)s/%(playlist_index)s %(title)s.%(ext)s" \'
 echo '        --parse-metadata ":(?P<meta_description>)" \'
@@ -97,12 +98,13 @@ echo '        --parse-metadata ":(?P<meta_synopsis>)" \'
 echo '        --parse-metadata ":(?P<meta_purl>)" \'
 echo '        --parse-metadata "playlist_index:%(meta_track)s" \'
 echo '        --parse-metadata "playlist_title:(?:Album - )?(?P<album>.+)" \'
-echo '        --parse-metadata "upload_date:^(?P<meta_date>\d{4})" \'
+echo '        --parse-metadata "$date:%(meta_date)s" \'
 echo '        "$url"'
 echo '}'
 echo
 echo "$listing" | jq -s -r '.[] | "# " + .uri + " │ " + .date + " │ " + (.kind | if . == "EP" then "EP   " else . end) + " │ " + .title'
 echo
-echo "for uri in $(echo $uris); do"
-echo '    download "$uri"'
+echo "for entry in $(echo $uris_dates); do"
+echo '    set -- $entry'
+echo '    download "$1" "$2"'
 echo 'done'
