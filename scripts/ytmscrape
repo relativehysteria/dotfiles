@@ -4,12 +4,26 @@ main_url="$1"
 
 # Help message
 print_help() {
-    echo    "$0 <url>"
-    echo    "    Scrapes albums from \"music.youtube.com/\""
+    echo "Usage: $0 <youtube_music_channel_url>"
     echo
-    echo    "    Example usage:"
-    echo -n "        $0 \"https://lyndsiealguire.bandcamp.com/music\""
-    echo    " > result.txt"
+    echo "    Scrapes albums and EPs from a YouTube Music channel and outputs a"
+    echo "    shell script that can download them using yt-dlp."
+    echo
+    echo "    The URL must be a valid YouTube Music channel link like:"
+    echo "        https://music.youtube.com/channel/UCXXXXXXXXXXXX"
+    echo
+    echo "Example:"
+    echo "    $0 \"https://music.youtube.com/channel/UCfkOw3FuazQrUHTbp8a01_g\" > download_albums.sh"
+    echo "    chmod +x download_albums.sh"
+    echo "    ./download_albums.sh"
+    echo
+    echo "To speed up downloads by running them in parallel, add '&' at the end of the"
+    echo "'download' call in the generated script:"
+    echo
+    echo "    download \"\$uri\" &"
+    echo
+    echo "Then run the script and optionally limit concurrency like so:"
+    echo "    ./download_albums.sh; wait"
 }
 
 # Check that a url was provided
