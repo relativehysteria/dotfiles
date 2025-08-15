@@ -95,6 +95,7 @@ echo '        -o "$MUSIC_ROOT/%(artist)s/%(album)s/%(playlist_index)s %(title)s.
 echo '        --parse-metadata ":(?P<meta_description>)" \'
 echo '        --parse-metadata ":(?P<meta_synopsis>)" \'
 echo '        --parse-metadata ":(?P<meta_purl>)" \'
+echo '        --parse-metadata "playlist_index:%(meta_track)s" \'
 echo '        --parse-metadata "playlist_title:(?:Album - )?(?P<album>.+)" \'
 echo '        --parse-metadata "upload_date:^(?P<meta_date>\d{4})" \'
 echo '        "$url"'
