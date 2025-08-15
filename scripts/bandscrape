@@ -8,7 +8,7 @@ print_help() {
     echo    "    Scrapes albums and EPs from \"*.bandcamp.com/music*\""
     echo
     echo    "    Example usage:"
-    echo -n "        bandscrape \"https://lyndsiealguire.bandcamp.com/music\""
+    echo -n "        $0 \"https://lyndsiealguire.bandcamp.com/music\""
     echo    " > result.txt"
 }
 
