@@ -1,0 +1,93 @@
+#!/bin/sh
+
+main_url="$1"
+
+# Help message
+print_help() {
+    echo    "$0 <url>"
+    echo    "    Scrapes albums from \"music.youtube.com/\""
+    echo
+    echo    "    Example usage:"
+    echo -n "        $0 \"https://lyndsiealguire.bandcamp.com/music\""
+    echo    " > result.txt"
+}
+
+# Check that a url was provided
+[ "$main_url" = "" ] && print_help && exit
+
+# Get the channel ID
+channel_id=$(echo "$main_url" | sed -e 's/\/channel\/MPADUC/\/channel\/UC/g')
+channel_id=$(echo "$channel_id" | sed -e 's/.*music.youtube.com\/channel\/UC\(.*\)?*.*/\1/g')
+
+# Make sure that we got the correct channel ID.
+# Technically `wc -c` should be better here, but this is more future proof
+if echo $channel_id | grep -q "://music"; then
+    echo "Not a channel url"
+    exit
+fi
+
+# Get the discography listing
+json=$(curl 'https://music.youtube.com/youtubei/v1/browse' \
+  --compressed \
+  -X POST \
+  -H 'User-Agent: Mozilla/5.0' \
+  -H 'Accept: application/json' \
+  -H 'Content-Type: application/json' \
+  --data-raw "$(jq -c -n \
+      --arg date "$(date +%Y%m01)" \
+      --arg channel_id "MPADUC$channel_id"  \
+    '{
+        "context": {
+            "client": {
+                "clientName": "WEB_REMIX",
+                "clientVersion": ("1." + $date + ".00.00")
+            }
+        },
+        "browseId": $channel_id
+    }'
+)")
+
+# Get the required fields and only keep EPs and albums
+listing=$(echo $json | jq '
+    .contents
+    .singleColumnBrowseResultsRenderer
+    .tabs[0]
+    .tabRenderer
+    .content
+    .sectionListRenderer
+    .contents[0]
+    .gridRenderer
+    .items[]
+    | .musicTwoRowItemRenderer
+    | {
+        title: .title.runs[0].text,
+        kind: .subtitle.runs[0].text,
+        date: .subtitle.runs[2].text,
+        uri: .navigationEndpoint.browseEndpoint.browseId | sub("^MPREb_"; ""),
+    }
+    | select(.kind == "EP" or .kind == "Album")')
+
+# Extract the URIs
+uris=$(echo $listing | jq -s '.[] | .uri')
+
+echo '#!/bin/sh'
+echo
+echo 'MUSIC_ROOT="~/music"'
+echo
+echo 'download() {'
+echo '    url="https://music.youtube.com/channel/MPREb_$1"'
+echo '    yt-dlp -x --audio-format mp3 --embed-metadata \'
+echo '        -o "$MUSIC_ROOT/%(artist)s/%(album)s/%(playlist_index)s %(title)s.%(ext)s" \'
+echo '        --parse-metadata ":(?P<meta_description>)" \'
+echo '        --parse-metadata ":(?P<meta_synopsis>)" \'
+echo '        --parse-metadata ":(?P<meta_purl>)" \'
+echo '        --parse-metadata "playlist_title:(?:Album - )?(?P<album>.+)" \'
+echo '        --parse-metadata "upload_date:^(?P<meta_date>\d{4})" \'
+echo '        "$url"'
+echo '}'
+echo
+echo "$listing" | jq -s -r '.[] | "# " + .uri + " │ " + .date + " │ " + (.kind | if . == "EP" then "EP   " else . end) + " │ " + .title'
+echo
+echo "for uri in $(echo $uris); do"
+echo '    download "$uri"'
+echo 'done'
