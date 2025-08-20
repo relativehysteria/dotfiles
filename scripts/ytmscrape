@@ -30,7 +30,8 @@ print_help() {
 [ "$main_url" = "" ] && print_help && exit
 
 # Get the channel ID
-channel_id=$(echo "$main_url" | sed -e 's/\/channel\/MPADUC/\/channel\/UC/g')
+channel_id=$(echo "$main_url" | sed -e 's/\/browse\//\/channel\//g')
+channel_id=$(echo "$channel_id" | sed -e 's/\/channel\/MPADUC/\/channel\/UC/g')
 channel_id=$(echo "$channel_id" | sed -e 's/.*music.youtube.com\/channel\/UC\(.*\)?*.*/\1/g')
 
 # Make sure that we got the correct channel ID.
