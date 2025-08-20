@@ -96,7 +96,7 @@ uris_dates=$(echo $listing | jq -s '.[] | .uri + " " + .date')
 
 echo '#!/bin/sh'
 echo
-echo 'MUSIC_ROOT="~/music"'
+echo 'MUSIC_ROOT="$HOME/music"'
 echo
 echo 'download() {'
 echo '    url="https://music.youtube.com/channel/MPREb_$1"'
