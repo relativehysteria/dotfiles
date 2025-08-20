@@ -63,6 +63,14 @@ json=$(curl 'https://music.youtube.com/youtubei/v1/browse' \
     }'
 )")
 
+# Get the channel/artist name. This will be used as the main artist tag for all
+# albums. The actual album artist (often different or featuring others) will go
+# in the composer tag. This keeps all albums grouped under one artist
+# (e.g. MF DOOM) even if they have multiple contributors.
+artist="$(echo $json | jq -r '.header.musicHeaderRenderer.title.runs[0].text')"
+artist_regex=$(printf '%s' "$artist" | sed -e 's/[][\/.^$*+?{}()|"]/\\&/g')
+artist=$(printf '%s' "$artist" | sed 's/\\/\\\\/g; s/"/\\"/g; s/\$/\\\$/g')
+
 # Get the required fields and only keep EPs and albums
 listing=$(echo $json | jq '
     .contents
@@ -92,7 +100,8 @@ echo 'MUSIC_ROOT="~/music"'
 echo
 echo 'download() {'
 echo '    url="https://music.youtube.com/channel/MPREb_$1"'
-echo '    date=$2'
+echo '    date="$2"'
+echo
 echo '    yt-dlp -x --audio-format mp3 --embed-metadata \'
 echo '        -o "$MUSIC_ROOT/%(artist)s/%(album)s/%(playlist_index)s %(title)s.%(ext)s" \'
 echo '        --parse-metadata ":(?P<meta_description>)" \'
@@ -101,13 +110,16 @@ echo '        --parse-metadata ":(?P<meta_purl>)" \'
 echo '        --parse-metadata "playlist_index:%(meta_track)s" \'
 echo '        --parse-metadata "playlist_title:(?:Album - )?(?P<album>.+)" \'
 echo '        --parse-metadata "$date:%(meta_date)s" \'
+echo '        --parse-metadata "artist:%(composer)s" \'
+echo "        --parse-metadata \"$artist:%(artist)s\" \\"
+echo "        --replace-in-metadata \"composer\" \"$artist_regex(?:, )?\" \"\" \\"
 echo '        "$url"'
 echo '}'
 echo
 echo 'while IFS= read -r line; do'
 echo '    IFS="│"; set -- $(printf "%s\n" "$line")'
 echo '    ident=$(echo "$1" | sed -e "s/^ *//; s/ *$//")'
-echo '    year=$(echo "$2" | sed -e "s/^ *//; s/ *$//")'
+echo '    date=$(echo "$2" | sed -e "s/^ *//; s/ *$//")'
 echo '    download "$ident" "$date"'
 echo 'done << ───────────────────┤'
 echo "$listing" | jq -s -r '.[] | .uri + " │ " + .date + " │ " + (.kind | if . == "EP" then "EP   " else . end) + " │ " + .title'
