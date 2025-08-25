@@ -35,7 +35,8 @@ input * {
 
 bindsym $mod+Return exec $TERMINAL
 bindsym $mod+backslash exec dmenu_run
-bindsym Print exec printScreen
+bindsym Print exec print_screen
+bindsym Scroll_Lock exec toggle_mic
 bindsym $mod+p exec swaymsg input "*" xkb_layout us
 bindsym $mod+Shift+p exec swaymsg input "*" xkb_layout "cz(qwerty)"
 
