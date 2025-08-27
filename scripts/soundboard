@@ -22,8 +22,6 @@ check_system_compatibility() {
 }
 
 start_mixer() {
-    echo "Starting soundboard..."
-
     # Resolve defaults
     DEFAULT_SINK=$(pactl get-default-sink)
     DEFAULT_MIC_SRC=$(pactl get-default-source)
@@ -68,15 +66,13 @@ start_mixer() {
     # Set the mixed monitor as the system default microphone
     pactl set-default-source "$MIX_SINK.monitor"
 
-    echo "Soundboard ready."
+    echo "Full state at: $STATE_FILE"
     echo "System default mic is now: $MIX_SINK.monitor"
     echo "Send MPV to: pulse/$SOUNDBOARD_SINK"
-    echo "For example: mpv --audio-device=pulse/$SOUNDBOARD_SINK <file>"
+    echo "For example: mpv --audio-device=\"pulse/$SOUNDBOARD_SINK\" <file>"
 }
 
 stop_mixer() {
-    echo "Stopping soundboard..."
-
     # Make sure we have state to restore
     if [ ! -f "$STATE_FILE" ]; then
         echo "No state file; nothing to stop."
@@ -100,7 +96,6 @@ stop_mixer() {
     fi
 
     rm -f "$STATE_FILE"
-    echo "Soundboard stopped."
 }
 
 check_system_compatibility
