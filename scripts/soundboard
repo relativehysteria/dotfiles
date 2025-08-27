@@ -48,8 +48,14 @@ start_mixer() {
     # 3) soundboard input -> default output (so the audio can be heard in the system)
     LB_SOUNDBOARD_TO_SYS=$(pactl load-module module-loopback source="$SOUNDBOARD_SINK.monitor" sink="$DEFAULT_SINK" latency_msec=50)
 
-    # Save previous default source (microphone) to restore later
-    echo "$SOUNDBOARD_SINK_ID" "$MIX_SINK_ID" "$LB_MIC_TO_MIX" "$LB_SOUNDBOARD_TO_MIX" "$LB_SOUNDBOARD_TO_SYS" "$DEFAULT_MIC_SRC" > "$STATE_FILE"
+    # Save the state (with the previous default microphone) to restore later
+    echo "# DO NOT EDIT. Automatically generated." > "$STATE_FILE"
+    echo "SOUNDBOARD_SINK_ID='$SOUNDBOARD_SINK_ID'" >> "$STATE_FILE"
+    echo "MIX_SINK_ID='$MIX_SINK_ID'" >> "$STATE_FILE"
+    echo "LB_MIC_TO_MIX='$LB_MIC_TO_MIX'" >> "$STATE_FILE"
+    echo "LB_SOUNDBOARD_TO_MIX='$LB_SOUNDBOARD_TO_MIX'" >> "$STATE_FILE"
+    echo "LB_SOUNDBOARD_TO_SYS='$LB_SOUNDBOARD_TO_SYS'" >> "$STATE_FILE"
+    echo "DEFAULT_MIC_SRC='$DEFAULT_MIC_SRC'" >> "$STATE_FILE"
 
     # Set the mixed monitor as the system default microphone
     pactl set-default-source "$MIX_SINK.monitor"
@@ -70,7 +76,7 @@ stop_mixer() {
     fi
 
     # Read the IDs back
-    read SOUNDBOARD_SINK_ID MIX_SINK_ID LB_MIC_TO_MIX LB_SOUNDBOARD_TO_MIX LB_SOUNDBOARD_TO_SYS DEFAULT_MIC_SRC < "$STATE_FILE"
+    . "$STATE_FILE"
 
     # Unload in reverse-ish order
     pactl unload-module "$LB_SOUNDBOARD_TO_SYS"
