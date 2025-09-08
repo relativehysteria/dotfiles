@@ -1,0 +1,23 @@
+#!/bin/sh
+
+[ -z $1 ] && exit
+
+# Extract the channel ID
+id=$(echo "$1" | sed 's/.*@\([a-zA-Z0-9._-]\+\).*/\1/;t; s/^\([a-zA-Z0-9._-]\+\)$/\1/')
+
+# Get the data
+res=$(curl -s 'https://www.youtube.com/youtubei/v1/navigation/resolve_url' \
+  -H 'Content-Type: application/json' \
+  -H 'User-Agent: Mozilla/5.0' \
+  --data-raw "{
+    'context': {
+      'client': {
+        'clientName': 'WEB',
+        'clientVersion': '2.20230622.10.00'
+      }
+    },
+    'url': 'www.youtube.com/@$id'
+}")
+
+# Echo the channel browse ID
+echo "$res" | jq -r '.endpoint.browseEndpoint.browseId'
