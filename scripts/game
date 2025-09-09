@@ -19,7 +19,7 @@ game_list=$(cat "$cache_file")
 update_cache &
 
 # Display the game list and let the user choose
-game=$(echo $game_list | tr ' ' '\n' | dmenu -l 50)
+game=$(echo $game_list | tr ' ' '\n' | wmenu -l 50)
 
 # Exit if no game is selected
 if [ -z "$game" ]; then

@@ -34,7 +34,7 @@ input * {
 # app keybinds and shortcuts
 
 bindsym $mod+Return exec $TERMINAL
-bindsym $mod+backslash exec dmenu_run
+bindsym $mod+backslash exec wmenu-run
 bindsym Print exec print_screen
 bindsym Scroll_Lock exec toggle_mic
 bindsym $mod+p exec swaymsg input "*" xkb_layout us
