@@ -25,6 +25,8 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCd-qVRcjoK9zjtDs_LRxSmw "yt
 https://www.youtube.com/feeds/videos.xml?channel_id=UCo03CCLE1x34004iBmjcHnA "yt" "~Clipussi"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCd25I7Y3-NEKNOoImYhQ-3g "yt" "~Henlips"
 https://www.youtube.com/feeds/videos.xml?channel_id=UCkr1aZ2ROxYvKqP-qneaWQg "yt" "~Tamto"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCWYSiz0rqNEJ0mX4a45Lhrw "yt" "~Nick Alex"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCBJY0_6cB6q1THgfokwpQxA "yt" "~Herdyn"
 
 "─────────┤ Comics"
 https://www.oglaf.com/feeds/rss/ "comics" "~Oglaf"
@@ -35,6 +37,11 @@ https://googleprojectzero.blogspot.com/feeds/posts/default "tech" "~Project Zero
 https://feeds.feedburner.com/GynvaelColdwindEN "tech" "~Gynvael"
 https://connormcgarr.github.io/feed.xml "tech" "~Connor McGarr"
 https://travisdowns.github.io/feed.xml "tech" "~Travis Downs"
+https://archie-osu.github.io/feed.xml "tech" "~Archie"
+
+"─────────┤ Twitter"
+https://nitter.privacyredirect.com/vxunderground/rss "twitter" "~vx-underground"
+https://nitter.privacyredirect.com/gamozolabs/rss "twitter" "~Gamozo"
 
 "─────────┤ Rust blogs"
 https://fasterthanli.me/index.xml "tech" "rust" "~Faster Than Lime"
