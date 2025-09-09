@@ -112,8 +112,8 @@ echo '        --parse-metadata "playlist_title:(?:Album - )?(?P<album>.+)" \'
 echo '        --parse-metadata "$date:%(meta_date)s" \'
 echo '        --parse-metadata "artist:%(composer)s" \'
 echo "        --replace-in-metadata \"artist\" \"^.*$\" \"$artist\" \\"
-echo "        --replace-in-metadata \"composer\" \"$artist_regex(?:, )?\" \"\" \\"
-echo "        --replace-in-metadata \"composer\" \", $\" \"\" \\"
+echo "        --replace-in-metadata \"composer\" \"(?i)$artist_regex(?:, )?\" \"\" \\"
+echo "        --replace-in-metadata \"composer\" \", *$\" \"\" \\"
 echo '        "$url"'
 echo '}'
 echo
