@@ -55,10 +55,6 @@ https://without.boats/index.xml "tech" "rust" "~Without Boats"
 https://blog.rust-lang.org/feed.xml "tech" "rust" "~Rust"
 https://blog.rust-lang.org/inside-rust/feed.xml "tech" "rust" "~Inside Rust"
 
-"─────────┤ Linux mailing list"
-https://lore.kernel.org/io-uring/new.atom "tech" "linux" "~io_uring"
-https://lore.kernel.org/rust-for-linux/new.atom "tech" "linux" "rust" "~Rust"
-
 "─────────┤ Watched development"
 https://openrss.org/github.com/tokio-rs/tokio/issues/7266 "tech" "~#7266 tokio │ Support io_uring for file I/O"
 
