@@ -72,6 +72,10 @@ function lines
     command tokei $argv
 end
 
+function clang
+    command clang -fdiagnostics-color=always $argv
+end
+
 function cdbase
     set search_targets "Cargo.toml" ".git"
 

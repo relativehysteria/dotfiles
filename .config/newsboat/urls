@@ -55,9 +55,6 @@ https://without.boats/index.xml "tech" "rust" "~Without Boats"
 https://blog.rust-lang.org/feed.xml "tech" "rust" "~Rust"
 https://blog.rust-lang.org/inside-rust/feed.xml "tech" "rust" "~Inside Rust"
 
-"─────────┤ Watched development"
-https://openrss.org/github.com/tokio-rs/tokio/issues/7266 "tech" "~#7266 tokio │ Support io_uring for file I/O"
-
 "─────────┤ Lobsters"
 https://lobste.rs/t/rust.rss "lobste.rs" "rust" "~Rust"
 https://lobste.rs/t/security.rss "lobste.rs" "~Security"

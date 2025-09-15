@@ -30,9 +30,11 @@ endfunction
 " insertion of C/C++ header guardians
 function! globals#InsertHeaderGuardian()
 	let GuardianName = substitute(toupper(expand("%:t")), "\\.", "_", "g")
-	execute "normal! i#ifndef " . GuardianName
-	execute "normal! o#define " . GuardianName
-	execute "normal! Go#endif /* " . GuardianName . " */"
-	normal! k3o
-	normal! k
+    execute "normal! i#pragma once"
+    execute "normal! 2o"
+	" execute "normal! i#ifndef " . GuardianName
+	" execute "normal! o#define " . GuardianName
+	" execute "normal! Go#endif /* " . GuardianName . " */"
+	" normal! k3o
+	" normal! k
 endfunction
