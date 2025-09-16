@@ -41,7 +41,13 @@ class StructOffsetsCommand(gdb.Command):
         current_offset = base_offset
         for idx, f in enumerate(fields):
             is_last_field = (idx == len(fields) - 1)
-            offset = base_offset + f.bitpos // 8
+
+            # If the field has bitpos, use bitpos, otherwise calculate offset
+            # from the previous field
+            if hasattr(f, 'bitpos') and f.bitpos is not None:
+                offset = base_offset + f.bitpos // 8
+            else:
+                offset = current_offset
             size = f.type.sizeof
 
             # Detect padding before this field
