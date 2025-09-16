@@ -23,7 +23,7 @@ class StructOffsetsCommand(gdb.Command):
             print(f"Type is not a struct: {typ}")
             return
 
-        # Compute column widths based on top-level struct size so all nested rows align
+        # Compute column widths based on top-level struct size so nested rows align
         max_offset_val = 0 + typ.sizeof
         offset_col_width = max(len("offset"), len(f"offset={max_offset_val}"))
         size_col_width = max(len("size"), len(f"size={typ.sizeof}"))
@@ -55,23 +55,31 @@ class StructOffsetsCommand(gdb.Command):
             return
         visited.add(tag)
 
+        # --- PRE-SCAN FIELDS: compute each field's offset/size and whether trailing padding exists
         fields = typ.fields()
-        current_offset = base_offset
-
-        for idx, f in enumerate(fields):
-            is_last_field = (idx == len(fields) - 1)
-
-            # Determine field offset in bytes.
-            # bitpos exists for bitfields; otherwise default to current_offset
+        field_infos = []
+        scan_current = base_offset
+        for f in fields:
+            # compute offset same way we print later
             if hasattr(f, 'bitpos') and f.bitpos is not None:
                 offset = base_offset + (f.bitpos // 8)
             else:
-                # fallback: if gdb exposes field.offset (not guaranteed), use it; otherwise use current_offset
                 offset = getattr(f, "offset", None)
                 if offset is None:
-                    offset = current_offset
-
+                    offset = scan_current
             size = f.type.sizeof
+            field_infos.append((f, offset, size))
+            # update scan_current as max end (handles overlap/unions)
+            scan_current = max(scan_current, offset + size)
+
+        total_size = typ.sizeof
+        trailing_exists = (scan_current < base_offset + total_size)
+
+        # --- PRINTING PASS
+        current_offset = base_offset
+        for idx, (f, offset, size) in enumerate(field_infos):
+            # If there will be trailing padding, the very last field shouldn't be treated as last
+            is_last_field = (idx == len(field_infos) - 1) and (not trailing_exists)
 
             # Padding before this field
             if offset > current_offset:
@@ -88,7 +96,7 @@ class StructOffsetsCommand(gdb.Command):
             branch = "└── " if is_last_field else "├── "
             print(f"{offset_str:<{offset_col_width}} {size_str:<{size_col_width}} {prefix}{branch}{name}")
 
-            # Prepare prefix for children: keep vertical '│' if not last, otherwise spaces
+            # Prefix for children of this field
             new_prefix = prefix + ("    " if is_last_field else "│   ")
 
             # Recurse into nested struct types
@@ -99,15 +107,15 @@ class StructOffsetsCommand(gdb.Command):
                                   offset_col_width=offset_col_width,
                                   size_col_width=size_col_width)
 
-            # Update current_offset: use max to handle unions/overlapping fields safely
+            # Update current_offset for padding calculation (use max to be robust)
             current_offset = max(current_offset, offset + size)
 
-        # Trailing padding (at end of struct)
-        total_size = typ.sizeof
+        # Trailing padding (if any) — always the last child of the struct
         if current_offset < base_offset + total_size:
             padding_size = base_offset + total_size - current_offset
             offset_str = f"offset={current_offset}"
             size_str = f"size={padding_size}"
+            # trailing padding is always the struct's last child, so use '└── '
             print(f"{offset_str:<{offset_col_width}} {size_str:<{size_col_width}} {prefix}{'└── '}<trailing padding>")
 
 
