@@ -1,5 +1,6 @@
 set disassembly-flavor intel
 set print demangle on
 set print asm-demangle on
+set pagination off
 
 source ~/.config/gdb/struct_offsets.py
