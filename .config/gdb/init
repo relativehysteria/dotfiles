@@ -4,3 +4,4 @@ set print asm-demangle on
 set pagination off
 
 source ~/.config/gdb/struct_offsets.py
+source ~/.config/gdb/print_vector.py

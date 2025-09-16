@@ -25,8 +25,8 @@ class StructOffsetsCommand(gdb.Command):
 
         # Compute column widths based on top-level struct size so nested rows align
         max_offset_val = 0 + typ.sizeof
-        offset_col_width = max(len("offset"), len(f"offset={max_offset_val}"))
-        size_col_width = max(len("size"), len(f"size={typ.sizeof}"))
+        offset_col_width = max(len("offset"), len(f"offset={max_offset_val:#x}"))
+        size_col_width = max(len("size"), len(f"size={typ.sizeof:#x}"))
 
         # Header
         print(f"{'offset':<{offset_col_width}} {'size':<{size_col_width}} {typ.tag or typ.name or str(typ)}")
@@ -44,9 +44,9 @@ class StructOffsetsCommand(gdb.Command):
 
         # Fallback widths if called standalone
         if offset_col_width is None:
-            offset_col_width = max(len("offset"), len(f"offset={base_offset + typ.sizeof}"))
+            offset_col_width = max(len("offset"), len(f"offset={base_offset + typ.sizeof:#x}"))
         if size_col_width is None:
-            size_col_width = max(len("size"), len(f"size={typ.sizeof}"))
+            size_col_width = max(len("size"), len(f"size={typ.sizeof:#x}"))
 
         tag = typ.tag or str(typ)
         if tag in visited:
@@ -84,14 +84,14 @@ class StructOffsetsCommand(gdb.Command):
             # Padding before this field
             if offset > current_offset:
                 padding_size = offset - current_offset
-                offset_str = f"offset={current_offset}"
-                size_str = f"size={padding_size}"
+                offset_str = f"offset={current_offset:#x}"
+                size_str = f"size={padding_size:#x}"
                 branch = ("└ " if is_last_field else "├ ") + "[PADDING]"
                 print(f"{offset_str:<{offset_col_width}} {size_str:<{size_col_width}} {prefix}{branch}")
 
             # Field line
-            offset_str = f"offset={offset}"
-            size_str = f"size={size}"
+            offset_str = f"offset={offset:#x}"
+            size_str = f"size={size:#x}"
             name = f.name if f.name else (f.type.tag or f.type.name or "<anonymous>")
             branch = "└── " if is_last_field else "├── "
             print(f"{offset_str:<{offset_col_width}} {size_str:<{size_col_width}} {prefix}{branch}{name}")
@@ -113,8 +113,8 @@ class StructOffsetsCommand(gdb.Command):
         # Trailing padding (if any) — always the last child of the struct
         if current_offset < base_offset + total_size:
             padding_size = base_offset + total_size - current_offset
-            offset_str = f"offset={current_offset}"
-            size_str = f"size={padding_size}"
+            offset_str = f"offset={current_offset:#x}"
+            size_str = f"size={padding_size:#x}"
             # trailing padding is always the struct's last child, so use '└── '
             print(f"{offset_str:<{offset_col_width}} {size_str:<{size_col_width}} {prefix}{'└ [TRAILING PADDING]'}")
 
