@@ -28,22 +28,14 @@ set colorcolumn=81
 
 syntax on
 if trim(system('should_use_light')) == "true"
-    " I don't know why, but shine into wildcharm creates pretty colors
-    colorscheme shine
-    colorscheme wildcharm
-    hi LineNr guifg=#303030 guibg=None
-else
     colorscheme habamax
-    hi SpecialComment guifg=#906080
+    call globals#ToggleColorscheme()
+else
+    call globals#ToggleColorscheme()
     autocmd FileType * call globals#SyntaxAfter()
 endif
-hi Normal guibg=None
-hi StatusLine guibg=None
-hi LineNr guibg=None
-hi CursorLine guibg=None
-hi CursorLineNr guibg=None
-hi ColorColumn guibg=#A01030
-hi SpellBad guifg=#D84587
+
+nnoremap <leader>c :call globals#ToggleColorscheme()<CR>
 
 " Indentation, width, comments
 set textwidth=0

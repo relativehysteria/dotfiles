@@ -27,6 +27,28 @@ function! globals#SyntaxAfter()
 	hi link _Delimiter Delimiter
 endfunction
 
+" dark and light colorscheme toggle
+function! globals#ToggleColorscheme()
+    let current = get(g:, 'colors_name', '')
+    if current ==# 'habamax'
+        colorscheme shine
+        colorscheme wildcharm
+        hi LineNr guifg=#303030 guibg=None
+    else
+        colorscheme habamax
+        hi SpecialComment guifg=#906080
+        call globals#SyntaxAfter()
+    endif
+
+    hi Normal guibg=None
+    hi StatusLine guibg=None
+    hi LineNr guibg=None
+    hi CursorLine guibg=None
+    hi CursorLineNr guibg=None
+    hi ColorColumn guibg=#A01030
+    hi SpellBad guifg=#D84587
+endfunction
+
 " insertion of C/C++ header guardians
 function! globals#InsertHeaderGuardian()
 	let GuardianName = substitute(toupper(expand("%:t")), "\\.", "_", "g")
