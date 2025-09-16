@@ -86,8 +86,8 @@ class StructOffsetsCommand(gdb.Command):
                 padding_size = offset - current_offset
                 offset_str = f"offset={current_offset}"
                 size_str = f"size={padding_size}"
-                branch = "└── " if is_last_field else "├── "
-                print(f"{offset_str:<{offset_col_width}} {size_str:<{size_col_width}} {prefix}{branch}<padding>")
+                branch = ("└ " if is_last_field else "├ ") + "[PADDING]"
+                print(f"{offset_str:<{offset_col_width}} {size_str:<{size_col_width}} {prefix}{branch}")
 
             # Field line
             offset_str = f"offset={offset}"
@@ -116,7 +116,7 @@ class StructOffsetsCommand(gdb.Command):
             offset_str = f"offset={current_offset}"
             size_str = f"size={padding_size}"
             # trailing padding is always the struct's last child, so use '└── '
-            print(f"{offset_str:<{offset_col_width}} {size_str:<{size_col_width}} {prefix}{'└── '}<trailing padding>")
+            print(f"{offset_str:<{offset_col_width}} {size_str:<{size_col_width}} {prefix}{'└ [TRAILING PADDING]'}")
 
 
 StructOffsetsCommand()
