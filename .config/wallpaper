@@ -7,8 +7,11 @@ outputs=$(swaymsg -t get_outputs | jq -r '.[] | select(.active) | .name')
 
 killall swaybg
 
-for output in $outputs; do
-    random_image=$(find "$wallpaper_dir" -type f | shuf -n 1)
-    echo $output
-    swaybg -o "$output" -i "$random_image" -m fill &
-done
+# for output in $outputs; do
+#     random_image=$(find "$wallpaper_dir" -type f | shuf -n 1)
+#     echo $output
+#     swaybg -o "$output" -i "$random_image" -m fill &
+# done
+
+swaybg -o "DP-3" -i "$wallpaper_dir/bridge-0.jpg" -m fill &
+swaybg -o "HDMI-A-1" -i "$wallpaper_dir/bridge-1.jpg" -m fill &
