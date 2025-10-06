@@ -79,8 +79,9 @@ set -x PASSWORD_STORE_GENERATED_LENGTH "128"
 set -Ue PATH
 set -x PATH "$SCRIPTDIR" "$HOME/.local/bin" $PATH
 
-# Start the WM (Window Manager)
+# Start the WM
+set -x WM "sway"
 if test (tty) = "/dev/tty1"
     $SCRIPTDIR/cleanallcache
-    exec sway
+    exec "$WM"
 end

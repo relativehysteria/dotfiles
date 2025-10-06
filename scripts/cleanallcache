@@ -1,5 +1,5 @@
 #!/bin/sh
-rm -rf "$HOME/"{Steam,Documents,Desktop,.xonotic,.steam,.mozilla,.dbus,.pulse-cookie,.pki,.gnome,.kde,.python_history,Downloads,.wget-hsts,.BurpSuite,.java,.gem,.ghidra,.mysql_history,.google-cookie,.hetty,.crawl,morgue,saves,MuseScore*}
+rm -rf "$HOME/"{Steam,Documents,Desktop,.xonotic,.steam,.mozilla,.dbus,.pulse-cookie,.pki,.gnome,.kde,.python_history,Downloads,.wget-hsts,.BurpSuite,.java,.gem,.ghidra,.mysql_history,.google-cookie,.hetty,.crawl,morgue,saves,MuseScore*,Music,Pictures,Public,Templates,Videos}
 rm -rf "$HOME/".cache/*
 
 # *.log isn't cleared because that could be counter productive
