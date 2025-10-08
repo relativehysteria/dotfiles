@@ -76,6 +76,10 @@ function clang
     command clang -fdiagnostics-color=always $argv
 end
 
+function readelf
+    command readelf -WC $argv
+end
+
 function cdbase
     set search_targets "Cargo.toml" ".git"
 
@@ -113,14 +117,18 @@ function cinfo
     end
 end
 
-function cdoc
-    cargo doc --all-features --document-private-items; or begin
+function cdocpub
+    cargo doc $argv; or begin
         return 1
     end
 
     rm -rf "$DOWNLOAD_DIR/doc"
 
-    mv "target/doc" "$DOWNLOAD_DIR/" ; or begin
+    cp -vR "target/doc" "$DOWNLOAD_DIR/" ; or begin
         return 1
     end
+end
+
+function cdoc
+    cdocpub --all-features --document-private-items $argv
 end
