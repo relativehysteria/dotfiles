@@ -49,7 +49,7 @@ function nb
 end
 
 function objdump
-    command objdump -M intel $argv
+    command objdump -C -M intel $argv
 end
 
 function nmap
