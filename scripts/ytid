@@ -19,5 +19,9 @@ res=$(curl -s 'https://www.youtube.com/youtubei/v1/navigation/resolve_url' \
     'url': 'www.youtube.com/@$id'
 }")
 
-# Echo the channel browse ID
-echo "$res" | jq -r '.endpoint.browseEndpoint.browseId'
+# Echo the channel browse ID, the video playlist and the rss
+id=$(echo "$res" | jq -r '.endpoint.browseEndpoint.browseId')
+echo "$id"
+playlist=$(echo "$id" | sed 's/^UC/UU/g')
+echo "https://www.youtube.com/playlist?list=$playlist"
+echo "https://www.youtube.com/feeds/videos.xml?channel_id=$id"
