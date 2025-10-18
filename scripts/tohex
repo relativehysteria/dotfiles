@@ -1,8 +1,9 @@
-#!/usr/bin/env python
+#!/bin/sh
 
-from sys import argv
-
-for arg in argv[1:]:
-    for char in [hex(ord(i)) for i in arg]:
-        print(str(char)[2:], end=" ")
-    print()
+for arg in "$@"; do
+    for (( i=0; i<${#arg}; i++ )); do
+        char="${arg:i:1}"
+        printf "%X " "'$char"
+    done
+    echo
+done
