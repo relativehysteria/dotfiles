@@ -1,9 +1,0 @@
-#!/bin/sh
-
-[ "$1" = "" ] && exit
-
-word=`/usr/bin/env python -c "from urllib.parse import quote_plus;print(quote_plus('$1').strip())"`
-
-curl -Gs "https://words.bighugelabs.com/$word" \
-    | sed '1,/\s*<h2 class="center">.*<\/h2>/d' \
-    | sed '1,/\s*<\/div>/!d'

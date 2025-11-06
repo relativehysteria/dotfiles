@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# Get the PID of the currently focused container and kill it
-pid=$(swaymsg -t get_tree | jq -r '
-  recurse(.nodes[]?, .floating_nodes[]?)
-  | select(.focused == true)
-  | .pid // empty
-')
-[ ! "$pid" = "" ] && kill -9 "$pid"

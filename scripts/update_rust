@@ -1,4 +1,0 @@
-#!/bin/sh
-
-rustup update
-cargo install --locked tokei cargo-info fd tokio-console cargo-expand rg

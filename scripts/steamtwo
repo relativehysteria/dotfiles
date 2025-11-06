@@ -1,2 +1,0 @@
-#!/bin/sh
-firejail --profile=~/.config/firejail/steamtwo.profile steam

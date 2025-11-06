@@ -1,6 +1,0 @@
-#!/bin/sh
-
-dir="$HOME/pictures/screens"
-file="$(date '+%F_%H-%M-%S').png"
-
-grim -g "$(slurp)" "$dir"/"$file"

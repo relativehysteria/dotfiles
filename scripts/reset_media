@@ -1,5 +1,0 @@
-#!/bin/sh
-
-killall pipewire; setsid pipewire &
-killall pipewire-pulse; setsid pipewire-pulse &
-killall wireplumber; setsid wireplumber &

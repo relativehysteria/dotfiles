@@ -1,4 +1,0 @@
-#!/bin/sh
-output=$(cat /usr/include/asm/unistd_64.h | grep __NR | sed -e 's/.*__NR_//g')
-
-[ "$1" = "" ] && echo "$output" || (echo "$output" | grep "$1")

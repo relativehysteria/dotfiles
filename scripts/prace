@@ -1,5 +1,0 @@
-#!/bin/sh
-
-PRACE_DIR="$HOME/.local/share/prace"
-file="$(ls $PRACE_DIR | wmenu)"
-mpv "$PRACE_DIR/$file"
