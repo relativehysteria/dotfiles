@@ -230,7 +230,7 @@ user_pref("browser.download.folderList", 2);
 user_pref("browser.download.useDownloadDir", true);
 
 // New tab and home page
-user_pref("browser.startup.homepage", "about:blank")
+user_pref("browser.startup.homepage", "about:blank");
 user_pref("browser.newtab.url", "about:blank");
 
 // CSS
