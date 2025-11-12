@@ -54,6 +54,7 @@ set -x SANDBOX "$XDG_DATA_HOME/sandbox"
 set -x PACKAGES "$HOME/documents/code/packages"
 set -x TOOLS "$PACKAGES/tools/"
 set -x DOTNET_ROOT "$XDG_DATA_HOME/dnet"
+set -x RECORDING "$SANDBOX/musescore/recording"
 
 # Default programs
 set -x EDITOR "nvim"
