@@ -14,12 +14,12 @@ noblacklist ${HOME}/.local/share/data/MuseScore
 noblacklist ${DOCUMENTS}
 noblacklist ${MUSIC}
 
-include disable-common.inc
-include disable-devel.inc
-include disable-exec.inc
-include disable-interpreters.inc
-include disable-programs.inc
-include disable-xdg.inc
+# include disable-common.inc
+# include disable-devel.inc
+# include disable-exec.inc
+# include disable-interpreters.inc
+# include disable-programs.inc
+# include disable-xdg.inc
 
 include whitelist-var-common.inc
 
@@ -33,12 +33,12 @@ nonewprivs
 noroot
 notv
 novideo
-protocol unix,inet,inet6
-# QtWebengine needs chroot to set up its own sandbox
-seccomp !chroot
+# protocol unix,inet,inet6
+# # QtWebengine needs chroot to set up its own sandbox
+# seccomp !chroot
 tracelog
 
 #private-bin musescore,mscore
 private-tmp
 
-#restrict-namespaces
+restrict-namespaces
