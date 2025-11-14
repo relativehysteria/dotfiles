@@ -84,6 +84,15 @@ noremap <C-M-j> <C-W>J
 noremap <C-M-k> <C-W>K
 noremap <C-M-l> <C-W>L
 
+" Tabs
+nnoremap <A-n> :tabnew<CR>
+
+" Dynamically map Alt + 1 to Alt + 9 to :tabn <number>
+nnoremap <A-0> :tabn 10<CR>
+for i in range(1, 9)
+    execute 'nnoremap <A-' . i . '> :tabn ' . i . '<CR>'
+endfor
+
 " Copy into clipboard
 vnoremap <Leader>y "+y
 vnoremap <Leader>Y "+Y
