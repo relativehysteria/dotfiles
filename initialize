@@ -47,6 +47,7 @@ setup_user() {
 
     # Set up the groups
     for i in "network" "video" "audio" "wheel" "rustusers"; do
+        groupadd "$i"
         sudo usermod -aG "$i" "$(whoami)"
     done
 
