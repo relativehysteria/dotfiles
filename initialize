@@ -3,7 +3,22 @@
 # Exit on error or undefined variable
 set -eu
 
-die() { echo "$*" >&2; exit 1; }
+STATE_FILE="$HOME/.local/init_state"
+
+# Append a checkpoint to the state file
+set_done() { printf "%s\n" "$1" >> "$STATE_FILE" }
+
+# Check if a checkpoint is present
+is_done() { grep -qx "$1" "$STAATE_FILE" 2>/dev/null }
+
+# Ensure state file exists
+init_state() {
+    mkdir -p "$(dirname "$STATE_FILE")"
+    touch "$STATE_FILE"
+}
+
+# Panic with error
+die() { echo "Error: $*" >&2; exit 1; }
 
 
 # Check that we haven't yet initialized the system
@@ -11,13 +26,22 @@ check_init() {
     # Make sure the home variable is set
     [ -z "$HOME" ] && die '$HOME not set.'
 
-    # If the system has been initialized already, don't do anything
-    [ -f "$HOME/.local/initialized" ] && die "System initialized already."
+    # Create the initialized file
+    STATE_DIR=$(dirname "$STATE_FILE")
+    mkdir -p "$STATE_DIR"
+    touch "$STATE_FILE"
 }
 
 
 # Set up the groups and shell for the current user
 setup_user() {
+    if is_done setup_user; then
+        echo "[skip] user already set up."
+        return
+    fi
+
+    echo "[run] setting up the user."
+
     # Set up the groups
     for i in "network" "video" "audio" "wheel" "rustusers"; do
         sudo usermod -aG "$i" "$(whoami)"
@@ -26,15 +50,24 @@ setup_user() {
     # Set up the shell
     sudo pacman -S fish
     sudo usermod -s "/usr/bin/fish" "$(whoami)"
+
+    set_done setup_user
 }
 
-
-create_dirs() {
-    for i in $@; do echo "$HOME/$i"; done
-}
 
 # Set up the home directory by creating expected directories and shit
 setup_home() {
+    if is_done "setup_home"; then
+        echo "[skip] home already set up."
+        return
+    fi
+
+    echo "[run] setting up home."
+
+    create_dirs() {
+        for i in $@; do echo "$HOME/$i"; done
+    }
+
     SHARE=".local/share"
     SANDBOX="$SHARE/sandbox"
 
@@ -58,37 +91,62 @@ setup_home() {
     create_dirs "$SHARE/downloads" "$SANDBOX/firefox/Downloads"
     ln -sf "./Downloads" "$HOME/$SANDBOX/firefox/Desktop"
     ln -sf "$HOME/$SANDBOX/firefox/Downloads" "$HOME/$SHARE/downloads/firefox"
+
+    set_done "setup_home"
 }
 
 
 # Install dotfiles, scripts and set up the configuration
 install_dotfiles() {
+    echo "[run] installing dotfiles."
+
     # Start by installing the essentials
-    sudo pacman -S git openssh
+    sudo pacman -S --noconfirm --needed git openssh
 
     # Generate a new key
-    ssh-keygen -t ed25519
+    if ! is_done "dotfiles_keygen"; then
+        ssh-keygen -t ed25519
+        set_done "dotfiles_keygen"
+    else
+        echo "[skip] ssh key already generated."
+    fi
 
-    # Wait for the user to import the key into their github
-    echo "Now is your time to import the key into github."
-    read
+    # Wait for the user to import the keys into GitHub
+    echo "Import the key into GitHub."
+    read dummy
 
     # Clone the dotfiles
     DOTFILES="$HOME/documents/code/dotfiles"
-    git clone --recurse-submodules \
-        'git@github.com:relativehysteria/dotfiles.git' "$DOTFILES"
+    if ! is_done "dotfiles_cloned"; then
+        git clone --recurse-submodules \
+            'git@github.com:relativehysteria/dotfiles.git' "$DOTFILES"
+        set_done "dotfiles_cloned"
+    else
+        echo "[skip] dotfiles already cloned."
+    fi
 
     # Link the .config directory
-    for i in "$DOTFILES/.config"/*; do
-        ln -sf "$i" "$HOME/.config/"
-    done
+    if ! is_done "dotfiles_linked"; then
+        for i in "$DOTFILES/.config"/*; do
+            ln -sf "$i" "$HOME/.config/"
+        done
 
-    # Link this thing
-    ln -sf "$DOTFILES/prace" "$HOME/.local/share/prace"
+        # Link this thing
+        ln -sf "$DOTFILES/prace" "$HOME/.local/share/prace"
+    else
+        echo "[skip] dotfiles already linked."
+    fi
 }
 
 # Install the base packages
 install_packages() {
+    if is_done "packages_installed"; then
+        echo "[skip] packages already installed"
+        return
+    fi
+
+    echo "[run] installing packages."
+
     # Create a snapshot of the packages from dotfiles so the user can configure
     # it as they please
     PKG_FILE="/tmp/packages"
@@ -96,17 +154,19 @@ install_packages() {
 
     # Wait for the user to edit the file
     echo "Edit '$PKG_FILE' to keep the packages you know you want installed."
-    read
+    read dummy
 
     # Install the packages
     sudo pacman -S --needed - < "$PKG_FILE"
+
+    set_done "packages_installed"
 }
 
 # Final reminder for what has to be done that hasn't been done yet
 final_reminder() {
-    echo "Don't forget to set up syslog!"
-    echo "Rust isn't installed; use the 'update_rust' script."
-    echo "Discord isn't installed; use the 'update_discord' script."
+    echo "Don't forget to set up syslog, dns and a firewall!"
+    echo "Use 'update_rust' to install/update rust."
+    echo "Use 'update_discord' to install/update discord."
 }
 
 check_init
