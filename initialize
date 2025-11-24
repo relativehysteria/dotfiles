@@ -1,0 +1,117 @@
+#!/bin/sh
+
+# Exit on error or undefined variable
+set -eu
+
+die() { echo "$*" >&2; exit 1; }
+
+
+# Check that we haven't yet initialized the system
+check_init() {
+    # Make sure the home variable is set
+    [ -z "$HOME" ] && die '$HOME not set.'
+
+    # If the system has been initialized already, don't do anything
+    [ -f "$HOME/.local/initialized" ] && die "System initialized already."
+}
+
+
+# Set up the groups and shell for the current user
+setup_user() {
+    # Set up the groups
+    for i in "network" "video" "audio" "wheel" "rustusers"; do
+        sudo usermod -aG "$i" "$(whoami)"
+    done
+
+    # Set up the shell
+    sudo pacman -S fish
+    sudo usermod -s "/usr/bin/fish" "$(whoami)"
+}
+
+
+create_dirs() {
+    for i in $@; do echo "$HOME/$i"; done
+}
+
+# Set up the home directory by creating expected directories and shit
+setup_home() {
+    SHARE=".local/share"
+    SANDBOX="$SHARE/sandbox"
+
+    # Create the primary home directories
+    create_dirs "documents" "pictures" ".local/bin" ".config" ".cache" ".ssh"
+    create_dirs "$SHARE" "$SANDBOX"
+
+    # Create the pictures directory
+    create_dirs "pictures/screens" "pictures/wallpapers"
+
+    # Create some other directories. These may not be used but I expect them to
+    # at least exist in case I do use them eventually.
+    create_dirs "documents/code/packages/tools" "documents/books"
+    create_dirs "$SHARE/dnet" "$SHARE/gnupg" "$SHARE/password_database"
+
+    # Create the sandbox directories
+    create_dirs "$SANDBOX/firefox" "$SANDBOX/musescore/recording" \
+        "$SANDBOX/transmission"
+
+    # Set up the firefox sandbox
+    create_dirs "$SHARE/downloads" "$SANDBOX/firefox/Downloads"
+    ln -sf "./Downloads" "$HOME/$SANDBOX/firefox/Desktop"
+    ln -sf "$HOME/$SANDBOX/firefox/Downloads" "$HOME/$SHARE/downloads/firefox"
+}
+
+
+# Install dotfiles, scripts and set up the configuration
+install_dotfiles() {
+    # Start by installing the essentials
+    sudo pacman -S git openssh
+
+    # Generate a new key
+    ssh-keygen -t ed25519
+
+    # Wait for the user to import the key into their github
+    echo "Now is your time to import the key into github."
+    read
+
+    # Clone the dotfiles
+    DOTFILES="$HOME/documents/code/dotfiles"
+    git clone --recurse-submodules \
+        'git@github.com:relativehysteria/dotfiles.git' "$DOTFILES"
+
+    # Link the .config directory
+    for i in "$DOTFILES/.config"/*; do
+        ln -sf "$i" "$HOME/.config/"
+    done
+
+    # Link this thing
+    ln -sf "$DOTFILES/prace" "$HOME/.local/share/prace"
+}
+
+# Install the base packages
+install_packages() {
+    # Create a snapshot of the packages from dotfiles so the user can configure
+    # it as they please
+    PKG_FILE="/tmp/packages"
+    cp "$HOME/documents/code/dotfiles/packages" "$PKG_FILE"
+
+    # Wait for the user to edit the file
+    echo "Edit '$PKG_FILE' to keep the packages you know you want installed."
+    read
+
+    # Install the packages
+    sudo pacman -S --needed - < "$PKG_FILE"
+}
+
+# Final reminder for what has to be done that hasn't been done yet
+final_reminder() {
+    echo "Don't forget to set up syslog!"
+    echo "Rust isn't installed; use the 'update_rust' script."
+    echo "Discord isn't installed; use the 'update_discord' script."
+}
+
+check_init
+setup_groups
+setup_home
+install_dotfiles
+install_packages
+final_reminder
