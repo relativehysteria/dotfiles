@@ -180,8 +180,9 @@ install_packages() {
     MIRRORLIST="Include = /etc/pacman.d/mirrorlist-arch"
     if ! grep -Fxq "$MIRRORLIST" "$CONF"; then
         sudo pacman -S --needed --noconfirm artix-archlinux-support
-        echo "[extra]" >> "$CONF"
-        echo "$MIRRORLIST" >> "$CONF"
+
+        echo "[extra]" | sudo tee -a "$CONF" > /dev/null
+        echo "$MIRRORLIST" | sudo tee -a "$CONF" > /dev/null
     fi
 
     # Install the packages
