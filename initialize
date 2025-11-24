@@ -223,17 +223,20 @@ setup_syslog() {
 
 # Final reminder for what has to be done that hasn't been done yet
 final_reminder() {
-    # Re run firecfg no matter what happens
-    sudo firecfg
+    # Re-run firecfg no matter what happens
+    echo "[run] firecfg."
+    sudo firecfg >/dev/null 2>&1
 
+    echo "────────────────────────────────────────────────"
     echo "Use 'update_rust' to install/update rust."
     echo "Use 'update_discord' to install/update discord."
-    echo
+    echo "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"
     echo "You might also want to set up the following:"
     echo "* DNS"
     echo "* pass"
     echo "* firewall"
     echo "* firefox profile"
+    echo "────────────────────────────────────────────────"
 }
 
 check_init
