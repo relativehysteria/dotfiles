@@ -113,7 +113,7 @@ autocmd FileType * setlocal textwidth=80
 autocmd BufEnter,BufWinEnter * if &filetype ==# '' | setlocal colorcolumn= | endif
 
 lua << EOF
-require('lspconfig').rust_analyzer.setup{
+vim.lsp.config("rust_analyzer", {
     on_attach = function(client, bufnr)
         -- Disable everything except definition
         client.server_capabilities.documentRangeFormattingProvider = false
@@ -129,7 +129,7 @@ require('lspconfig').rust_analyzer.setup{
         -- Suppress diagnostics
         vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
     end,
-}
+})
 EOF
 
 " LSP quality of life stuff
