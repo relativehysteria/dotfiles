@@ -189,8 +189,8 @@ install_packages() {
 
     # Replace elogind with seatd
     if ! pacman -Qq | grep seatd-openrc; then
-        sudo pacman -Rdd elogind-openrc
-        sudo pacman -S seatd seatd-openrc
+        sudo pacman --noconfirm -Rdd elogind-openrc
+        sudo pacman -S --noconfirm --needed seatd seatd-openrc
         sudo rc-update add seatd
     fi
 
