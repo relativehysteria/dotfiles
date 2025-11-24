@@ -9,7 +9,7 @@ STATE_FILE="$HOME/.local/init_state"
 set_done() { printf "%s\n" "$1" >> "$STATE_FILE"; }
 
 # Check if a checkpoint is present
-is_done() { grep -qx "$1" "$STAATE_FILE" 2>/dev/null; }
+is_done() { grep -qx "$1" "$STATE_FILE" 2>/dev/null; }
 
 # Panic with error
 die() { echo "Error: $*" >&2; exit 1; }
@@ -51,7 +51,7 @@ setup_user() {
     done
 
     # Set up the shell
-    sudo pacman -S fish
+    sudo pacman -S --needed --noconfirm fish
     sudo usermod -s "/usr/bin/fish" "$(whoami)"
 
     set_done setup_user
@@ -68,7 +68,7 @@ setup_home() {
     echo "[run] setting up home."
 
     create_dirs() {
-        for i in $@; do echo "$HOME/$i"; done
+        for i in $@; do mkdir -p "$HOME/$i"; done
     }
 
     SHARE=".local/share"
@@ -114,15 +114,18 @@ install_dotfiles() {
         echo "[skip] ssh key already generated."
     fi
 
-    # Wait for the user to import the keys into GitHub
-    echo "Import the key into GitHub."
-    read dummy
 
     # Clone the dotfiles
     DOTFILES="$HOME/documents/code/dotfiles"
     if ! is_done "dotfiles_cloned"; then
+        # Wait for the user to import the keys into GitHub
+        echo "Import the key into GitHub."
+        read dummy
+
+        # Clone the dotfiles
         git clone --recurse-submodules \
             'git@github.com:relativehysteria/dotfiles.git' "$DOTFILES"
+
         set_done "dotfiles_cloned"
     else
         echo "[skip] dotfiles already cloned."
@@ -160,7 +163,7 @@ install_packages() {
     read dummy
 
     # Install the packages
-    sudo pacman -S --needed - < "$PKG_FILE"
+    sudo pacman -S --needed --noconfirm - < "$PKG_FILE"
 
     set_done "packages_installed"
 }
@@ -173,7 +176,7 @@ final_reminder() {
 }
 
 check_init
-setup_groups
+setup_user
 setup_home
 install_dotfiles
 install_packages
