@@ -177,7 +177,7 @@ final_reminder() {
     # Re run firecfg no matter what happens
     sudo firecfg
 
-    echo "Don't forget to set up syslog, dns and a firewall!"
+    echo "Don't forget to set up syslog, dns, pass and a firewall!"
     echo "Use 'update_rust' to install/update rust."
     echo "Use 'update_discord' to install/update discord."
 }
