@@ -1,6 +1,10 @@
 #!/bin/sh
 
-wallpaper_dir="$HOME/pictures/wallpapers/videogame_locations"
+if [ "$(hostname)" = "elise" ]; then
+    wallpaper_dir="$HOME/pictures/wallpapers/videogame_locations"
+else
+    wallpaper_dir="$HOME/pictures/wallpapers/"
+fi
 
 # Get list of active monitors
 outputs=$(swaymsg -t get_outputs | jq -r '.[] | select(.active) | .name')
