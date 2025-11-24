@@ -6,16 +6,10 @@ set -eu
 STATE_FILE="$HOME/.local/init_state"
 
 # Append a checkpoint to the state file
-set_done() { printf "%s\n" "$1" >> "$STATE_FILE" }
+set_done() { printf "%s\n" "$1" >> "$STATE_FILE"; }
 
 # Check if a checkpoint is present
-is_done() { grep -qx "$1" "$STAATE_FILE" 2>/dev/null }
-
-# Ensure state file exists
-init_state() {
-    mkdir -p "$(dirname "$STATE_FILE")"
-    touch "$STATE_FILE"
-}
+is_done() { grep -qx "$1" "$STAATE_FILE" 2>/dev/null; }
 
 # Panic with error
 die() { echo "Error: $*" >&2; exit 1; }
@@ -25,6 +19,15 @@ die() { echo "Error: $*" >&2; exit 1; }
 check_init() {
     # Make sure the home variable is set
     [ -z "$HOME" ] && die '$HOME not set.'
+
+    # Only rerun if the user really wants to.
+    if [ -f "$STATE_FILE" ]; then
+        echo "State file already exists. Are you sure you wanna run the script?"
+        echo "Type 'YES' to proceed."
+        read input
+
+        ! [ "$input" = "YES" ] && exit 0
+    fi
 
     # Create the initialized file
     STATE_DIR=$(dirname "$STATE_FILE")
