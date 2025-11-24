@@ -158,7 +158,7 @@ install_dotfiles() {
 # Install the base packages
 install_packages() {
     if is_done "packages_installed"; then
-        echo "[skip] packages already installed"
+        echo "[skip] packages already installed."
         return
     fi
 
@@ -200,14 +200,40 @@ install_packages() {
     set_done "packages_installed"
 }
 
+setup_syslog() {
+    if is_done "syslog"; then
+        echo "[skip] syslog already configured."
+        return
+    fi
+
+    echo "[run] configuring syslog."
+
+    # Download syslog
+    sudo pacman --needed --noconfirm -S syslog-ng syslog-ng-openrc
+
+    # Start it
+    sudo rc-update add syslog-ng
+    sudo rc-service syslog-ng start
+
+    # Set it up
+    sudo cp "$HOME/documents/code/dotfiles/syslog-ng.conf" "/etc/syslog-ng.conf"
+
+    set_done "syslog"
+}
+
 # Final reminder for what has to be done that hasn't been done yet
 final_reminder() {
     # Re run firecfg no matter what happens
     sudo firecfg
 
-    echo "Don't forget to set up syslog, dns, pass and a firewall!"
     echo "Use 'update_rust' to install/update rust."
     echo "Use 'update_discord' to install/update discord."
+    echo
+    echo "You might also want to set up the following:"
+    echo "* DNS"
+    echo "* pass"
+    echo "* firewall"
+    echo "* firefox profile"
 }
 
 check_init
@@ -215,4 +241,5 @@ setup_user
 setup_home
 install_dotfiles
 install_packages
+setup_syslog
 final_reminder
