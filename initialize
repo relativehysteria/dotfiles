@@ -131,13 +131,17 @@ install_dotfiles() {
         echo "[skip] dotfiles already cloned."
     fi
 
-    # Link the .config directory
+    # Link the dotfiles directories
     if ! is_done "dotfiles_linked"; then
+        # .config
         for i in "$DOTFILES/.config"/*; do
             ln -sf "$i" "$HOME/.config/"
         done
 
-        # Link this thing
+        # scripts
+        ln -sf "$DOTFILES/scripts" "$HOME/documents/code/scripts"
+
+        # prace
         ln -sf "$DOTFILES/prace" "$HOME/.local/share/prace"
     else
         echo "[skip] dotfiles already linked."
