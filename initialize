@@ -160,11 +160,22 @@ install_packages() {
     # Create a snapshot of the packages from dotfiles so the user can configure
     # it as they please
     PKG_FILE="/tmp/packages"
-    cp "$HOME/documents/code/dotfiles/packages" "$PKG_FILE"
+    if ! [ -f "$PKG_FILE" ]; then
+        cp "$HOME/documents/code/dotfiles/packages" "$PKG_FILE"
+    fi
 
     # Wait for the user to edit the file
-    echo "Edit '$PKG_FILE' to keep the packages you know you want installed."
+    echo "Edit '$PKG_FILE'; keep the packages you want to install."
     read dummy
+
+    # Enable the arch extra repos
+    CONF="/etc/pacman.conf"
+    MIRRORLIST="Include = /etc/pacman.d/mirrorlist-arch"
+    if ! grep -Fxq "$MIRRORLIST" "$CONF"; then
+        sudo pacman -S --needed --noconfirm artix-archlinux-support
+        echo "[extra]" >> "$CONF"
+        echo "$MIRRORLIST" >> "$CONF"
+    fi
 
     # Install the packages
     sudo pacman -S --needed --noconfirm - < "$PKG_FILE"
