@@ -101,6 +101,11 @@ setup_home() {
 
 # Install dotfiles, scripts and set up the configuration
 install_dotfiles() {
+    if is_done "all_dotfiles"; then
+        echo "[skip] dotfiles already set up."
+        return
+    fi
+
     echo "[run] installing dotfiles."
 
     # Start by installing the essentials
@@ -146,6 +151,8 @@ install_dotfiles() {
     else
         echo "[skip] dotfiles already linked."
     fi
+
+    set_done "all_dotfiles"
 }
 
 # Install the base packages
