@@ -13,7 +13,7 @@ if status is-interactive
         set -l prompt_symbol (set_color magenta)
 
         # Set colors based on hostname
-        if test (cat /etc/hostname) = "andromeda"
+        if test (cat /etc/hostname) = "elise"
             set user_color (set_color --bold yellow)
             set at_color (set_color green)
             set host_color (set_color cyan)
