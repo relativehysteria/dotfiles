@@ -28,7 +28,6 @@ set colorcolumn=81
 
 syntax on
 if trim(system('should_use_light')) == "true"
-    colorscheme habamax
     call globals#ToggleColorscheme()
 else
     call globals#ToggleColorscheme()
