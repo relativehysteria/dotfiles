@@ -123,6 +123,7 @@ vim.lsp.config("rust_analyzer", {
         vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
     end,
 })
+vim.lsp.enable("rust_analyzer")
 EOF
 
 " LSP quality of life stuff
