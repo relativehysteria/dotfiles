@@ -27,13 +27,7 @@ set cursorline
 set colorcolumn=81
 
 syntax on
-if trim(system('should_use_light')) == "true"
-    call globals#ToggleColorscheme()
-else
-    call globals#ToggleColorscheme()
-    autocmd FileType * call globals#SyntaxAfter()
-endif
-
+call globals#ToggleColorscheme()
 nnoremap <leader>c :call globals#ToggleColorscheme()<CR>
 
 " Indentation, width, comments

@@ -7,3 +7,6 @@
 [submodule ".config/nvim/pack/plugins/start/nvim-lspconfig"]
 	path = .config/nvim/pack/plugins/start/nvim-lspconfig
 	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule ".config/nvim/pack/plugins/start/lackluster.nvim"]
+	path = .config/nvim/pack/plugins/start/lackluster.nvim
+	url = https://github.com/slugbyte/lackluster.nvim.git

@@ -19,8 +19,7 @@ function! globals#SyntaxAfter()
 	endif
 	syntax match _Delimiter "[.,;:]"
 
-	"hi BrackParen guifg=#A00EFF guibg=NONE guisp=NONE gui=NONE ctermfg=140 ctermbg=53 cterm=NONE
-	hi BrackParen guifg=#9BCEE4 guibg=NONE guisp=NONE gui=NONE ctermfg=140 ctermbg=53 cterm=NONE
+	hi BrackParen guifg=#484E44 guibg=NONE guisp=NONE gui=NONE ctermfg=140 ctermbg=53 cterm=NONE
 
 	hi link _Paren BrackParen
 	hi link _Operator Operator
@@ -29,14 +28,20 @@ endfunction
 
 " dark and light colorscheme toggle
 function! globals#ToggleColorscheme()
+    let g:dark_colorscheme = 'lackluster'
+
     let current = get(g:, 'colors_name', '')
-    if current ==# 'habamax'
+    if current ==# g:dark_colorscheme
         colorscheme shine
         colorscheme wildcharm
         hi LineNr guifg=#303030 guibg=None
     else
-        colorscheme habamax
-        hi SpecialComment guifg=#906080
+        execute 'colorscheme' g:dark_colorscheme
+        hi SpecialComment guifg=#555060
+        hi Comment guifg=#505050
+
+        " Yeah i wish there was a better way but i don't think there is :/
+        autocmd VimEnter * call globals#SyntaxAfter()
         call globals#SyntaxAfter()
     endif
 
@@ -45,7 +50,6 @@ function! globals#ToggleColorscheme()
     hi LineNr guibg=None
     hi CursorLine guibg=None
     hi CursorLineNr guibg=None
-    hi ColorColumn guibg=#A01030
     hi SpellBad guifg=#D84587
 endfunction
 
