@@ -82,7 +82,10 @@ set -x PATH "$SCRIPTDIR" "$HOME/.local/bin" $PATH
 
 # Start the WM
 set -x WM "sway"
+set -x XDG_CURRENT_DESKTOP "$WM"
+
 if test (tty) = "/dev/tty1"
     $SCRIPTDIR/cleanallcache
+
     exec "$WM"
 end

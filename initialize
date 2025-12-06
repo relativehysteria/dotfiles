@@ -198,6 +198,11 @@ install_packages() {
     # Install the packages
     sudo pacman -S --needed --noconfirm - < "$PKG_FILE"
 
+    # Install aur packages
+    for pkg in $(cat "$HOME/documents/code/dotfiles/aur_packages"); do
+        build_aur "$pkg"
+    done
+
     set_done "packages_installed"
 }
 
