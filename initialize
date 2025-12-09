@@ -198,21 +198,6 @@ install_packages() {
     # Install the packages
     sudo pacman -S --needed --noconfirm - < "$PKG_FILE"
 
-    # Create a snapshot of the AUR packages...
-    AUR_FILE="/tmp/aur_packages"
-    if ! [ -f "$PKG_FILE" ]; then
-        cp "$HOME/documents/code/dotfiles/aur_packages" "$AUR_FILE"
-    fi
-
-    # Wait for the user to edit the file
-    echo "Edit '$AUR_FILE'; keep the packages you want to install."
-    read dummy
-
-    # Install aur packages
-    for pkg in $(cat "$AUR_FILE"); do
-        build_aur "$pkg"
-    done
-
     set_done "packages_installed"
 }
 

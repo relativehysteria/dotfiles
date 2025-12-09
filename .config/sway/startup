@@ -1,4 +1,3 @@
 exec reset_media
-exec ~/.config/wallpaper
 exec mpd
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
