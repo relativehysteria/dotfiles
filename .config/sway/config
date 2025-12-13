@@ -108,5 +108,7 @@ bindsym $mod+Control+l resize shrink width 20px
 bindsym $mod+KP_Insert exec play_soundboard
 bindsym $mod+KP_End exec play_soundboard "mgs_alert.opus"
 bindsym $mod+KP_Down exec play_soundboard "mgs_sneaking.opus"
+bindsym $mod+KP_Prior exec play_soundboard "pipes.opus"
+bindsym $mod+KP_Home exec play_soundboard "INVISIBLE.opus"
 
 include ~/.config/sway/startup

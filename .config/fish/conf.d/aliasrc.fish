@@ -109,11 +109,11 @@ function cinfo
     end
 
     # Run with --offline
-    cargo info --offline $argv
+    cargo info -v --offline $argv
 
     # Fallback only if offline failed AND a non-flag argument was passed
     if test $status -ne 0; and test $has_non_flag -eq 1
-        cargo info $argv
+        cargo info -v $argv
     end
 end
 
