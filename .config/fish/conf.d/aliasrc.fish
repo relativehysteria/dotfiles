@@ -118,15 +118,16 @@ function cinfo
 end
 
 function cdocpub
-    cargo doc $argv; or begin
-        return 1
-    end
+    cargo doc $argv; or return 1
 
-    rm -rf "$DOWNLOAD_DIR/doc"
+    mkdir -p "$DOWNLOAD_DIR/doc"
 
-    cp -vR "target/doc" "$DOWNLOAD_DIR/" ; or begin
-        return 1
-    end
+    rsync -a --delete target/doc/ "$DOWNLOAD_DIR/doc/" ; or return 1
+
+    set base_dir $(basename $PWD)
+    set doc_dir $(echo "file:///home/crius/Downloads/doc/$base_dir/index.html")
+    echo "'$doc_dir' copied to clipboard."
+    wl-copy "$(echo $doc_dir)"
 end
 
 function cdoc
