@@ -110,5 +110,6 @@ bindsym $mod+KP_End exec play_soundboard "mgs_alert.opus"
 bindsym $mod+KP_Down exec play_soundboard "mgs_sneaking.opus"
 bindsym $mod+KP_Prior exec play_soundboard "pipes.opus"
 bindsym $mod+KP_Home exec play_soundboard "INVISIBLE.opus"
+bindsym $mod+KP_Begin exec play_soundboard KILL
 
 include ~/.config/sway/startup
