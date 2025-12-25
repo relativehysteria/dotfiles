@@ -1,25 +1,17 @@
-" Netrw (directory listing) stuff
+" Netrw stuff
 let g:netrw_liststyle = 3
 let g:netrw_banner = 0
-
-" Tagbar on the left
-let g:tagbar_left = 1
 
 " Misc stuff
 set noswapfile
 set number
 set splitbelow
+set splitright
 set mouse=a
-set showmatch
 
 " A reasonable default statusline
 set statusline= "clear statusline
-set statusline=%#Normal#
-set statusline+=%f
-set statusline+=\ %y
-set statusline+=%=
-set statusline+=%l:
-set statusline+=%c\ \|\ %L
+set statusline=%f\ %y\ %=(%l:%c)\ %L
 
 " Colorscheme
 set termguicolors
@@ -78,12 +70,12 @@ noremap <C-M-k> <C-W>K
 noremap <C-M-l> <C-W>L
 
 " Tabs
-nnoremap <A-n> :tabnew<CR>
+nnoremap <leader>n :tabnew<CR>
 
-" Dynamically map Alt + 1 to Alt + 9 to :tabn <number>
-nnoremap <A-0> :tabn 10<CR>
+" Dynamically map 1-9 to :tabn <number>
+nnoremap <leader>0 :tabn 10<CR>
 for i in range(1, 9)
-    execute 'nnoremap <A-' . i . '> :tabn ' . i . '<CR>'
+    execute 'nnoremap <leader>' . i . ' :tabn ' . i . '<CR>'
 endfor
 
 " Sessions
@@ -99,17 +91,6 @@ vnoremap <Leader>Y "+Y
 " vim easy align stuff
 xnoremap ga <Plug>(EasyAlign)
 nnoremap ga <Plug>(EasyAlign)
-
-" Misc stuff
-autocmd BufNewFile *.h call globals#insert_header_guardian()
-
-" Remove trailing whitespace and newlines on save
-autocmd BufWritePre * if &filetype != "markdown" | %s/\s\+$//e
-autocmd BufWritePre * if &filetype != "markdown" | %s/\n\+\%$//e
-
-" 80 char wrapping but also no colorcolumn on no filetype
-autocmd FileType * setlocal textwidth=80
-autocmd BufEnter,BufWinEnter * if &filetype ==# '' | setlocal colorcolumn= | endif
 
 lua << EOF
 vim.lsp.config("rust_analyzer", {
@@ -132,5 +113,20 @@ vim.lsp.config("rust_analyzer", {
 vim.lsp.enable("rust_analyzer")
 EOF
 
-" LSP quality of life stuff
-nnoremap <C-]> <cmd>lua vim.lsp.buf.definition()<CR>
+" Generic auto cmds
+augroup auto_cmds
+    autocmd!
+    " Insert header guardian into new headers
+    autocmd BufNewFile *.h call globals#insert_header_guardian()
+
+    " Remove trailing whitespace and newlines on save
+    autocmd BufWritePre * if &filetype != "markdown" | %s/\s\+$//e
+    autocmd BufWritePre * if &filetype != "markdown" | %s/\n\+\%$//e
+
+    " 80 char wrapping but also no colorcolumn on no filetype
+    autocmd FileType * setlocal textwidth=80
+    autocmd BufEnter,BufWinEnter * if &filetype ==# '' | setlocal colorcolumn= | endif
+
+    " Overwrite tag navigation with lsp definition for Rust
+    autocmd FileType rust nnoremap <buffer> <C-]> <cmd>lua vim.lsp.buf.definition()<CR>
+augroup END
