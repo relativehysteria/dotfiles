@@ -4,7 +4,7 @@ endif
 let b:globals_loaded_already=1
 
 " brackets and parentheses coloring
-function! globals#SyntaxAfter()
+function! globals#syntax_after()
 	syntax keyword Boolean true false TRUE FALSE True False
 
 	syntax match _Paren "[(){}\[\]]"
@@ -27,7 +27,7 @@ function! globals#SyntaxAfter()
 endfunction
 
 " dark and light colorscheme toggle
-function! globals#ToggleColorscheme()
+function! globals#toggle_colorscheme()
     let g:dark_colorscheme = 'lackluster'
 
     let current = get(g:, 'colors_name', '')
@@ -41,8 +41,8 @@ function! globals#ToggleColorscheme()
         hi Comment guifg=#505050
 
         " Yeah i wish there was a better way but i don't think there is :/
-        autocmd VimEnter * call globals#SyntaxAfter()
-        call globals#SyntaxAfter()
+        autocmd VimEnter * call globals#syntax_after()
+        call globals#syntax_after()
     endif
 
     hi Normal guibg=None
@@ -54,7 +54,7 @@ function! globals#ToggleColorscheme()
 endfunction
 
 " insertion of C/C++ header guardians
-function! globals#InsertHeaderGuardian()
+function! globals#insert_header_guardian()
 	let GuardianName = substitute(toupper(expand("%:t")), "\\.", "_", "g")
     execute "normal! i#pragma once"
     execute "normal! 2o"

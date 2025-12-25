@@ -18,8 +18,8 @@ set statusline=%#Normal#
 set statusline+=%f
 set statusline+=\ %y
 set statusline+=%=
-set statusline+=%c:
-set statusline+=%l\ \|\ %L
+set statusline+=%l:
+set statusline+=%c\ \|\ %L
 
 " Colorscheme
 set termguicolors
@@ -27,8 +27,8 @@ set cursorline
 set colorcolumn=81
 
 syntax on
-call globals#ToggleColorscheme()
-nnoremap <leader>c :call globals#ToggleColorscheme()<CR>
+call globals#toggle_colorscheme()
+nnoremap <leader>c :call globals#toggle_colorscheme()<CR>
 
 " Indentation, width, comments
 set textwidth=0
@@ -52,7 +52,7 @@ set sidescrolloff=15
 
 " Function keys
 nnoremap <F1> :setlocal spell!<CR>
-nnoremap <F2> :call tex#Compile()<CR>
+nnoremap <F2> :call tex#compile()<CR>
 nnoremap <F3> :set list!<CR>
 
 " Capitalization
@@ -101,7 +101,7 @@ xnoremap ga <Plug>(EasyAlign)
 nnoremap ga <Plug>(EasyAlign)
 
 " Misc stuff
-autocmd BufNewFile *.h call globals#InsertHeaderGuardian()
+autocmd BufNewFile *.h call globals#insert_header_guardian()
 
 " Remove trailing whitespace and newlines on save
 autocmd BufWritePre * if &filetype != "markdown" | %s/\s\+$//e
