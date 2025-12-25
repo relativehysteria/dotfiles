@@ -86,6 +86,12 @@ for i in range(1, 9)
     execute 'nnoremap <A-' . i . '> :tabn ' . i . '<CR>'
 endfor
 
+" Sessions
+set sessionoptions+=buffers,curdir,tabpages,winsize
+nnoremap <leader>ss :call session#save()<CR>
+nnoremap <leader>sr :call session#restore()<CR>
+autocmd VimEnter * ++once nested if argc() == 0 | silent! call session#restore() | endif
+
 " Copy into clipboard
 vnoremap <Leader>y "+y
 vnoremap <Leader>Y "+Y
