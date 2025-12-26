@@ -67,10 +67,6 @@ set -x READER "zathura"
 set -x LESSHISTFILE "-"
 set -x GNUPGHOME "$XDG_DATA_HOME/gnupg"
 
-# Rust
-set -x CARGO_HOME "/opt/rust/cargo"
-set -x RUSTUP_HOME "/opt/rust/rustup"
-
 # Pass
 set -x PASSWORD_STORE_DIR "$XDG_DATA_HOME/password_database"
 set -x PASSWORD_STORE_CLIP_TIME "20"
@@ -86,6 +82,5 @@ set -x XDG_CURRENT_DESKTOP "$WM"
 
 if test (tty) = "/dev/tty1"
     $SCRIPTDIR/cleanallcache
-
     exec "$WM"
 end
