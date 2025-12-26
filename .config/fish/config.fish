@@ -72,6 +72,9 @@ set -x PASSWORD_STORE_DIR "$XDG_DATA_HOME/password_database"
 set -x PASSWORD_STORE_CLIP_TIME "20"
 set -x PASSWORD_STORE_GENERATED_LENGTH "128"
 
+# Consistent wmenu config
+set -x WMENU_ARGS '-f "Fira Code 8" -N 000000ff -n c0c0c0ff -S 1a1a1aff -s f0f0f0ff'
+
 # Set up PATH
 set -Ue PATH
 set -x PATH "$SCRIPTDIR" "$HOME/.local/bin" $PATH
