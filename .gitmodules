@@ -10,3 +10,6 @@
 [submodule ".config/nvim/pack/plugins/start/lackluster.nvim"]
 	path = .config/nvim/pack/plugins/start/lackluster.nvim
 	url = https://github.com/slugbyte/lackluster.nvim.git
+[submodule ".config/nvim/pack/plugins/start/minimal"]
+	path = .config/nvim/pack/plugins/start/minimal
+	url = https://github.com/wolverian/minimal.git

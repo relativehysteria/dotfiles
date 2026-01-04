@@ -29,23 +29,23 @@ endfunction
 " dark and light colorscheme toggle
 function! globals#toggle_colorscheme()
     let g:dark_colorscheme = 'lackluster'
-
     let current = get(g:, 'colors_name', '')
+
     if current ==# g:dark_colorscheme
-        colorscheme shine
-        colorscheme wildcharm
-        hi LineNr guifg=#303030 guibg=None
+        execute 'colorscheme' 'minimal'
+        hi SpecialComment guifg=#9590A0
+        hi Comment guifg=#909090
     else
         execute 'colorscheme' g:dark_colorscheme
         hi SpecialComment guifg=#555060
         hi Comment guifg=#505050
-
-        " Yeah i wish there was a better way but i don't think there is :/
-        autocmd VimEnter * call globals#syntax_after()
-        call globals#syntax_after()
+        hi Normal guibg=None
     endif
 
-    hi Normal guibg=None
+    " Yeah i wish there was a better way but i don't think there is :/
+    autocmd VimEnter * call globals#syntax_after()
+    call globals#syntax_after()
+
     hi StatusLine guibg=None
     hi LineNr guibg=None
     hi CursorLine guibg=None
