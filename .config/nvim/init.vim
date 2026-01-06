@@ -10,7 +10,6 @@ set splitright
 set mouse=a
 
 " A reasonable default statusline
-set statusline= "clear statusline
 set statusline=%f\ %y\ %=(%l:%c)\ %L
 
 " Colorscheme
