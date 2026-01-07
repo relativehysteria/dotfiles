@@ -81,7 +81,7 @@ endfor
 set sessionoptions+=buffers,curdir,tabpages,winsize
 nnoremap <leader>ss :call session#save()<CR>
 nnoremap <leader>sr :call session#restore()<CR>
-autocmd VimEnter * ++once nested if argc() == 0 && has('ttyin') | silent! call session#restore() | endif
+autocmd VimEnter * ++once nested if argc() == 0 && has('ttyin') | call session#restore() | endif
 
 " Copy into clipboard
 vnoremap <Leader>y "+y

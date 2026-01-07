@@ -1,9 +1,9 @@
 if exists('g:loaded_project_session')
     finish
 endif
+
 let g:loaded_project_session = 1
 
-" Where sessions are stored
 function! session#dir() abort
     let l:dir = stdpath('data') . '/sessions'
     if !isdirectory(l:dir)
@@ -12,36 +12,48 @@ function! session#dir() abort
     return l:dir
 endfunction
 
-" Determine project root (git root > cwd)
-function! session#project_root() abort
-    let l:git_root = systemlist('git rev-parse --show-toplevel 2>/dev/null')
-    if len(l:git_root) > 0 && !empty(l:git_root[0])
-        return l:git_root[0]
-    endif
+function! session#find_base() abort
+    let l:targets = ['Cargo.toml', '.git']
+    let l:dir = getcwd()
+
+    while l:dir !=# '/'
+        for l:target in l:targets
+            if filereadable(l:dir . '/' . l:target) || isdirectory(l:dir . '/' . l:target)
+                return l:dir
+            endif
+        endfor
+        let l:dir = fnamemodify(l:dir, ':h')
+    endwhile
+
     return getcwd()
 endfunction
 
-" Generate session filename from project root (hashed)
+function! session#hash() abort
+    let l:base = session#find_base()
+    return sha256(l:base)[0:15]
+endfunction
+
 function! session#file() abort
-    let l:root = session#project_root()
-    let l:hash = sha256(l:root)[0:15]
+    let l:hash = session#hash()
     return session#dir() . '/' . l:hash . '.vim'
 endfunction
 
-" Save session
+function! session#echo(msg) abort
+    echo '[ ' . session#hash() . ' ] ' . a:msg
+endfunction
+
 function! session#save() abort
     let l:file = session#file()
     execute 'mksession!' fnameescape(l:file)
-    echo 'Session saved'
+    call session#echo('Session saved')
 endfunction
 
-" Restore session
 function! session#restore() abort
     let l:file = session#file()
     if filereadable(l:file)
         execute 'source' fnameescape(l:file)
-        echo 'Session restored'
+        call session#echo('Session restored')
     else
-        echo 'No session for this project'
+        call session#echo('No session for this project')
     endif
 endfunction
