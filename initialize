@@ -188,12 +188,6 @@ install_packages() {
         sudo pacman -Sy
     fi
 
-    # Install dbus and the audio stack
-    sudo pacman -S --noconfirm --needed \
-        dbus dbus-openrc \
-        pipewire pipewire-alsa pipewire-openrc pipewire-pulse \
-        wireplumber wireplumber-openrc
-
     # Install the packages
     sudo pacman -S --needed --noconfirm - < "$PKG_FILE"
 
