@@ -37,13 +37,14 @@ function cdocpub
     mkdir -p "$out_dir"
     rsync -a --delete "target/doc/" "$out_dir/" ; or return 1
 
-    set project (cargo metadata --no-deps --format-version 1 \
-        | jq -r '
-            .workspace_members[0] as $root
-            | .packages[]
-            | select(.id == $root)
+    set project (
+        cargo metadata --no-deps --format-version 1 |
+        jq -r --arg pwd (pwd) '
+            .packages[]
+            | select(.manifest_path == ($pwd + "/Cargo.toml"))
             | .name
-        ')
+        '
+    )
     echo "<head><meta http-equiv='refresh' content='0;url=$project/index.html'></head>" > "$out_dir/doc.html"
 end
 
