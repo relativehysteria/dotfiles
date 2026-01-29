@@ -49,8 +49,8 @@ set -x XDG_DATA_DIRS /usr/share
 
 # Directories
 set -x SCRIPTDIR "$HOME/documents/code/scripts"
-set -x DOWNLOAD_DIR "$HOME/.local/share/downloads/firefox"
 set -x SANDBOX "$XDG_DATA_HOME/sandbox"
+set -x DOWNLOAD_DIR "$SANDBOX/firefox/Downloads"
 set -x PACKAGES "$HOME/documents/code/packages"
 set -x TOOLS "$PACKAGES/tools/"
 set -x DOTNET_ROOT "$XDG_DATA_HOME/dnet"
@@ -79,10 +79,23 @@ set -x WMENU_ARGS '-f "Fira Code 8" -N 000000ff -n c0c0c0ff -S 1a1a1aff -s f0f0f
 set -Ue PATH
 set -x PATH "$SCRIPTDIR" "$HOME/.local/bin" $PATH
 
-# Start the WM
+# Set the WM
 set -x WM "sway"
 set -x XDG_CURRENT_DESKTOP "$WM"
 
+# Start dbus
+if test -z "$DBUS_SESSION_BUS_ADDRESS"
+    eval (dbus-launch --exit-with-session | sed 's/^/set -x /; s/$/"/; s/=/ "/')
+end
+
+# Start the audio stack
+if not pgrep -x pipewire >/dev/null
+    pipewire &
+    pipewire-pulse &
+    wireplumber &
+end
+
+# Start the WM on tty1
 if test (tty) = "/dev/tty1"
     $SCRIPTDIR/cleanallcache
     exec "$WM"
