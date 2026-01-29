@@ -48,9 +48,6 @@ openssh
 pacman-contrib
 pass
 perf
-pipewire
-pipewire-alsa
-pipewire-pulse
 plocate
 pwvucontrol
 python-beautifulsoup4

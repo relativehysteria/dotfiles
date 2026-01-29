@@ -188,12 +188,11 @@ install_packages() {
         sudo pacman -Sy
     fi
 
-    # Replace elogind with seatd
-    if ! pacman -Qq | grep seatd-openrc; then
-        sudo pacman --noconfirm -Rdd elogind-openrc
-        sudo pacman -S --noconfirm --needed seatd seatd-openrc
-        sudo rc-update add seatd
-    fi
+    # Install dbus and the audio stack
+    sudo pacman -S --noconfirm --needed \
+        dbus dbus-openrc \
+        pipewire pipewire-alsa pipewire-openrc pipewire-pulse \
+        wireplumber wireplumber-openrc
 
     # Install the packages
     sudo pacman -S --needed --noconfirm - < "$PKG_FILE"
@@ -222,6 +221,53 @@ setup_syslog() {
     set_done "syslog"
 }
 
+setup_seat_session() {
+    if is_done "seat_session"; then
+        echo "[skip]" seat already configured.
+    fi
+
+    echo "[seat_session] configuring the seat session"
+
+    # Set up dbus
+    if ! pacman -Qq | grep dbus-openrc; then
+        sudo pacman -S --noconfirm --needed dbus dbus-openrc
+        sudo rc-update add dbus
+    fi
+
+    # Replace elogind with seatd
+    if ! pacman -Qq | grep seatd-openrc; then
+        sudo pacman --noconfirm -Rdd elogind-openrc
+        sudo pacman -S --noconfirm --needed seatd seatd-openrc
+        sudo rc-update add seatd
+    fi
+
+    set_done "seat_session"
+}
+
+setup_audio() {
+    if is_done "audio"; then
+        echo "[skip] audio and dbus already configured."
+    fi
+
+    echo "[audio] configuring audio and dbus"
+
+    # Both openrc packages are user services, so they will run automatically and
+    # we don't have to assign them.
+
+    # Set up pipewire.
+    if ! pacman -Qq | grep pipewire-openrc; then
+        sudo pacman -S --noconfirm --needed \
+            pipewire pipewire-alsa pipewire-openrc pipewire-pulse
+    fi
+
+    # Set up wireplumber.
+    if ! pacman -Qq | grep wireplumber-openrc; then
+        sudo pacman -S --noconfirm --needed wireplumber wireplumber-openrc
+    fi
+
+    set_done "audio"
+}
+
 # Final reminder for what has to be done that hasn't been done yet
 final_reminder() {
     # Re-run firecfg no matter what happens
@@ -244,6 +290,8 @@ check_init
 setup_user
 setup_home
 install_dotfiles
-install_packages
 setup_syslog
+install_packages
+setup_session
+setup_audio
 final_reminder
