@@ -19,7 +19,7 @@ set colorcolumn=81
 
 syntax on
 call globals#toggle_colorscheme()
-nnoremap <leader>c :call globals#toggle_colorscheme()<CR>
+nnoremap <leader>b :call globals#toggle_colorscheme()<CR>
 
 " Indentation, width, comments
 set textwidth=0

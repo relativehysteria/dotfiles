@@ -33,6 +33,7 @@ function! globals#toggle_colorscheme()
 
     if current ==# g:dark_colorscheme
         execute 'colorscheme' 'minimal'
+        hi String guifg=#000000
         hi SpecialComment guifg=#9590A0
         hi Comment guifg=#909090
         hi StatusLine guifg=#000000
