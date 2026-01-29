@@ -83,11 +83,6 @@ set -x PATH "$SCRIPTDIR" "$HOME/.local/bin" $PATH
 set -x WM "sway"
 set -x XDG_CURRENT_DESKTOP "$WM"
 
-# Start dbus
-if test -z "$DBUS_SESSION_BUS_ADDRESS"
-    eval (dbus-launch --exit-with-session | sed 's/^/set -x /; s/$/"/; s/=/ "/')
-end
-
 # Start the audio stack
 if not pgrep -x pipewire >/dev/null
     pipewire &
