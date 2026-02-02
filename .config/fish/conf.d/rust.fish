@@ -35,17 +35,37 @@ function cdocpub
     set out_dir "$DOWNLOAD_DIR/doc"
 
     mkdir -p "$out_dir"
-    rsync -a --delete "target/doc/" "$out_dir/" ; or return 1
+
+    set metadata (cargo metadata --no-deps --format-version 1)
+
+    set target_dir (
+        echo $metadata |
+        jq -r '.target_directory'
+    )
+
+    rsync -a --delete "$target_dir/doc/" "$out_dir/" ; or return 1
 
     set project (
-        cargo metadata --no-deps --format-version 1 |
+        echo $metadata |
         jq -r --arg pwd (pwd) '
-            .packages[]
-            | select(.manifest_path == ($pwd + "/Cargo.toml"))
-            | .name
+            (
+                .packages[]
+                | select(.manifest_path == ($pwd + "/Cargo.toml"))
+                | .name
+            )
+            //
+            (
+                .workspace_members[0] as $first
+                | .packages[]
+                | select(.id == $first)
+                | .name
+            )
         '
     )
-    echo "<head><meta http-equiv='refresh' content='0;url=$project/index.html'></head>" > "$out_dir/doc.html"
+
+    set project_doc (string replace - _ $project)
+
+    echo "<head><meta http-equiv='refresh' content='0;url=$project_doc/index.html'></head>" > "$out_dir/doc.html"
 end
 
 
