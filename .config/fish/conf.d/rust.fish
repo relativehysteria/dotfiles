@@ -66,6 +66,7 @@ function cdocpub
     set project_doc (string replace - _ $project)
 
     echo "<head><meta http-equiv='refresh' content='0;url=$project_doc/index.html'></head>" > "$out_dir/doc.html"
+    echo wtf
 end
 
 

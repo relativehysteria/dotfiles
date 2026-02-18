@@ -83,8 +83,17 @@ set -x PATH "$SCRIPTDIR" "$HOME/.local/bin" $PATH
 set -x WM "sway"
 set -x XDG_CURRENT_DESKTOP "$WM"
 
-# Start the WM on tty1
-if test (tty) = "/dev/tty1"
-    $SCRIPTDIR/cleanallcache
-    exec "$WM"
+if status is-login
+    # Start the audio stack
+    if ! pgrep -x pipewire
+        pipewire &
+        pipewire-pulse &
+        wireplumber &
+    end
+
+    # Start the WM on tty1
+    if test (tty) = "/dev/tty1"
+        $SCRIPTDIR/cleanallcache
+        exec "$WM"
+    end
 end
