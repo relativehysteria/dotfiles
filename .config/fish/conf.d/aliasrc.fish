@@ -1,7 +1,3 @@
-function ls
-    command ls -N --color=auto --group-directories-first $argv
-end
-
 function grep
     command grep --color=auto $argv
 end
@@ -27,7 +23,6 @@ function tar
     command tar -v $argv
 end
 
-# Misc stuff
 function pstree
     command pstree -aclptU $argv
 end
@@ -42,10 +37,6 @@ end
 
 function ncm
     command ncmpcpp $argv
-end
-
-function nb
-    command newsboat $argv
 end
 
 function objdump
