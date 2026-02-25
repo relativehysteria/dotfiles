@@ -52,7 +52,8 @@ function ss
 end
 
 function compand
-    command sox $argv[1] -p compand 0.3,1 6:-70,-60,-20 -5 -90 0.2 > $argv[2].wav
+    command sox $argv[1] -p compand 0.3,1 6:-70,-60,-20 -5 -90 0.2
+        \ > $argv[2].wav
 end
 
 function find
@@ -86,4 +87,22 @@ function cdbase
     end
 
     return 1
+end
+
+function git
+    command git $argv
+
+    # If first argument is "push"
+    if test (count $argv) -gt 0; and test $argv[1] = push
+        # Capture exit status
+        set status_code $status
+
+        # Only run rg if push succeeded
+        if test $status_code -eq 0
+            echo
+            rg --no-heading --line-number --color=always '\b(TODO|XXX)\b' .
+        end
+
+        return $status_code
+    end
 end
