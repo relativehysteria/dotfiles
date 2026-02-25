@@ -90,19 +90,10 @@ function cdbase
 end
 
 function git
-    command git $argv
-
-    # If first argument is "push"
+    # Show todos and bugs before pushing
     if test (count $argv) -gt 0; and test $argv[1] = push
-        # Capture exit status
-        set status_code $status
-
-        # Only run rg if push succeeded
-        if test $status_code -eq 0
-            echo
-            rg --no-heading --line-number --color=always '\b(TODO|XXX)\b' .
-        end
-
-        return $status_code
+        rg --no-heading --line-number --color=always '\b(TODO|XXX|BUG)\b'
     end
+
+    command git $argv
 end
