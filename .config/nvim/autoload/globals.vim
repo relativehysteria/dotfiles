@@ -66,3 +66,38 @@ function! globals#insert_header_guardian()
 	" normal! k3o
 	" normal! k
 endfunction
+
+function! globals#prevent_long_lines() abort
+    " Allow :w!
+    if v:cmdbang
+        return
+    endif
+
+    " Only check if colorcolumn is set and numeric
+    if &colorcolumn == ''
+        return
+    endif
+
+    " Get first column if multiple are set
+    let l:cc = str2nr(split(&colorcolumn, ',')[0])
+    if l:cc <= 0
+        return
+    endif
+
+    " cc=81 should mean that we allow 80 columns
+    if l:cc > 1
+        let l:cc = l:cc - 1
+    endif
+
+    " Check for long lines
+    for l:num in range(1, line('$'))
+        if strdisplaywidth(getline(l:num)) > l:cc
+            echohl ErrorMsg
+            echom printf(
+                \ "Line %d exceeds %d columns (use :w! to override)",
+                \ l:num, l:cc)
+            echohl None
+            throw "Long line detected"
+        endif
+    endfor
+endfunction

@@ -81,7 +81,8 @@ endfor
 set sessionoptions+=buffers,curdir,tabpages,winsize
 nnoremap <leader>ss :call session#save()<CR>
 nnoremap <leader>sr :call session#restore()<CR>
-autocmd VimEnter * ++once nested if argc() == 0 && has('ttyin') | call session#restore() | endif
+autocmd VimEnter * ++once nested if argc() == 0 && has('ttyin')
+            \ | call session#restore() | endif
 
 " Copy into clipboard
 vnoremap <Leader>y "+y
@@ -122,10 +123,14 @@ augroup auto_cmds
     autocmd BufWritePre * if &filetype != "markdown" | %s/\s\+$//e
     autocmd BufWritePre * if &filetype != "markdown" | %s/\n\+\%$//e
 
+    autocmd BufWritePre * call globals#prevent_long_lines()
+
     " 80 char wrapping but also no colorcolumn on no filetype
     autocmd FileType * setlocal textwidth=80
-    autocmd BufEnter,BufWinEnter * if &filetype ==# '' | setlocal colorcolumn= | endif
+    autocmd BufEnter,BufWinEnter * if &filetype ==# ''
+        \ | setlocal colorcolumn= | endif
 
     " Overwrite tag navigation with lsp definition for Rust
-    autocmd FileType rust nnoremap <buffer> <C-]> <cmd>lua vim.lsp.buf.definition()<CR>
+    autocmd FileType rust nnoremap <buffer> <C-]>
+        \ <cmd>lua vim.lsp.buf.definition()<CR>
 augroup END
