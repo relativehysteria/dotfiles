@@ -6,7 +6,7 @@ let g:loaded_project_session = 1
 
 " Return (and ensure) the directory used to store session files
 function! session#dir() abort
-    let l:dir = stdpath('data') . '/sessions'
+    let l:dir = stdpath('state') . '/sessions'
     if !isdirectory(l:dir)
         call mkdir(l:dir, 'p')
     endif
