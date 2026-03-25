@@ -46,6 +46,7 @@ set -x XDG_DATA_HOME "$HOME/.local/share"
 set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x XDG_CACHE_HOME "$HOME/.cache"
 set -x XDG_DATA_DIRS /usr/share
+set -x TODO "$HOME/documents/textfiles/TODO"
 
 # Directories
 set -x SCRIPTDIR "$HOME/documents/code/scripts"
