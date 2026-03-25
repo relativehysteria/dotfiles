@@ -1,2 +1,3 @@
 exec mpd
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
+exec --no-startup-id todo_bg &
