@@ -1,20 +1,15 @@
 # Tech stuff
-
 OALabs           | https://www.youtube.com/feeds/videos.xml?channel_id=UC--DwaiMV-jtO-6EvmKOnqg
 Logan Smith      | https://www.youtube.com/feeds/videos.xml?channel_id=UCnHX5FjwtQpxkCGziuh4NJA
 Stacksmashing    | https://www.youtube.com/feeds/videos.xml?channel_id=UC3S8vxwRfqLBdIhgRlDRVzw
 Gynvael Coldwind | https://www.youtube.com/feeds/videos.xml?channel_id=UCCkVMojdBWS-JtH7TliWkVg
 
-
 # Rust
-
 Gamozo          | https://www.youtube.com/feeds/videos.xml?channel_id=UC17ewSS9f2EnkCyMztCdoKA
 Jon Gjengset    | https://www.youtube.com/feeds/videos.xml?channel_id=UC_iD0xppBwwsrM9DegC5cQQ
 No Boiler Plate | https://www.youtube.com/feeds/videos.xml?channel_id=UCUMwY9iS8oMyWDYIe6_RmoA
 
-
 # Mostly science
-
 Nile Red       | https://www.youtube.com/feeds/videos.xml?channel_id=UCFhXFikryT4aFcLkLw2LBLA
 Nile Blue      | https://www.youtube.com/feeds/videos.xml?channel_id=UC1D3yD4wlPMico0dss264XA
 Hank Green     | https://www.youtube.com/feeds/videos.xml?channel_id=UCOT2iLov0V7Re7ku_3UBtcQ
@@ -22,9 +17,7 @@ Quanta Zine    | https://www.youtube.com/feeds/videos.xml?channel_id=UCTpmmkp1E4
 ScienceClic    | https://www.youtube.com/feeds/videos.xml?channel_id=UCWvq4kcdNI1r1jZKFw9TiUA
 Benn Jordan    | https://www.youtube.com/feeds/videos.xml?channel_id=UCshObcm-nLhbu8MY50EZ5Ng
 
-
 # Fun stuff
-
 Tamto           | https://www.youtube.com/feeds/videos.xml?channel_id=UCkr1aZ2ROxYvKqP-qneaWQg
 FUNKe           | https://www.youtube.com/feeds/videos.xml?channel_id=UCd-qVRcjoK9zjtDs_LRxSmw
 Herdyn          | https://www.youtube.com/feeds/videos.xml?channel_id=UCBJY0_6cB6q1THgfokwpQxA
@@ -37,10 +30,7 @@ Drue Langlois   | https://www.youtube.com/feeds/videos.xml?channel_id=UCi8UNRmZp
 Primitive Tech  | https://www.youtube.com/feeds/videos.xml?channel_id=UCAL3JXZSzSm8AlZyD3nQdBA
 Fredrik Knudsen | https://www.youtube.com/feeds/videos.xml?channel_id=UCbWcXB0PoqOsAvAdfzWMf0w
 
-
-
 # Comics
-
 xkcd                            | https://xkcd.com/rss.xml
 Oglaf                           | https://www.oglaf.com/feeds/rss/
 Webcomic Name                   | https://webcomicname.com/rss
@@ -48,21 +38,16 @@ Saturday Morning Breakfast Club | https://www.smbc-comics.com/comic/rss
 
 
 # Blogs
-
 Archie        | https://archie-osu.github.io/feed.xml
 Gynvael       | https://feeds.feedburner.com/GynvaelColdwindEN
 Project Zero  | https://googleprojectzero.blogspot.com/feeds/posts/default
 Travis Downs  | https://travisdowns.github.io/feed.xml
 Connor McGarr | https://connormcgarr.github.io/feed.xml
 
-
 # Twitter
-
 Gamozo | https://nitter.net/gamozolabs/rss
 
-
 # Rust Blogs
-
 Rust              | https://blog.rust-lang.org/feed.xml
 Gamozo            | https://gamozolabs.github.io/feed.xml
 Inside Rust       | https://blog.rust-lang.org/inside-rust/feed.xml
@@ -73,9 +58,12 @@ Niko Matsakis     | https://smallcultfollowing.com/babysteps//atom.xml
 Faster Than Lime  | https://fasterthanli.me/index.xml
 This Week in Rust | https://this-week-in-rust.org/rss.xml
 
-
 # Lobsters
-
 Rust          | https://lobste.rs/t/rust.rss
 Security      | https://lobste.rs/t/security.rss
 Steve Klabnik | https://lobste.rs/~steveklabnik/stories.rss
+
+# Subreddits
+Wunkus        | https://www.reddit.com/r/wunkus/top/.rss?t=week
+Black Midi    | https://www.reddit.com/r/bmbmbm/top/.rss?t=week
+Disco Elysium | https://www.reddit.com/r/discoelysium/top/.rss?t=week
