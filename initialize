@@ -146,9 +146,6 @@ install_dotfiles() {
 
         # scripts
         ln -sf "$DOTFILES/scripts" "$HOME/documents/code/scripts"
-
-        # prace
-        ln -sf "$DOTFILES/prace" "$HOME/.local/share/prace"
     else
         echo "[skip] dotfiles already linked."
     fi
