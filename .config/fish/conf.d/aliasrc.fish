@@ -72,6 +72,10 @@ function readelf
     command readelf -WC $argv
 end
 
+function todo
+    command nvim $TODO
+end
+
 function cdbase
     set search_targets "Cargo.toml" ".git"
 
