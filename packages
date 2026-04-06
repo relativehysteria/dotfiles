@@ -24,6 +24,7 @@ grim
 grub
 htop
 imv
+inotify-tools
 jq
 lib32-freetype2
 lib32-mesa
@@ -63,6 +64,7 @@ slurp
 sox
 strace
 sway
+swaybg
 texlive-basic
 texlive-bibtexextra
 texlive-binextra

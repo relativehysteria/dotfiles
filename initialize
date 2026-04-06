@@ -100,7 +100,8 @@ setup_home() {
 
     # Create some other directories. These may not be used but I expect them to
     # at least exist in case I do use them eventually.
-    create_dirs "documents/code/packages/tools" "documents/books"
+    create_dirs "documents/code/packages/tools" "documents/books" \
+        "documents/textfiles"
     create_dirs "$SHARE/dnet" "$SHARE/gnupg" "$SHARE/password_database"
 
     # Create the sandbox directories
