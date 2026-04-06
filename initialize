@@ -14,6 +14,18 @@ is_done() { grep -qx "$1" "$STATE_FILE" 2>/dev/null; }
 # Panic with error
 die() { echo "Error: $*" >&2; exit 1; }
 
+# Install a package and its service and enable it, if it hasn't been installed
+# already.
+install_service() {
+    # Install the packages.
+    sudo pacman -S --noconfirm --needed "$1" "$1-runit"
+
+    # Symlink service if not already symlinked
+    if [ ! -L "/etc/runit/runsvdir/default/$1" ]; then
+        sudo ln -s "/etc/runit/sv/$1" /etc/runit/runsvdir/default/
+    fi
+}
+
 
 # Check that we haven't yet initialized the system
 check_init() {
@@ -47,7 +59,11 @@ setup_user() {
 
     # Set up the groups
     for i in "network" "video" "audio" "wheel" "rustusers"; do
-        groupadd "$i"
+        # Add the group if it doesn't exist.
+        if ! getent group "$i" > /dev/null; then
+            sudo groupadd "$i"
+        fi
+
         sudo usermod -aG "$i" "$(whoami)"
     done
 
@@ -141,6 +157,8 @@ install_dotfiles() {
     if ! is_done "dotfiles_linked"; then
         # .config
         for i in "$DOTFILES/.config"/*; do
+            dirname=$(basename "$i")
+            rm -Irf "$HOME/.config/$dirname"
             ln -sf "$i" "$HOME/.config/"
         done
 
@@ -182,34 +200,13 @@ install_packages() {
         echo "[extra]" | sudo tee -a "$CONF" > /dev/null
         echo "$MIRRORLIST" | sudo tee -a "$CONF" > /dev/null
 
-        sudo pacman -Sy
+        sudo pacman -Syu
     fi
 
     # Install the packages
     sudo pacman -S --needed --noconfirm - < "$PKG_FILE"
 
     set_done "packages_installed"
-}
-
-setup_syslog() {
-    if is_done "syslog"; then
-        echo "[skip] syslog already configured."
-        return
-    fi
-
-    echo "[run] configuring syslog."
-
-    # Download syslog
-    sudo pacman --needed --noconfirm -S syslog-ng syslog-ng-openrc
-
-    # Start it
-    sudo rc-update add syslog-ng
-    sudo rc-service syslog-ng start
-
-    # Set it up
-    sudo cp "$HOME/documents/code/dotfiles/syslog-ng.conf" "/etc/syslog-ng.conf"
-
-    set_done "syslog"
 }
 
 setup_seat_session() {
@@ -219,18 +216,9 @@ setup_seat_session() {
 
     echo "[seat_session] configuring the seat session"
 
-    # Set up dbus
-    if ! pacman -Qq | grep dbus-openrc; then
-        sudo pacman -S --noconfirm --needed dbus dbus-openrc
-        sudo rc-update add dbus
-    fi
-
-    # Replace elogind with seatd
-    if ! pacman -Qq | grep seatd-openrc; then
-        sudo pacman --noconfirm -Rdd elogind-openrc
-        sudo pacman -S --noconfirm --needed seatd seatd-openrc
-        sudo rc-update add seatd
-    fi
+    # Set up dbus and seatd
+    install_service dbus
+    install_service seatd
 
     set_done "seat_session"
 }
@@ -242,16 +230,9 @@ setup_audio() {
 
     echo "[audio] configuring audio"
 
-    # Set up pipewire.
-    if ! pacman -Qq | grep pipewire-openrc; then
-        sudo pacman -S --noconfirm --needed \
-            pipewire pipewire-alsa pipewire-pulse
-    fi
-
-    # Set up wireplumber.
-    if ! pacman -Qq | grep wireplumber-openrc; then
-        sudo pacman -S --noconfirm --needed wireplumber
-    fi
+    # Set up pipewire and wireplumber
+    sudo pacman -S --noconfirm --needed \
+            pipewire pipewire-alsa pipewire-pulse wireplumber
 
     set_done "audio"
 }
@@ -278,8 +259,7 @@ check_init
 setup_user
 setup_home
 install_dotfiles
-setup_syslog
 install_packages
-setup_session
+setup_seat_session
 setup_audio
 final_reminder

@@ -26,7 +26,7 @@ if status is-interactive
         end
 
         # Build the prompt
-        echo -n $user_color(whoami)$at_color@$host_color(hostname)" "
+        echo -n $user_color(whoami)$at_color@$host_color(cat /etc/hostname)" "
         echo -n $bracket_color'['$path_color(prompt_pwd)$bracket_color']'
         echo -n $git_info_color$git_branch
         echo -n $prompt_symbol'$ '
