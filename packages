@@ -7,7 +7,7 @@ bc
 clang
 cpupower
 cryptsetup
-cryptsetup-openrc
+cryptsetup-runit
 ctags
 dosfstools
 edk2-ovmf
@@ -43,7 +43,7 @@ mpv
 nasm
 neovim
 newsboat
-openrc
+runit
 openssh
 pacman-contrib
 pass
@@ -58,13 +58,11 @@ python-pipx
 python-pyaml
 qemu-base
 qt6-wayland
-seatd-openrc
+seatd-runit
 slurp
 sox
 strace
 sway
-syslog-ng
-syslog-ng-openrc
 texlive-basic
 texlive-bibtexextra
 texlive-binextra
