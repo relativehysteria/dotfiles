@@ -18,7 +18,7 @@ set cursorline
 set colorcolumn=81
 
 syntax on
-call globals#toggle_colorscheme()
+call globals#apply_colorscheme_from_system()
 nnoremap <leader>b :call globals#toggle_colorscheme()<CR>
 
 " Indentation, width, comments

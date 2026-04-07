@@ -26,13 +26,12 @@ function! globals#syntax_after()
 	hi link _Delimiter Delimiter
 endfunction
 
-" dark and light colorscheme toggle
-function! globals#toggle_colorscheme()
+" apply the light or dark colorscheme
+function! globals#apply_colorscheme(use_light)
     let g:dark_colorscheme = 'lackluster'
-    let current = get(g:, 'colors_name', '')
 
-    if current ==# g:dark_colorscheme
-        execute 'colorscheme' 'minimal'
+    if a:use_light
+        colorscheme minimal
         hi String guifg=#000000
         hi SpecialComment guifg=#9590A0
         hi Comment guifg=#909090
@@ -41,11 +40,9 @@ function! globals#toggle_colorscheme()
         execute 'colorscheme' g:dark_colorscheme
         hi SpecialComment guifg=#555060
         hi Comment guifg=#505050
-        hi Normal guibg=None
+        hi Normal guibg=#000000
     endif
 
-    " Yeah i wish there was a better way but i don't think there is :/
-    autocmd VimEnter * call globals#syntax_after()
     call globals#syntax_after()
 
     hi StatusLine guibg=None
@@ -53,6 +50,18 @@ function! globals#toggle_colorscheme()
     hi CursorLine guibg=None
     hi CursorLineNr guibg=None
     hi SpellBad guifg=#D84587
+endfunction
+
+" apply the colorscheme based on the input of `should_use_light`
+function! globals#apply_colorscheme_from_system()
+    call system('should_use_light')
+    call globals#apply_colorscheme(v:shell_error == 0)
+endfunction
+
+" toggle the dark/light colorscheme
+function! globals#toggle_colorscheme()
+    let current = get(g:, 'colors_name', '')
+    call globals#apply_colorscheme(current ==# 'lackluster')
 endfunction
 
 " insertion of C/C++ header guardians
