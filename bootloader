@@ -1,0 +1,110 @@
+#!/bin/sh
+
+CMDLINE="loglevel=5 module_blacklist=pcspkr cryptdevice=UUID=40c77d26-3695-4f0c-bb7d-99ce52860f5d:root rootfstype=ext4 root_trim=yes root=/dev/mapper/root resume=UUID=d00959db-3b7f-4a56-8550-31fefc83557e resume_offset=4161536 mitigations=off"
+CMDLINE="loglevel=5 cryptdevice=UUID=79d15d8e-b591-4c12-948b-5158bab377ce:root rootfstype=ext4 root_trim=yes root=/dev/mapper/root resume=UUID=71492824-6f41-41a2-9c76-81aa05e4e940 resume_offset=208896 mitigations=off"
+
+################################################################################
+set -eu
+
+log() {
+    printf '%s\n' "[mkinitcpio-efi] $*"
+}
+
+# Atomic copy.
+copy_atomic() {
+    src=$1
+    dst=$2
+    tmp="${dst}.tmp"
+
+    cp "$src" "$tmp"
+    sync "$tmp"
+    mv -f "$tmp" "$dst"
+}
+
+ESP="/boot/efi"
+DEST="$ESP/EFI/artix"
+
+KERNEL="$1"
+INITRAMFS="$2"
+
+# Ensure ESP is mounted.
+if ! mountpoint -q "$ESP"; then
+    log "ERROR: ESP ($ESP) is not mounted"
+    exit 1
+fi
+
+# Validate required files.
+if [ ! -f "$KERNEL" ]; then
+    log "ERROR: Missing kernel: $KERNEL"
+    exit 1
+fi
+
+if [ ! -f "$INITRAMFS" ]; then
+    log "ERROR: Missing initramfs: $INITRAMFS"
+    exit 1
+fi
+
+# Create destination.
+if [ ! -d "$DEST" ]; then
+    mkdir -p "$DEST"
+fi
+
+# Copy kernel + initramfs.
+log "Updating EFI stub files..."
+
+copy_atomic "$KERNEL" "$DEST/vmlinuz.efi"
+copy_atomic "$INITRAMFS" "$DEST/initramfs.img"
+
+# Microcode.
+MICROCODE_INTEL="/boot/intel-ucode.img"
+MICROCODE_AMD="/boot/amd-ucode.img"
+if [ -f "$MICROCODE_AMD" ]; then
+    copy_atomic "$MICROCODE_AMD" "$DEST/amd-ucode.img"
+elif [ -f "$MICROCODE_INTEL" ]; then
+    copy_atomic "$MICROCODE_INTEL" "$DEST/intel-ucode.img"
+fi
+
+# One last sync.
+sync
+
+# EFI boot entry management.
+LOADER='\EFI\artix\vmlinuz.efi'
+LABEL='Artix EFI stub'
+ESP_DEV=$(findmnt -no SOURCE "$ESP")
+
+# Build initrd prefix (microcode first if present).
+INITRD_ARG='initrd=\EFI\artix\initramfs.img'
+if [ -f "$DEST/amd-ucode.img" ]; then
+    INITRD_ARG="initrd=\EFI\artix\amd-ucode.img $INITRD_ARG"
+elif [ -f "$DEST/intel-ucode.img" ]; then
+    INITRD_ARG="initrd=\EFI\artix\intel-ucode.img $INITRD_ARG"
+fi
+
+# Build the full commandline passed to the kernel.
+FULL_CMDLINE="$INITRD_ARG $CMDLINE"
+
+# Check whether our EFI boot entry exists aready.
+FOUND=0
+if efibootmgr | grep -iF "$LOADER" >/dev/null 2>&1; then
+    FOUND=1
+elif efibootmgr | grep -qF "$LABEL" >/dev/null 2>&1; then
+    FOUND=1
+fi
+
+# If it doesn't exist, create it.
+if [ "$FOUND" -eq 1 ]; then
+    log "EFI entry already exists"
+else
+    log "Creating EFI boot entry"
+    log "Label:   $LABEL"
+    log "Loader:  $LOADER"
+    log "Cmdline: $FULL_CMDLINE"
+
+    efibootmgr -c \
+        -d "$ESP_DEV" \
+        -L "$LABEL" \
+        -l "$LOADER" \
+        -u "$FULL_CMDLINE"
+fi
+
+log "EFI files updated successfully"
