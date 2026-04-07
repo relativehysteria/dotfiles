@@ -4,6 +4,7 @@ artix-archlinux-support
 base
 base-devel
 bc
+brightnessctl
 clang
 cpupower
 cryptsetup

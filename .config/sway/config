@@ -32,7 +32,6 @@ input * {
 # KEYBINDS
 
 # app keybinds and shortcuts
-
 bindsym $mod+Return exec $TERMINAL
 bindsym $mod+backslash exec wmenu-run
 bindsym Print exec print_screen
@@ -51,6 +50,10 @@ bindsym XF86AudioMute exec mpc stop
 # system sound
 bindsym $mod+XF86AudioRaiseVolume exec wpctl set-volume --limit 1.0 '@DEFAULT_AUDIO_SINK@' '1%+'
 bindsym $mod+XF86AudioLowerVolume exec wpctl set-volume --limit 1.0 '@DEFAULT_AUDIO_SINK@' '1%-'
+
+# brightness
+bindsym XF86MonBrightnessUp exec brightnessctl set '10%+'
+bindsym XF86MonBrightnessDown exec brightnessctl set '10%-'
 
 # switch to workspace
 bindsym $mod+1 workspace 1
