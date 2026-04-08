@@ -71,6 +71,7 @@ sync
 LOADER='\EFI\artix\vmlinuz.efi'
 LABEL='Artix EFI stub'
 ESP_DEV=$(findmnt -no SOURCE "$ESP")
+ESP_PARTNUM=$(cat /sys/class/block/"$(basename $ESP_DEV)"/partition)
 
 # Build initrd prefix (microcode first if present).
 INITRD_ARG='initrd=\EFI\artix\initramfs.img'
@@ -96,11 +97,13 @@ if [ "$FOUND" -eq 1 ]; then
     log "EFI entry already exists"
 else
     log "Creating EFI boot entry"
+    log "ESP DEV: $ESP_DEV (partition number: $ESP_PARTNUM)"
     log "Label:   $LABEL"
     log "Loader:  $LOADER"
     log "Cmdline: $FULL_CMDLINE"
 
     efibootmgr -c \
+        -p "$ESP_PARTNUM" \
         -d "$ESP_DEV" \
         -L "$LABEL" \
         -l "$LOADER" \
