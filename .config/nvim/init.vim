@@ -42,9 +42,9 @@ set scrolloff=15
 set sidescrolloff=15
 
 " Function keys
-nnoremap <F1> :setlocal spell!<CR>
+nnoremap <F1> :windo setlocal spell!<CR>
 nnoremap <F2> :call tex#compile()<CR>
-nnoremap <F3> :set list!<CR>
+nnoremap <F3> :windo set list!<CR>
 
 " Capitalization
 nnoremap <Tab> g~iw

@@ -11,6 +11,6 @@
 /.config/nvim/.netrwhist
 /.config/nvim/spell
 
-/.config/foot/init-color-theme
+init-color-theme
 
 maelstrom
