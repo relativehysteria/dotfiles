@@ -1,4 +1,4 @@
 exec --no-startup-id mpd
 exec --no-startup-id /usr/lib/xdg-desktop-portal -r
 exec --no-startup-id colorschemed &
-exec --no-startup-id sleep 0.1 && todo_bg &
+exec --no-startup-id sleep 0.5 && todo_bg &
