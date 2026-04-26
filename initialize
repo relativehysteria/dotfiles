@@ -217,8 +217,9 @@ install_colorschemed() {
 
     echo "[run] installing colorschemed sleep hook."
 
-
-    cat << EOF > /usr/lib/elogind/system-sleep/colorschemed
+    # Write the hook.
+    colorschemed_hook_file="/usr/lib/elogind/system-sleep/colorschemed"
+    cat << EOF > "$colorschemed_hook_file"
 #!/bin/sh
 
 case "$1" in
@@ -227,6 +228,9 @@ case "$1" in
     ;;
 esac
 EOF
+
+    # Mark it as executable.
+    chmod +x "$colorschemed_hook_file"
 
     set_done "colorschemed_installed"
 }
