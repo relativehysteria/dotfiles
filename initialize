@@ -210,6 +210,27 @@ install_packages() {
     set_done "packages_installed"
 }
 
+install_colorschemed() {
+    if is_done "colorschemed_installed"; then
+        echo "[skip] colorschemed sleep hook already installed."
+    fi
+
+    echo "[run] installing colorschemed sleep hook."
+
+
+    cat << EOF > /usr/lib/elogind/system-sleep/colorschemed
+#!/bin/sh
+
+case "$1" in
+  post)
+    pkill -USR1 colorschemed
+    ;;
+esac
+EOF
+
+    set_done "colorschemed_installed"
+}
+
 setup_seat_session() {
     if is_done "seat_session"; then
         echo "[skip]" seat already configured.
@@ -261,6 +282,7 @@ setup_user
 setup_home
 install_dotfiles
 install_packages
+install_colorschemed
 setup_seat_session
 setup_audio
 final_reminder
