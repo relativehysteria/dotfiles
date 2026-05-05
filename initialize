@@ -271,7 +271,7 @@ final_reminder() {
 
     echo "────────────────────────────────────────────────"
     echo "Use 'update_rust' to install/update rust."
-    echo "Use 'update_discord' to install/update discord."
+    echo "Use 'update_discord' to install discord."
     echo "┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄"
     echo "You might also want to set up the following:"
     echo "* DNS"

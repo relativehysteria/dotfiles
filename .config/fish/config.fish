@@ -33,7 +33,8 @@ if status is-interactive
     end
 
     # Completion
-    set -g fish_complete_path $fish_complete_path $XDG_CONFIG_HOME/fish/completions
+    set -g fish_complete_path \
+        $fish_complete_path $XDG_CONFIG_HOME/fish/completions
 
     # Vi mode
     fish_vi_key_bindings
@@ -74,7 +75,8 @@ set -x PASSWORD_STORE_CLIP_TIME "20"
 set -x PASSWORD_STORE_GENERATED_LENGTH "128"
 
 # Consistent wmenu config
-set -x WMENU_ARGS '-f "Fira Code 8" -N 000000ff -n c0c0c0ff -S 1a1a1aff -s f0f0f0ff'
+set -x WMENU_ARGS \
+    '-f "Fira Code 8" -N 000000ff -n c0c0c0ff -S 1a1a1aff -s f0f0f0ff'
 
 # Set up PATH
 set -Ue PATH

@@ -13,12 +13,11 @@ Jon Gjengset    | https://www.youtube.com/feeds/videos.xml?channel_id=UC_iD0xppB
 No Boiler Plate | https://www.youtube.com/feeds/videos.xml?channel_id=UCUMwY9iS8oMyWDYIe6_RmoA
 
 # Mostly science
-Nile Red       | https://www.youtube.com/feeds/videos.xml?channel_id=UCFhXFikryT4aFcLkLw2LBLA
-Nile Blue      | https://www.youtube.com/feeds/videos.xml?channel_id=UC1D3yD4wlPMico0dss264XA
-Hank Green     | https://www.youtube.com/feeds/videos.xml?channel_id=UCOT2iLov0V7Re7ku_3UBtcQ
-Quanta Zine    | https://www.youtube.com/feeds/videos.xml?channel_id=UCTpmmkp1E4nmZqWPS-dl5bg
-ScienceClic    | https://www.youtube.com/feeds/videos.xml?channel_id=UCWvq4kcdNI1r1jZKFw9TiUA
-Benn Jordan    | https://www.youtube.com/feeds/videos.xml?channel_id=UCshObcm-nLhbu8MY50EZ5Ng
+Nile Red    | https://www.youtube.com/feeds/videos.xml?channel_id=UCFhXFikryT4aFcLkLw2LBLA
+Nile Blue   | https://www.youtube.com/feeds/videos.xml?channel_id=UC1D3yD4wlPMico0dss264XA
+Quanta Zine | https://www.youtube.com/feeds/videos.xml?channel_id=UCTpmmkp1E4nmZqWPS-dl5bg
+ScienceClic | https://www.youtube.com/feeds/videos.xml?channel_id=UCWvq4kcdNI1r1jZKFw9TiUA
+Benn Jordan | https://www.youtube.com/feeds/videos.xml?channel_id=UCshObcm-nLhbu8MY50EZ5Ng
 
 # Fun Stuff
 FUNKe           | https://www.youtube.com/feeds/videos.xml?channel_id=UCd-qVRcjoK9zjtDs_LRxSmw
@@ -50,15 +49,14 @@ purplesyringa | https://purplesyringa.moe/blog/feed.rss
 Gamozo | https://nitter.net/gamozolabs/rss
 
 # Rust Blogs
-Rust              | https://blog.rust-lang.org/feed.xml
-Gamozo            | https://gamozolabs.github.io/feed.xml
-Inside Rust       | https://blog.rust-lang.org/inside-rust/feed.xml
-Jon Gjengset      | https://thesquareplanet.com/feed.xml
-Yoshua Wuyts      | https://blog.yoshuawuyts.com/rss.xml
-Without Boats     | https://without.boats/index.xml
-Niko Matsakis     | https://smallcultfollowing.com/babysteps//atom.xml
-Faster Than Lime  | https://fasterthanli.me/index.xml
-This Week in Rust | https://this-week-in-rust.org/rss.xml
+Rust             | https://blog.rust-lang.org/feed.xml
+Gamozo           | https://gamozolabs.github.io/feed.xml
+Inside Rust      | https://blog.rust-lang.org/inside-rust/feed.xml
+Jon Gjengset     | https://thesquareplanet.com/feed.xml
+Yoshua Wuyts     | https://blog.yoshuawuyts.com/rss.xml
+Without Boats    | https://without.boats/index.xml
+Niko Matsakis    | https://smallcultfollowing.com/babysteps//atom.xml
+Faster Than Lime | https://fasterthanli.me/index.xml
 
 # Lobsters
 Rust          | https://lobste.rs/t/rust.rss
@@ -66,4 +64,4 @@ Security      | https://lobste.rs/t/security.rss
 Steve Klabnik | https://lobste.rs/~steveklabnik/stories.rss
 
 # Subreddits
-Wunkus        | https://www.reddit.com/r/wunkus/top/.rss?t=week
+Wunkus | https://www.reddit.com/r/wunkus/top/.rss?t=week
