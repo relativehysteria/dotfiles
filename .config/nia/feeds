@@ -10,7 +10,6 @@ Gynvael Coldwind | https://www.youtube.com/feeds/videos.xml?channel_id=UCCkVMojd
 # Rust
 Gamozo          | https://www.youtube.com/feeds/videos.xml?channel_id=UC17ewSS9f2EnkCyMztCdoKA
 Jon Gjengset    | https://www.youtube.com/feeds/videos.xml?channel_id=UC_iD0xppBwwsrM9DegC5cQQ
-No Boiler Plate | https://www.youtube.com/feeds/videos.xml?channel_id=UCUMwY9iS8oMyWDYIe6_RmoA
 
 # Mostly science
 Nile Red    | https://www.youtube.com/feeds/videos.xml?channel_id=UCFhXFikryT4aFcLkLw2LBLA
@@ -35,6 +34,7 @@ Fredrik Knudsen | https://www.youtube.com/feeds/videos.xml?channel_id=UCbWcXB0Po
 xkcd                            | https://xkcd.com/rss.xml
 Oglaf                           | https://www.oglaf.com/feeds/rss/
 Webcomic Name                   | https://webcomicname.com/rss
+Don't Call Abigail              | https://www.dontcallabigail.com/feed/
 Saturday Morning Breakfast Club | https://www.smbc-comics.com/comic/rss
 
 # Tech Blogs
@@ -62,3 +62,8 @@ Faster Than Lime | https://fasterthanli.me/index.xml
 Rust          | https://lobste.rs/t/rust.rss
 Security      | https://lobste.rs/t/security.rss
 Steve Klabnik | https://lobste.rs/~steveklabnik/stories.rss
+
+# Reddit
+to je ale material | https://www.reddit.com/r/tojealematerial/top/.rss?t=day
+disco elysium | https://www.reddit.com/r/discoelysium/top/.rss?t=month
+wunkus | https://www.reddit.com/r/wunkus/top/.rss?t=week
