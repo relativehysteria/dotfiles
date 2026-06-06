@@ -116,6 +116,9 @@ EOF
 " Generic auto cmds
 augroup auto_cmds
     autocmd!
+    " Stop wrapping HTML
+    autocmd FileType html setlocal colorcolumn= formatoptions-=t
+
     " Insert header guardian into new headers
     autocmd BufNewFile *.h call globals#insert_header_guardian()
 
