@@ -74,8 +74,12 @@ user_pref("browser.urlbar.trimURLs", false);
 // Online/offline connection state
 user_pref("network.manage-offline-status", false);
 
-// Strict URI origin policy
-user_pref("security.fileuri.strict_origin_policy", true);
+// Strict URI origin policy; set to false to allow local files to persist
+// colorschemes etc. This makes you vulnerable to malicious local files which
+// would now be able to enumerate all files on the system, not just those in its
+// local directory
+//user_pref("security.fileuri.strict_origin_policy", true);
+user_pref("security.fileuri.strict_origin_policy", false);
 
 // asm.js
 user_pref("javascript.options.asmjs", false);
