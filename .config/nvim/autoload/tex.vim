@@ -3,6 +3,7 @@ if exists("b:latex_loaded_already")
 endif
 let b:latex_loaded_already=1
 
+"; biber %:r ; makeindex %:r ; pdflatex % ; pdflatex %"
 function! tex#compile()
-	execute "!pdflatex % ; pdflatex % ; biber %:r ; makeindex %:r ; pdflatex % ; pdflatex %"
+	execute "!pdflatex % ; pdflatex %"
 endfunction
