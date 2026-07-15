@@ -106,6 +106,9 @@ vim.lsp.config("rust_analyzer", {
         client.server_capabilities.diagnosticProvider = false
         client.server_capabilities.semanticTokensProvider = nil
 
+        -- Ensure call hierarchy is enabled
+        client.server_capabilities.callHierarchyProvider = true
+
         -- Suppress diagnostics
         vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
     end,
@@ -136,4 +139,8 @@ augroup auto_cmds
     " Overwrite tag navigation with lsp definition for Rust
     autocmd FileType rust nnoremap <buffer> <C-]>
         \ <cmd>lua vim.lsp.buf.definition()<CR>
+
+        " Show callers (incoming calls) for Rust
+    autocmd FileType rust nnoremap <buffer> <C-[>
+        \ <cmd>lua vim.lsp.buf.incoming_calls()<CR>
 augroup END
