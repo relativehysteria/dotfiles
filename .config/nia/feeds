@@ -12,8 +12,6 @@ Gamozo          | https://www.youtube.com/feeds/videos.xml?channel_id=UC17ewSS9f
 Jon Gjengset    | https://www.youtube.com/feeds/videos.xml?channel_id=UC_iD0xppBwwsrM9DegC5cQQ
 
 # Mostly science
-Sorin       | https://www.youtube.com/feeds/videos.xml?channel_id=UCooKQlg-HZ0PFAPc4Ymg3RA
-Prof MAD    | https://www.youtube.com/feeds/videos.xml?channel_id=UCIHwyz8ISMolEPSy6VDf-kw
 Nile Red    | https://www.youtube.com/feeds/videos.xml?channel_id=UCFhXFikryT4aFcLkLw2LBLA
 Nile Blue   | https://www.youtube.com/feeds/videos.xml?channel_id=UC1D3yD4wlPMico0dss264XA
 Quanta Zine | https://www.youtube.com/feeds/videos.xml?channel_id=UCTpmmkp1E4nmZqWPS-dl5bg
@@ -26,11 +24,14 @@ Herdyn          | https://www.youtube.com/feeds/videos.xml?channel_id=UCBJY0_6cB
 Henlips         | https://www.youtube.com/feeds/videos.xml?channel_id=UCd25I7Y3-NEKNOoImYhQ-3g
 Nick Alex       | https://www.youtube.com/feeds/videos.xml?channel_id=UCWYSiz0rqNEJ0mX4a45Lhrw
 Daily Dose      | https://www.youtube.com/feeds/videos.xml?channel_id=UCdC0An4ZPNr_YiFiYoVbwaw
+Kai Lentit      | https://www.youtube.com/feeds/videos.xml?channel_id=UCi8C7TNs2ohrc6hnRQ5Sn2w
 David Firth     | https://www.youtube.com/feeds/videos.xml?channel_id=UCaGev0JRG7Dp5c_R4ROADLw
 Band Believe    | https://www.youtube.com/feeds/videos.xml?channel_id=UCeOlmKnEC9fIUNa_mYxsPVg
 Drue Langlois   | https://www.youtube.com/feeds/videos.xml?channel_id=UCi8UNRmZpgCAYXUtyWQnhag
 Primitive Tech  | https://www.youtube.com/feeds/videos.xml?channel_id=UCAL3JXZSzSm8AlZyD3nQdBA
 Fredrik Knudsen | https://www.youtube.com/feeds/videos.xml?channel_id=UCbWcXB0PoqOsAvAdfzWMf0w
+HiddenSoundTest | https://www.youtube.com/feeds/videos.xml?channel_id=UC1jG4ZiUkxSi88bnuflyFhQ
+
 
 # Comics and Fun Stuff
 xkcd                            | https://xkcd.com/rss.xml
@@ -39,6 +40,7 @@ Don't Call Abigail              | https://www.dontcallabigail.com/feed/
 Saturday Morning Breakfast Club | https://www.smbc-comics.com/comic/rss
 
 # Tech Blogs
+ryg           | https://fgiesen.wordpress.com/feed/
 oxide         | https://oxide.computer/blog/feed
 Archie        | https://archie-osu.github.io/feed.xml
 Gynvael       | https://feeds.feedburner.com/GynvaelColdwindEN
@@ -66,6 +68,4 @@ Security      | https://lobste.rs/t/security.rss
 Steve Klabnik | https://lobste.rs/~steveklabnik/stories.rss
 
 # Reddit
-to je ale material | https://www.reddit.com/r/tojealematerial/top/.rss?t=day
 disco elysium | https://www.reddit.com/r/discoelysium/top/.rss?t=month
-wunkus | https://www.reddit.com/r/wunkus/top/.rss?t=week
