@@ -58,6 +58,12 @@ set -x TOOLS "$PACKAGES/tools/"
 set -x DOTNET_ROOT "$XDG_DATA_HOME/dnet"
 set -x RECORDING "$SANDBOX/musescore/recording"
 
+# Golang insanity
+set -x GOPATH "$XDG_DATA_HOME/go"
+set -x GOCACHE "$XDG_CACHE_HOME/go"
+set -x GOMODCACHE "$XDG_DATA_HOME/go/pkg/mod"
+set -x GOBIN "$XDG_DATA_HOME/go/bin"
+
 # Default programs
 set -x EDITOR "nvim"
 set -x TERMINAL "foot"
@@ -80,7 +86,7 @@ set -x WMENU_ARGS \
 
 # Set up PATH
 set -Ue PATH
-set -x PATH "$SCRIPTDIR" "$HOME/.local/bin" $PATH
+set -x PATH "$SCRIPTDIR" "$HOME/.local/bin" "$GOBIN" $PATH
 
 # Set the WM
 set -x WM "sway"
