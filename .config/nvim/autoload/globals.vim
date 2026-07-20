@@ -38,8 +38,8 @@ function! globals#apply_colorscheme(use_light)
         hi StatusLine guifg=#000000
     else
         execute 'colorscheme' g:dark_colorscheme
-        hi SpecialComment guifg=#555060
-        hi Comment guifg=#505050
+        hi SpecialComment guifg=#A03737
+        hi Comment guifg=#603030
         hi Normal guibg=#000000
     endif
 
