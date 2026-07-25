@@ -136,11 +136,7 @@ augroup auto_cmds
     autocmd BufEnter,BufWinEnter * if &filetype ==# ''
         \ | setlocal colorcolumn= | endif
 
-    " Overwrite tag navigation with lsp definition for Rust
-    autocmd FileType rust nnoremap <buffer> <C-]>
-        \ <cmd>lua vim.lsp.buf.definition()<CR>
-
         " Show callers (incoming calls) for Rust
-    autocmd FileType rust nnoremap <buffer> <C-[>
+    autocmd FileType rust nnoremap <buffer> <leader>[
         \ <cmd>lua vim.lsp.buf.incoming_calls()<CR>
 augroup END
