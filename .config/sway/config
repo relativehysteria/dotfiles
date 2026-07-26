@@ -1,24 +1,10 @@
 set $mod Mod4
+set $mod2 Control
 
 default_border pixel
 default_border none
 gaps inner 0
 gaps outer 0
-
-output DP-3 pos 0 0
-output HDMI-A-1 pos 1920 0
-
-workspace 1 output DP-3
-workspace 2 output DP-3
-workspace 3 output DP-3
-workspace 4 output DP-3
-workspace 5 output DP-3
-
-workspace 6 output HDMI-A-1
-workspace 7 output HDMI-A-1
-workspace 8 output HDMI-A-1
-workspace 9 output HDMI-A-1
-workspace 10 output HDMI-A-1
 
 focus_follows_mouse yes
 floating_modifier $mod normal
@@ -29,8 +15,6 @@ input * {
     xkb_options caps:swapescape
 }
 
-# KEYBINDS
-
 # app keybinds and shortcuts
 bindsym $mod+Return exec $TERMINAL
 bindsym $mod+backslash exec wmenu-run
@@ -39,50 +23,21 @@ bindsym Scroll_Lock exec toggle_mic
 bindsym $mod+p exec swaymsg input "*" xkb_layout us
 bindsym $mod+Shift+p exec swaymsg input "*" xkb_layout "cz(qwerty)"
 
-mode "media" {
-    # mpd
-    bindsym Up exec mpc volume +5
-    bindsym Down exec mpc volume -5
-    bindsym Left exec mpc prev
-    bindsym Right exec mpc next
-    bindsym $mod+Left exec mpc toggle
-    bindsym $mod+Right exec mpc stop
+# mpd
+bindsym Mod1+Up exec mpc volume +5
+bindsym Mod1+Down exec mpc volume -5
+bindsym Mod1+Left exec mpc prev
+bindsym Mod1+Right exec mpc next
+bindsym $mod+Left exec mpc toggle
+bindsym $mod+Right exec mpc stop
 
-    # system sound
-    bindsym $mod+Up exec wpctl set-volume --limit 1.0 '@DEFAULT_AUDIO_SINK@' '1%+'
-    bindsym $mod+Down exec wpctl set-volume --limit 1.0 '@DEFAULT_AUDIO_SINK@' '1%-'
-
-    bindsym $mod+Control_R mode "default"
-}
-bindsym Control_R mode "media"
+# system sound
+bindsym $mod+Up exec wpctl set-volume --limit 1.0 '@DEFAULT_AUDIO_SINK@' '1%+'
+bindsym $mod+Down exec wpctl set-volume --limit 1.0 '@DEFAULT_AUDIO_SINK@' '1%-'
 
 # brightness
 bindsym XF86MonBrightnessUp exec brightnessctl set '10%+'
 bindsym XF86MonBrightnessDown exec brightnessctl set '10%-'
-
-# switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
-
-# move to workspace
-bindsym $mod+Shift+1 move container to workspace 1
-bindsym $mod+Shift+2 move container to workspace 2
-bindsym $mod+Shift+3 move container to workspace 3
-bindsym $mod+Shift+4 move container to workspace 4
-bindsym $mod+Shift+5 move container to workspace 5
-bindsym $mod+Shift+6 move container to workspace 6
-bindsym $mod+Shift+7 move container to workspace 7
-bindsym $mod+Shift+8 move container to workspace 8
-bindsym $mod+Shift+9 move container to workspace 9
-bindsym $mod+Shift+0 move container to workspace 10
 
 # close and kill
 bindsym $mod+q kill
@@ -112,13 +67,5 @@ bindsym $mod+Control+j resize shrink height 20px
 bindsym $mod+Control+k resize grow height 20px
 bindsym $mod+Control+l resize shrink width 20px
 
-# Soundboard
-bindsym $mod+KP_Insert exec play_soundboard
-bindsym $mod+KP_End exec play_soundboard "mgs_alert.opus"
-bindsym $mod+KP_Down exec play_soundboard "mgs_sneaking.opus"
-bindsym $mod+KP_Prior exec play_soundboard "pipes.opus"
-bindsym $mod+KP_Up exec play_soundboard "what_a_shame.mp3"
-bindsym $mod+KP_Home exec play_soundboard "INVISIBLE.opus"
-bindsym $mod+KP_Begin exec play_soundboard KILL
-
 include ~/.config/sway/startup
+include ~/.config/sway/workspaces
