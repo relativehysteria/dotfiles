@@ -39,17 +39,22 @@ bindsym Scroll_Lock exec toggle_mic
 bindsym $mod+p exec swaymsg input "*" xkb_layout us
 bindsym $mod+Shift+p exec swaymsg input "*" xkb_layout "cz(qwerty)"
 
-# mpd
-bindsym Up exec mpc volume +5
-bindsym Down exec mpc volume -5
-bindsym Left exec mpc prev
-bindsym Right exec mpc next
-bindsym $mod+Left exec mpc toggle
-bindsym $mod+Right exec mpc stop
+mode "media" {
+    # mpd
+    bindsym Up exec mpc volume +5
+    bindsym Down exec mpc volume -5
+    bindsym Left exec mpc prev
+    bindsym Right exec mpc next
+    bindsym $mod+Left exec mpc toggle
+    bindsym $mod+Right exec mpc stop
 
-# system sound
-bindsym $mod+Up exec wpctl set-volume --limit 1.0 '@DEFAULT_AUDIO_SINK@' '1%+'
-bindsym $mod+Down exec wpctl set-volume --limit 1.0 '@DEFAULT_AUDIO_SINK@' '1%-'
+    # system sound
+    bindsym $mod+Up exec wpctl set-volume --limit 1.0 '@DEFAULT_AUDIO_SINK@' '1%+'
+    bindsym $mod+Down exec wpctl set-volume --limit 1.0 '@DEFAULT_AUDIO_SINK@' '1%-'
+
+    bindsym $mod+Control_R mode "default"
+}
+bindsym Control_R mode "media"
 
 # brightness
 bindsym XF86MonBrightnessUp exec brightnessctl set '10%+'
