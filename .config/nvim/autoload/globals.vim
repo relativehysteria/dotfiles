@@ -33,8 +33,8 @@ function! globals#apply_colorscheme(use_light)
     if a:use_light
         colorscheme minimal
         hi String guifg=#000000
-        hi SpecialComment guifg=#9590A0
-        hi Comment guifg=#909090
+        hi SpecialComment guifg=#A00000
+        hi Comment guifg=#704040
         hi StatusLine guifg=#000000
     else
         execute 'colorscheme' g:dark_colorscheme
@@ -109,4 +109,9 @@ function! globals#prevent_long_lines() abort
             throw "Long line detected"
         endif
     endfor
+endfunction
+
+" Split multiple methods on a line each to their own line
+function! globals#split_method_chain() range
+    execute a:firstline . ',' . a:lastline . 's/\.\ze\h\w*(/\= "\r" . repeat(" ", indent(".")) . "    ."/g'
 endfunction

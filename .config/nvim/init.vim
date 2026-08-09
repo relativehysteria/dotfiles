@@ -92,6 +92,9 @@ vnoremap <Leader>Y "+Y
 xnoremap ga <Plug>(EasyAlign)
 nnoremap ga <Plug>(EasyAlign)
 
+" Split multiple methods on a line each to their own line
+xnoremap <leader>. :call globals#split_method_chain()<CR>
+
 lua << EOF
 vim.lsp.config("rust_analyzer", {
     on_attach = function(client, bufnr)
