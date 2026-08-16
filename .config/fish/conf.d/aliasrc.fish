@@ -76,6 +76,14 @@ function todo
     command nvim $TODO
 end
 
+function trans
+    command cache trans $argv
+end
+
+function ytid
+    command cache ytid $argv
+end
+
 function cdbase
     set search_targets "Cargo.toml" ".git"
 
