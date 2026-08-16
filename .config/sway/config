@@ -1,4 +1,5 @@
 set $mod Mod4
+set $mod1 Mod1
 set $mod2 Control
 
 default_border pixel
@@ -24,10 +25,10 @@ bindsym $mod+p exec swaymsg input "*" xkb_layout us
 bindsym $mod+Shift+p exec swaymsg input "*" xkb_layout "cz(qwerty)"
 
 # mpd
-bindsym Mod1+Up exec mpc volume +5
-bindsym Mod1+Down exec mpc volume -5
-bindsym Mod1+Left exec mpc prev
-bindsym Mod1+Right exec mpc next
+bindsym $mod1+Up exec mpc volume +5
+bindsym $mod1+Down exec mpc volume -5
+bindsym $mod1+Left exec mpc prev
+bindsym $mod1+Right exec mpc next
 bindsym $mod+Left exec mpc toggle
 bindsym $mod+Right exec mpc stop
 
