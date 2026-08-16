@@ -84,6 +84,10 @@ function ytid
     command cache ytid $argv
 end
 
+function thesa
+    command cache thesa $argv
+end
+
 function cdbase
     set search_targets "Cargo.toml" ".git"
 
