@@ -6,7 +6,6 @@ Stacksmashing    | https://www.youtube.com/feeds/videos.xml?channel_id=UC3S8vxwR
 Louis Rossmann   | https://www.youtube.com/feeds/videos.xml?channel_id=UCl2mFZoRqjw_ELax4Yisf6w
 Gynvael Coldwind | https://www.youtube.com/feeds/videos.xml?channel_id=UCCkVMojdBWS-JtH7TliWkVg
 
-
 # Rust
 Gamozo          | https://www.youtube.com/feeds/videos.xml?channel_id=UC17ewSS9f2EnkCyMztCdoKA
 Jon Gjengset    | https://www.youtube.com/feeds/videos.xml?channel_id=UC_iD0xppBwwsrM9DegC5cQQ
@@ -22,7 +21,6 @@ ScienceClic | https://www.youtube.com/feeds/videos.xml?channel_id=UCWvq4kcdNI1r1
 Benn Jordan | https://www.youtube.com/feeds/videos.xml?channel_id=UCshObcm-nLhbu8MY50EZ5Ng
 
 # Fun Stuff
-FUNKe           | https://www.youtube.com/feeds/videos.xml?channel_id=UCd-qVRcjoK9zjtDs_LRxSmw
 Herdyn          | https://www.youtube.com/feeds/videos.xml?channel_id=UCBJY0_6cB6q1THgfokwpQxA
 Henlips         | https://www.youtube.com/feeds/videos.xml?channel_id=UCd25I7Y3-NEKNOoImYhQ-3g
 Nick Alex       | https://www.youtube.com/feeds/videos.xml?channel_id=UCWYSiz0rqNEJ0mX4a45Lhrw
@@ -38,6 +36,7 @@ Fredrik Knudsen | https://www.youtube.com/feeds/videos.xml?channel_id=UCbWcXB0Po
 # Comics and Fun Stuff
 xkcd                            | https://xkcd.com/rss.xml
 Oglaf                           | https://www.oglaf.com/feeds/rss/
+palette                         | https://www.palettepoetry.com/poetry/rss
 Don't Call Abigail              | https://www.dontcallabigail.com/feed/
 Saturday Morning Breakfast Club | https://www.smbc-comics.com/comic/rss
 
@@ -46,6 +45,7 @@ ryg           | https://fgiesen.wordpress.com/feed/
 oxide         | https://oxide.computer/blog/feed
 Archie        | https://archie-osu.github.io/feed.xml
 Gynvael       | https://feeds.feedburner.com/GynvaelColdwindEN
+secret.club   | https://secret.club/feed.xml
 Project Zero  | https://googleprojectzero.blogspot.com/feeds/posts/default
 Travis Downs  | https://travisdowns.github.io/feed.xml
 Connor McGarr | https://connormcgarr.github.io/feed.xml
@@ -66,8 +66,12 @@ Faster Than Lime | https://fasterthanli.me/index.xml
 
 # Lobsters
 Rust          | https://lobste.rs/t/rust.rss
-Security      | https://lobste.rs/t/security.rss
+Society       | https://lobste.rs/t/privacy,law.rss
+Systems       | https://lobste.rs/t/osdev,performance,networking.rss
+Security      | https://lobste.rs/t/security,reversing,cryptography.rss
+Philosophy    | https://lobste.rs/t/philosophy.rss
 Steve Klabnik | https://lobste.rs/~steveklabnik/stories.rss
 
 # Reddit
+house plants  | https://www.reddit.com/r/houseplants/top/.rss?t=month
 disco elysium | https://www.reddit.com/r/discoelysium/top/.rss?t=month
