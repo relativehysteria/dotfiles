@@ -88,6 +88,10 @@ function thesa
     command cache thesa $argv
 end
 
+function skick
+    command cache -t 86400 skick $argv
+end
+
 function cdbase
     set search_targets "Cargo.toml" ".git"
 
