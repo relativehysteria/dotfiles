@@ -213,13 +213,15 @@ install_packages() {
 install_colorschemed() {
     if is_done "colorschemed_installed"; then
         echo "[skip] colorschemed sleep hook already installed."
+        return
     fi
 
     echo "[run] installing colorschemed sleep hook."
 
-    # Write the hook.
+    # Write the hook using sudo tee.
     colorschemed_hook_file="/usr/lib/elogind/system-sleep/colorschemed"
-    cat << EOF > "$colorschemed_hook_file"
+
+    sudo tee "$colorschemed_hook_file" > /dev/null << 'EOF'
 #!/bin/sh
 
 case "$1" in
@@ -230,7 +232,7 @@ esac
 EOF
 
     # Mark it as executable.
-    chmod +x "$colorschemed_hook_file"
+    sudo chmod +x "$colorschemed_hook_file"
 
     set_done "colorschemed_installed"
 }
