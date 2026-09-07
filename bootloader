@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Paste this into /etc/initcpio/post
+
 CMDLINE="loglevel=5 module_blacklist=pcspkr cryptdevice=UUID=40c77d26-3695-4f0c-bb7d-99ce52860f5d:root rootfstype=ext4 root_trim=yes root=/dev/mapper/root resume=UUID=d00959db-3b7f-4a56-8550-31fefc83557e resume_offset=4161536 mitigations=off"
 CMDLINE="loglevel=5 cryptdevice=UUID=79d15d8e-b591-4c12-948b-5158bab377ce:root rootfstype=ext4 root_trim=yes root=/dev/mapper/root resume=UUID=71492824-6f41-41a2-9c76-81aa05e4e940 resume_offset=208896 mitigations=off"
 

@@ -92,6 +92,10 @@ function skick
     command cache -t 86400 skick $argv
 end
 
+function idos
+    command cache -t 600 idos $argv
+end
+
 function cdbase
     set search_targets "Cargo.toml" ".git"
 
