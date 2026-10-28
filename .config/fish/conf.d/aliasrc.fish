@@ -88,6 +88,10 @@ function thesa
     command cache thesa $argv
 end
 
+function ety
+    command cache ety $argv
+end
+
 function skick
     command cache -t 86400 skick $argv
 end

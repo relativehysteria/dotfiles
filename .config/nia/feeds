@@ -2,6 +2,7 @@
 OALabs           | https://www.youtube.com/feeds/videos.xml?channel_id=UC--DwaiMV-jtO-6EvmKOnqg
 tokyospliff      | https://www.youtube.com/feeds/videos.xml?channel_id=UCalOFVbIxEAWIV5LHGkKcnw
 Logan Smith      | https://www.youtube.com/feeds/videos.xml?channel_id=UCnHX5FjwtQpxkCGziuh4NJA
+Gamers Nexus     | https://www.youtube.com/feeds/videos.xml?channel_id=UChIs72whgZI9w6d6FhwGGHA
 Stacksmashing    | https://www.youtube.com/feeds/videos.xml?channel_id=UC3S8vxwRfqLBdIhgRlDRVzw
 Louis Rossmann   | https://www.youtube.com/feeds/videos.xml?channel_id=UCl2mFZoRqjw_ELax4Yisf6w
 Gynvael Coldwind | https://www.youtube.com/feeds/videos.xml?channel_id=UCCkVMojdBWS-JtH7TliWkVg
@@ -11,12 +12,9 @@ Gamozo          | https://www.youtube.com/feeds/videos.xml?channel_id=UC17ewSS9f
 Jon Gjengset    | https://www.youtube.com/feeds/videos.xml?channel_id=UC_iD0xppBwwsrM9DegC5cQQ
 
 # Mostly science
-Barrow      | https://www.youtube.com/feeds/videos.xml?channel_id=UCOkmZTdNgE2jTuqItaocbxQ
 Nile Red    | https://www.youtube.com/feeds/videos.xml?channel_id=UCFhXFikryT4aFcLkLw2LBLA
 Nile Blue   | https://www.youtube.com/feeds/videos.xml?channel_id=UC1D3yD4wlPMico0dss264XA
-Prof Dave   | https://www.youtube.com/feeds/videos.xml?channel_id=UC0cd_-e49hZpWLH3UIwoWRA
 Ninja Nerd  | https://www.youtube.com/feeds/videos.xml?channel_id=UC6QYFutt9cluQ3uSM963_KQ
-Hank Green  | https://www.youtube.com/feeds/videos.xml?channel_id=UCOT2iLov0V7Re7ku_3UBtcQ
 Quanta Zine | https://www.youtube.com/feeds/videos.xml?channel_id=UCTpmmkp1E4nmZqWPS-dl5bg
 ScienceClic | https://www.youtube.com/feeds/videos.xml?channel_id=UCWvq4kcdNI1r1jZKFw9TiUA
 Benn Jordan | https://www.youtube.com/feeds/videos.xml?channel_id=UCshObcm-nLhbu8MY50EZ5Ng
@@ -25,10 +23,10 @@ Benn Jordan | https://www.youtube.com/feeds/videos.xml?channel_id=UCshObcm-nLhbu
 Herdyn          | https://www.youtube.com/feeds/videos.xml?channel_id=UCBJY0_6cB6q1THgfokwpQxA
 Henlips         | https://www.youtube.com/feeds/videos.xml?channel_id=UCd25I7Y3-NEKNOoImYhQ-3g
 Nick Alex       | https://www.youtube.com/feeds/videos.xml?channel_id=UCWYSiz0rqNEJ0mX4a45Lhrw
+Daily Dose      | https://www.youtube.com/feeds/videos.xml?channel_id=UCdC0An4ZPNr_YiFiYoVbwaw
 Kai Lentit      | https://www.youtube.com/feeds/videos.xml?channel_id=UCi8C7TNs2ohrc6hnRQ5Sn2w
 overzealots     | https://www.youtube.com/feeds/videos.xml?channel_id=UCfZC7WR8oXmBKj-1bUMY-Pw
 David Firth     | https://www.youtube.com/feeds/videos.xml?channel_id=UCaGev0JRG7Dp5c_R4ROADLw
-Band Believe    | https://www.youtube.com/feeds/videos.xml?channel_id=UCeOlmKnEC9fIUNa_mYxsPVg
 Drue Langlois   | https://www.youtube.com/feeds/videos.xml?channel_id=UCi8UNRmZpgCAYXUtyWQnhag
 Primitive Tech  | https://www.youtube.com/feeds/videos.xml?channel_id=UCAL3JXZSzSm8AlZyD3nQdBA
 Fredrik Knudsen | https://www.youtube.com/feeds/videos.xml?channel_id=UCbWcXB0PoqOsAvAdfzWMf0w
@@ -37,20 +35,29 @@ Fredrik Knudsen | https://www.youtube.com/feeds/videos.xml?channel_id=UCbWcXB0Po
 xkcd                            | https://xkcd.com/rss.xml
 Oglaf                           | https://www.oglaf.com/feeds/rss/
 palette                         | https://www.palettepoetry.com/poetry/rss
+Buttersafe                      | https://www.buttersafe.com/feed/
+false knees                     | https://falseknees.com/rss.xml
+Buttercup Festival              | https://buttercupfestival.tumblr.com/rss
 Don't Call Abigail              | https://www.dontcallabigail.com/feed/
+Three Word Phrase               | http://www.threewordphrase.com/rss.xml
+Perry Bible Fellowship          | https://pbfcomics.com/comics/feed
 Saturday Morning Breakfast Club | https://www.smbc-comics.com/comic/rss
 
 # Tech Blogs
 ryg           | https://fgiesen.wordpress.com/feed/
 oxide         | https://oxide.computer/blog/feed
+ploum         | https://ploum.net/atom_en.xml
+samwho        | https://samwho.dev/rss.xml
 Archie        | https://archie-osu.github.io/feed.xml
 matklad       | https://matklad.github.io/feed.xml
 Gynvael       | https://feeds.feedburner.com/GynvaelColdwindEN
+Giuseppe      | https://scrivano.org/index.xml
+ddevault      | https://drewdevault.com/blog/index.xml
+pivot to ai   | https://pivot-to-ai.com/feed/
 secret.club   | https://secret.club/feed.xml
 Project Zero  | https://googleprojectzero.blogspot.com/feeds/posts/default
 Travis Downs  | https://travisdowns.github.io/feed.xml
 Connor McGarr | https://connormcgarr.github.io/feed.xml
-purplesyringa | https://purplesyringa.moe/blog/feed.rss
 
 # Twitter
 Gamozo | https://nitter.net/gamozolabs/rss
