@@ -33,8 +33,8 @@ function! globals#apply_colorscheme(use_light)
     if a:use_light
         colorscheme minimal
         hi String guifg=#000000
-        hi SpecialComment guifg=#A00000
-        hi Comment guifg=#704040
+        hi SpecialComment guifg=#F00000
+        hi Comment guifg=#B04040
         hi StatusLine guifg=#000000
     else
         execute 'colorscheme' g:dark_colorscheme
