@@ -98,31 +98,104 @@ xnoremap <leader>. :call globals#split_method_chain()<CR>
 lua << EOF
 vim.lsp.config("rust_analyzer", {
     on_attach = function(client, bufnr)
+        local caps = client.server_capabilities
+
         -- Disable everything except definition
-        client.server_capabilities.documentRangeFormattingProvider = false
-        client.server_capabilities.codeActionProvider = false
-        client.server_capabilities.hoverProvider = false
-        client.server_capabilities.renameProvider = false
-        client.server_capabilities.signatureHelpProvider = false
-        client.server_capabilities.referencesProvider = false
-        client.server_capabilities.completionProvider = false
-        client.server_capabilities.diagnosticProvider = false
-        client.server_capabilities.semanticTokensProvider = nil
+        caps.documentRangeFormattingProvider = false
+        caps.codeActionProvider = false
+        caps.hoverProvider = false
+        caps.renameProvider = false
+        caps.signatureHelpProvider = false
+        caps.referencesProvider = false
+        caps.completionProvider = false
+        caps.diagnosticProvider = false
+        caps.semanticTokensProvider = nil
 
         -- Ensure call hierarchy is enabled
-        client.server_capabilities.callHierarchyProvider = true
-
-        -- Suppress diagnostics
-        vim.lsp.handlers["textDocument/publishDiagnostics"] = function() end
+        caps.callHierarchyProvider = true
     end,
+
+    -- Suppress diagnostics without affecting other LSP servers
+    handlers = {
+        ["textDocument/publishDiagnostics"] = function() end,
+    },
 })
 vim.lsp.enable("rust_analyzer")
+EOF
+
+lua << EOF
+vim.lsp.config("clangd", {
+    on_attach = function(client, bufnr)
+        vim.bo[bufnr].tagfunc = ""
+        local caps = client.server_capabilities
+
+        -- Disable everything
+        caps.documentFormattingProvider = false
+        caps.documentRangeFormattingProvider = false
+        caps.documentOnTypeFormattingProvider = false
+        caps.codeActionProvider = false
+        caps.hoverProvider = false
+        caps.renameProvider = false
+        caps.signatureHelpProvider = false
+        caps.referencesProvider = false
+        caps.completionProvider = false
+        caps.diagnosticProvider = false
+        caps.documentSymbolProvider = false
+        caps.workspaceSymbolProvider = false
+        caps.documentHighlightProvider = false
+        caps.definitionProvider = false
+        caps.semanticTokensProvider = nil
+
+        -- Ensure call hierarchy is enabled
+        caps.callHierarchyProvider = true
+    end,
+
+    -- Suppress diagnostics without affecting other LSP servers
+    handlers = {
+        ["textDocument/publishDiagnostics"] = function() end,
+    },
+})
+vim.lsp.enable("clangd")
+EOF
+
+lua << EOF
+vim.lsp.config("gopls", {
+    on_attach = function(client, bufnr)
+        local caps = client.server_capabilities
+
+        -- Disable features you don't want
+        caps.documentFormattingProvider = false
+        caps.documentRangeFormattingProvider = false
+        caps.documentOnTypeFormattingProvider = false
+        caps.codeActionProvider = false
+        caps.hoverProvider = false
+        caps.renameProvider = false
+        caps.signatureHelpProvider = false
+        caps.referencesProvider = false
+        caps.completionProvider = false
+        caps.diagnosticProvider = false
+        caps.documentSymbolProvider = false
+        caps.workspaceSymbolProvider = false
+        caps.documentHighlightProvider = false
+        caps.semanticTokensProvider = nil
+
+        -- Keep definitionProvider enabled.
+        -- Ensure call hierarchy is enabled
+        caps.callHierarchyProvider = true
+    end,
+
+    -- Suppress diagnostics without affecting other LSP servers
+    handlers = {
+        ["textDocument/publishDiagnostics"] = function() end,
+    },
+})
+vim.lsp.enable("gopls")
 EOF
 
 " Generic auto cmds
 augroup auto_cmds
     autocmd!
-    " Stop wrapping HTML
+    " Stop wrapping some file types
     autocmd FileType html setlocal colorcolumn= formatoptions-=t
 
     " Insert header guardian into new headers
@@ -139,7 +212,7 @@ augroup auto_cmds
     autocmd BufEnter,BufWinEnter * if &filetype ==# ''
         \ | setlocal colorcolumn= | endif
 
-        " Show callers (incoming calls) for Rust
-    autocmd FileType rust nnoremap <buffer> <leader>[
+        " Show incoming calls
+    autocmd FileType c,rust,go nnoremap <buffer> <leader>[
         \ <cmd>lua vim.lsp.buf.incoming_calls()<CR>
 augroup END
